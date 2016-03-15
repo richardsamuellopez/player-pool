@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html id="top" lang="en" ng-app="pool">
+    <head>
+        <title>AngularUI for AngularJS</title>
+
+        <!-- <link href="logo/UI_Shield.png" rel="shortcut icon"> -->
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+
+    <body ng-controller="PoolCtrl">
+        <header class="navbar navbar-default">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="http://richardsamuellopez.github.io/angular-ui.github.com//">Player Pool</a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div>
+            <!-- <header class="jumbotron" id="overview">
+                <div class="container" ng-repeat="entry in entries">
+                  <div><label>TEAM NAME: <label><span ng-bind="entry.Entry"></span></div>
+                  <div>{{entry}}</div>
+                </div>
+
+            </header> -->
+            <div class="col-xs-12" >
+                <section id="rankings" ng-cloak>
+                    <h1 class="page-header">Rankings</h1>
+                    <uib-accordion>
+                      <uib-accordion-group  ng-repeat="entry in entries | orderBy: '-totalTeamPoints'">
+                        <uib-accordion-heading>
+                          #{{$index+1}} TEAM: {{entry.Entry}} Total Points {{teamPoints(entry)}} <span ng-if="!$first">{{teamPoints(entry)-teamPoints(entries[0])}} Trailing Leader</span>
+                          <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </uib-accordion-heading>
+                        <table class="table table-hover table-condensed table-responsive">
+                          <th>
+                            Seed - Player
+                          </th>
+                          <th>
+                            Team
+                          </th>
+                          <th class="hidden-xs">
+                            Round 1
+                          </th>
+                          <th class="hidden-xs">
+                            Round 2
+                          </th>
+                          <th class="hidden-xs">
+                            Sweet 16
+                          </th>
+                          <th class="hidden-xs">
+                            Elite 8
+                          </th>
+                          <th class="hidden-xs">
+                            Final 4
+                          </th>
+                          <th class="hidden-xs">
+                            Championship
+                          </th>
+                          <th>
+                            Total
+                          </th>
+                        <!-- <h5 class="col-xs-12">
+                          <div class="col-xs-3">Seed - Player </div>
+                          <div class="col-xs-2">Team</div>
+                          <div class="col-xs-1">Round 1</div>
+                          <div class="col-xs-1">Round 2</div>
+                          <div class="col-xs-1">Sweet 16</div>
+                          <div class="col-xs-1">Elite 8</div>
+                          <div class="col-xs-1">Final 4</div>
+                          <div class="col-xs-1">Championship</div>
+                          <div class="col-xs-1">Total</div>
+                        </h5> -->
+                        <tr ng-repeat="i in getSeed(seeds) track by $index">
+                          <td>#{{$index+1}} - {{entry[$index+1]}} </td>
+                          <td> {{playerTeam(entry[$index+1])}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry[$index+1],"64")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry[$index+1],"32")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry[$index+1],"Sweet 16")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry[$index+1],"Elite 8")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry[$index+1],"Final 4")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry[$index+1],"Championship")}}</td>
+                          <td>{{playerPoints(entry[$index+1])}} pts</td>
+                        </tr>
+                        <!-- <div ng-repeat="i in getSeed(seeds) track by $index" class="col-xs-12">
+                          <div class="col-xs-3">#{{$index+1}} - {{entry[$index+1]}} </div>
+                          <div class="col-xs-2"> {{playerTeam(entry[$index+1])}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry[$index+1],"64")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry[$index+1],"32")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry[$index+1],"Sweet 16")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry[$index+1],"Elite 8")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry[$index+1],"Final 4")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry[$index+1],"Championship")}}</div>
+                          <div class="col-xs-1">{{playerPoints(entry[$index+1])}} pts</div>
+                        </div> -->
+                        <!-- <div><label>#WC - </label><span> {{entry.WC1}} </span><span>{{playerPoints(entry.WC1)}}<span></span> pts</span></div> -->
+                        <tr>
+                          <td>#WC - {{entry.WC1}} </td>
+                          <td> {{playerTeam(entry.WC1)}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC1,"64")}}</>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC1,"32")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC1,"Sweet 16")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC1,"Elite 8")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC1,"Final 4")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC1,"Championship")}}</td>
+                          <td>{{playerPoints(entry.WC1)}} pts</td>
+                        </tr>
+                        <!-- <div class="col-xs-12">
+                          <div class="col-xs-3">#WC - {{entry.WC1}} </div>
+                          <div class="col-xs-2"> {{playerTeam(entry.WC1)}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC1,"64")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC1,"32")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC1,"Sweet 16")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC1,"Elite 8")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC1,"Final 4")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC1,"Championship")}}</div>
+                          <div class="col-xs-1">{{playerPoints(entry.WC1)}} pts</div>
+                        </div> -->
+                        <!-- <div><label>#WC - </label><span> {{entry.WC2}} </span><span>{{playerPoints(entry.WC2)}}<span></span>  pts</span></div> -->
+                        <tr>
+                          <td>#WC - {{entry.WC2}} </td>
+                          <td> {{playerTeam(entry.WC2)}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC2,"64")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC2,"32")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC2,"Sweet 16")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC2,"Elite 8")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC2,"Final 4")}}</td>
+                          <td class="hidden-xs"> {{playerPointsByRound(entry.WC2,"Championship")}}</td>
+                          <td>{{playerPoints(entry.WC2)}} pts</td>
+                        </tr>
+                        <!-- <div class="col-xs-12">
+                          <div class="col-xs-3">#WC - {{entry.WC2}} </div>
+                          <div class="col-xs-2"> {{playerTeam(entry.WC2)}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC2,"64")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC2,"32")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC2,"Sweet 16")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC2,"Elite 8")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC2,"Final 4")}}</div>
+                          <div class="col-xs-1"> {{playerPointsByRound(entry.WC2,"Championship")}}</div>
+                          <div class="col-xs-1">{{playerPoints(entry.WC2)}} pts</div>
+                        </div> -->
+                      </table>
+
+                        <div>{{entry}}</div>
+                      </uib-accordion-group>
+                    </uib-accordion>
+
+                </section>
+            </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+        <script src="//cdn.rawgit.com/jsoma/tabletop/7b2024af62d71d52ac5c6cecc2256b04da00161e/src/tabletop.js"></script>
+        <script src="//rawgit.com/times/angular-tabletop/master/TabletopProvider.js"></script>
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
