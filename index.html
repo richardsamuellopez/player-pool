@@ -30,16 +30,16 @@
                 </div>
 
             </header> -->
-            <div class="col-xs-12" >
-                <section id="rankings" ng-cloak>
-                    <h1 class="page-header">Rankings</h1>
+            <div class="col-xs-12" ng-cloak >
+                <section id="rankings" >
+                    <h1 class="col-xs-12">Rankings</h1>
                     <uib-accordion>
                       <uib-accordion-group  ng-repeat="entry in entries | orderBy: '-totalTeamPoints'">
                         <uib-accordion-heading>
                           #{{$index+1}} TEAM: {{entry.Entry}} Total Points {{teamPoints(entry)}} <span ng-if="!$first">{{teamPoints(entry)-teamPoints(entries[0])}} Trailing Leader</span>
                           <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                         </uib-accordion-heading>
-                        <table class="table table-hover table-condensed">
+                        <table class="table table-hover table-condensed col-xs-12">
                           <th>
                             Seed - Player
                           </th>
