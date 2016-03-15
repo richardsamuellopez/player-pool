@@ -40,8 +40,8 @@
                           <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                         </uib-accordion-heading>
                         <table class="table table-hover table-condensed table-responsive">
-                          <th class="col-xs-5 col-sm-5">Seed - Player</th>
-                          <th class="col-xs-5 col-sm-5">Team</th>
+                          <th >Seed - Player</th>
+                          <th >Team</th>
                           <th class="hidden-xs hidden-sm">Round 1</th>
                           <th class="hidden-xs hidden-sm">Round 2</th>
                           <th class="hidden-xs hidden-sm">Sweet 16</th>
@@ -51,39 +51,39 @@
                           <th class="col-xs-2 col-sm-2">Total</th>
 
                         <tr ng-repeat="i in getSeed(seeds) track by $index">
-                          <td class="col-xs-5 col-sm-5">#{{$index+1}} - {{entry[$index+1]}} </td>
-                          <td class="col-xs-5 col-sm-5"> {{playerTeam(entry[$index+1])}}</td>
+                          <td >#{{$index+1}} - {{entry[$index+1]}} </td>
+                          <td > {{playerTeam(entry[$index+1])}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"64")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"32")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Sweet 16")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Elite 8")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Final 4")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Championship")}}</td>
-                          <td class="col-xs-5 col-sm-5">{{playerPoints(entry[$index+1])}} pts</td>
+                          <td >{{playerPoints(entry[$index+1])}} pts</td>
                         </tr>
 
                         <tr>
-                          <td class="col-xs-5 col-sm-5">#WC - {{entry.WC1}} </td>
-                          <td class="col-xs-5 col-sm-5"> {{playerTeam(entry.WC1)}}</td>
+                          <td >#WC - {{entry.WC1}} </td>
+                          <td > {{playerTeam(entry.WC1)}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"64")}}</>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"32")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"Sweet 16")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"Elite 8")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"Final 4")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"Championship")}}</td>
-                          <td class="col-xs-5 col-sm-5">{{playerPoints(entry.WC1)}} pts</td>
+                          <td >{{playerPoints(entry.WC1)}} pts</td>
                         </tr>
 
                         <tr>
-                          <td class="col-xs-5 col-sm-5">#WC - {{entry.WC2}} </td>
-                          <td class="col-xs-5 col-sm-5"> {{playerTeam(entry.WC2)}}</td>
+                          <td >#WC - {{entry.WC2}} </td>
+                          <td > {{playerTeam(entry.WC2)}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"64")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"32")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Sweet 16")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Elite 8")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Final 4")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Championship")}}</td>
-                          <td class="col-xs-5 col-sm-5">{{playerPoints(entry.WC2)}} pts</td>
+                          <td >{{playerPoints(entry.WC2)}} pts</td>
                         </tr>
 
                       </table>
