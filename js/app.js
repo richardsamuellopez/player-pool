@@ -1,6 +1,7 @@
 angular
 .module('pool', [
-  'times.tabletop'
+  'times.tabletop',
+  'ui.bootstrap'
 ])
 .config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
