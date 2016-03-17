@@ -13,13 +13,11 @@ angular
     Tabletop.then(function(ttdata){
       var data = ttdata[0];
 
-      // console.log("DATA",data);
+      console.log("DATA",data);
       $scope.players = data.Players.elements;
-      var players = data.Players.elements;
-      // console.log("PLAYERS: ",players);
       $scope.entries= data.Standings.elements;
-      // console.log("Players: ",$scope.players);
-      // console.log("Entires: ",$scope.entries);
+      console.log("Players: ",$scope.players);
+      console.log("Entires: ",$scope.entries);
       $scope.seeds = 9;
       $scope.myOtherNumber = 10;
       $scope.getSeed = function(num) {
