@@ -5,8 +5,12 @@ angular
 ])
 .config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
-       key: 'https://docs.google.com/spreadsheets/d/1o0qgdnj9YgMSNxm3vpRxRN39fa8xvE45S9PaqdXU-uk/pubhtml'
+      //2015 richardsamuellopez player Pool
+      //  key: 'https://docs.google.com/spreadsheets/d/1o0qgdnj9YgMSNxm3vpRxRN39fa8xvE45S9PaqdXU-uk/pubhtml'
+       // NCAA test live scores
       // key: 'https://docs.google.com/spreadsheets/d/1vjOc59HxF7Fpfm5oiylUsGrj-OjKyMJ5IZcgD3_N5Cs/pubhtml'
+      //coreywaddell 2016
+      key:'https://docs.google.com/spreadsheets/d/1CME_oDNIhPjLFTQz03ZLMSSYF3gx1MZ6eriBX8totYo/pubhtml'
     });
   })
 .controller('PoolCtrl', function($scope, Tabletop){
