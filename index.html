@@ -59,18 +59,18 @@
                           <th class="col-xs-2 col-sm-2">Total</th>
 
                         <tr ng-repeat="i in getSeed(seeds) track by $index">
-                          <td >#{{$index+1}} - {{entry[$index+1]}} </td>
-                          <td > {{playerTeam(entry[$index+1])}}</td>
+                          <td >#{{$index+1}} - {{entry.seed[$index+1]}} </td>
+                          <!-- <td > {{playerTeam(entry[$index+1])}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"64")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"32")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Sweet 16")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Elite 8")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Final 4")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"Championship")}}</td>
-                          <td >{{playerPoints(entry[$index+1])}} pts</td>
+                          <td >{{playerPoints(entry[$index+1])}} pts</td> -->
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                           <td >#WC - {{entry.WC1}} </td>
                           <td > {{playerTeam(entry.WC1)}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC1,"64")}}</>
@@ -92,7 +92,7 @@
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Final 4")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Championship")}}</td>
                           <td >{{playerPoints(entry.WC2)}} pts</td>
-                        </tr>
+                        </tr> -->
 
                       </table>
 
