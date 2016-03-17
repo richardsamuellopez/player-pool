@@ -50,7 +50,8 @@ angular
             var player = $scope.getPlayer(name)
             var ttlPts = parseInt(player["64"])+parseInt(player["32"])+parseInt(player["Sweet 16"])+
             parseInt(player["Elite 8"])+parseInt(player["Final 4"])+parseInt(player["Championship"]);
-            return ttlPts;
+            // return ttlPts;
+            return 0;
           };
 
           $scope.teamPoints = function(team){
