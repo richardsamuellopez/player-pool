@@ -38,8 +38,8 @@ angular
 
 
           $scope.getPlayer = function(name){
-            var index =_.findIndex(players,{'Player':name});
-            return _.find(players,{'Player': name});
+            var index =_.findIndex($scope.players,{'Player':name});
+            return _.find($scope.players,{'Player': name});
           };
 
           $scope.playerPoints = function(name){
