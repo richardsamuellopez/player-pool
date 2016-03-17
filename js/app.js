@@ -72,7 +72,7 @@ angular
 
           $scope.playerPointsByRound = function(name, round){
             var player = $scope.getPlayer(name);
-            return player[round];
+            // return player[round];
           };
     });
 });
