@@ -41,7 +41,7 @@
                       <uib-accordion-group  ng-repeat="entry in entries | orderBy: '-totalTeamPoints'">
                         <uib-accordion-heading>
                           <!-- #{{$index+1}} TEAM: {{entry.Entry}} Total Points {{teamPoints(entry)}} <span ng-if="!$first">{{teamPoints(entry)-teamPoints(entries[0])}} Trailing Leader</span> -->
-                          #{{$index+1}} TEAM: {{entry.Entry}} 
+                          #{{$index+1}} TEAM: {{entry.Entry}}
                           <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                         </uib-accordion-heading>
                         <table class="table table-hover table-condensed table-responsive">
@@ -55,7 +55,7 @@
                           <th class="hidden-xs hidden-sm">Championship</th>
                           <th class="col-xs-2 col-sm-2">Total</th>
 
-                        <tr ng-repeat="i in getSeed(seeds) track by $index">
+                        <!-- <tr ng-repeat="i in getSeed(seeds) track by $index">
                           <td >#{{$index+1}} - {{entry[$index+1]}} </td>
                           <td > {{playerTeam(entry[$index+1])}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"64")}}</td>
@@ -89,7 +89,7 @@
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Final 4")}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry.WC2,"Championship")}}</td>
                           <td >{{playerPoints(entry.WC2)}} pts</td>
-                        </tr>
+                        </tr> -->
 
                       </table>
 
