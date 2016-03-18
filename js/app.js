@@ -23,7 +23,7 @@ angular
        var orderBy = $filter('orderBy');
        $scope.entries= orderBy(data.Standings.elements, 'TotalPoints',  true);
       // console.log("Players: ",$scope.players);
-      // console.log("Entires: ",$scope.entries);
+      console.log("Entires: ",$scope.entries);
       $scope.seeds = 9;
       $scope.myOtherNumber = 10;
       $scope.getSeed = function(num) {
