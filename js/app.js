@@ -79,5 +79,10 @@ angular
             var player = $scope.getPlayer(name);
             return player[round];
           };
+
+          $scope.isEliminated = function(name){
+            var player=$scope.getPlayer(name);
+            return player.StillAlive==="No";
+          };
     });
 });

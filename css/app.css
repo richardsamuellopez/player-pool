@@ -30,6 +30,9 @@ body {
     padding-bottom: 18px;
 }
 
+.eliminated{
+  background-color:#E06666;
+}
 @media screen and (max-width: 768px) {
 
 }

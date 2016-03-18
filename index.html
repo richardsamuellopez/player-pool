@@ -56,7 +56,7 @@
                           <th class="hidden-xs hidden-sm">Championship</th>
                           <th class="col-xs-2 col-sm-2">Total</th>
 
-                        <tr ng-repeat="i in getSeed(seeds) track by $index">
+                        <tr ng-repeat="i in getSeed(seeds) track by $index" ng-class="{'eliminated':isEliminated(entry[$index+1])}">
                           <td >#{{$index+1}} - {{entry[$index+1]}} </td>
                           <td > {{playerTeam(entry[$index+1])}}</td>
                           <td class="hidden-xs hidden-sm"> {{playerPointsByRound(entry[$index+1],"64")}}</td>
