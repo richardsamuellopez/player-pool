@@ -14,8 +14,8 @@ angular
       parseNumbers:true,
     });
   })
-.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout){
-  $timeout(function(){
+.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
+  $interval(function(){
     console.log("A");
     //Tabletop.fetch();
   },3000);
