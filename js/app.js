@@ -15,15 +15,21 @@ angular
     });
   })
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
+$scope.currData="";
+$scope.prevData="";
+
   LoadData();
   $interval(LoadData,97000);
-  
+
     function LoadData(){Tabletop.then(function(ttdata){
       var currTS = new Date();
       console.log("Load Data: ",currTS);
       var data = ttdata[0];
+      $scope.prevData=$scope.currData;
+      $scope.currData=data;
 
-      // console.log("DATA",data);
+
+      console.log("DATA",data);
       $scope.players = data.Players.elements;
       $scope.entries= data.Standings.elements;
        var orderBy = $filter('orderBy');
