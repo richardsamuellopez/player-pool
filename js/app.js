@@ -19,9 +19,12 @@ angular
 
       // console.log("DATA",data);
       $scope.players = data.Players.elements;
-      // $scope.entries= data.Standings.elements;
+      $scope.entries= data.Standings.elements;
        var orderBy = $filter('orderBy');
-       $scope.entries= orderBy(data.Standings.elements, 'TotalPoints',  true);
+       angular.forEach($scope.entries, function (entry) {
+         entry.TotalPoints = parseFloat(entry.TotalPoints);
+       });
+       $scope.entries= orderBy($scope.entries, 'TotalPoints',  true);
       // console.log("Players: ",$scope.players);
       console.log("Entires: ",$scope.entries);
       $scope.seeds = 9;
