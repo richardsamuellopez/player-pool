@@ -13,7 +13,7 @@ angular
       //key:'https://docs.google.com/spreadsheets/d/1CME_oDNIhPjLFTQz03ZLMSSYF3gx1MZ6eriBX8totYo/pubhtml'
     });
   })
-.controller('PoolCtrl', function($scope, Tabletop){
+.controller('PoolCtrl', function($scope, Tabletop, $filter){
     Tabletop.then(function(ttdata){
       var data = ttdata[0];
 
