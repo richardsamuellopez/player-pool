@@ -55,6 +55,7 @@ angular
           };
 
           $scope.teamPoints = function(team){
+            console.log("teamPoints: ");
             var points = 0;
             for(i=1;i<10;i++){
               points+=$scope.playerPoints(team[i]);
