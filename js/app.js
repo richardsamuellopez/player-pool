@@ -18,9 +18,9 @@ angular
   $interval(function(){
     console.log("A");
     //Tabletop.fetch();
-  },3000);
+  
     Tabletop.then(function(ttdata){
-      console.log("B");
+      console.log("B2");
       var data = ttdata[0];
 
       // console.log("DATA",data);
@@ -91,4 +91,5 @@ angular
             return player.StillAlive==="No";
           };
     });
+  },3000);
 });
