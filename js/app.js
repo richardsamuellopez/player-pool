@@ -47,7 +47,7 @@ angular
           };
 
           $scope.playerPoints = function(name){
-            console.log("playerPoints: ");
+            // console.log("playerPoints: ");
             var player = $scope.getPlayer(name)
             var ttlPts = parseInt(player["64"])+parseInt(player["32"])+parseInt(player["Sweet 16"])+
             parseInt(player["Elite 8"])+parseInt(player["Final 4"])+parseInt(player["Championship"]);
@@ -55,7 +55,7 @@ angular
           };
 
           $scope.teamPoints = function(team){
-            console.log("teamPoints: ");
+            // console.log("teamPoints: ");
             var points = 0;
             for(i=1;i<10;i++){
               points+=$scope.playerPoints(team[i]);
@@ -67,6 +67,7 @@ angular
           };
 
           $scope.playerTeam = function(name){
+            console.log("playerPoints: ",name);
             var player = $scope.getPlayer(name);
             return player.Team;
           };
