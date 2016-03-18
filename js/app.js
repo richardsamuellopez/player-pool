@@ -67,7 +67,7 @@ angular
           };
 
           $scope.playerTeam = function(name){
-            console.log("playerTeam: ",name);
+            // console.log("playerTeam: ",name);
             var player = $scope.getPlayer(name);
             return player.Team;
           };
