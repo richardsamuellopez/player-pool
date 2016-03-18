@@ -17,7 +17,8 @@ angular
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
 $scope.currData="";
 $scope.prevData="";
-
+$scope.currPlayers="";
+$scope.prevPlayers="";
   LoadData();
   $interval(LoadData,97000);
 
@@ -31,6 +32,11 @@ $scope.prevData="";
 
       console.log("DATA",data);
       $scope.players = data.Players.elements;
+      $scope.prevPlayers=$scope.currPlayers;
+      $scope.currPlayers=$scope.players;
+
+      $scope.diffPlayers=_.difference($scope.currPlayers,$scope.prevPlayers);
+      console.log("DIFF: ",$scope.diffPlayers);
       $scope.entries= data.Standings.elements;
        var orderBy = $filter('orderBy');
        angular.forEach($scope.entries, function (entry) {
