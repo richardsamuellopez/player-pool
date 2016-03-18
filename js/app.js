@@ -26,7 +26,7 @@ angular
        });
        $scope.entries= orderBy($scope.entries, 'TotalPoints',  true);
       // console.log("Players: ",$scope.players);
-      console.log("Entires: ",$scope.entries);
+      // console.log("Entires: ",$scope.entries);
       $scope.seeds = 9;
       $scope.myOtherNumber = 10;
       $scope.getSeed = function(num) {
@@ -52,13 +52,10 @@ angular
           };
 
           $scope.playerPoints = function(name){
-            // console.log("playerPoints: ");
             var player = $scope.getPlayer(name)
-            // console.log("PLAYER: ",player);
             // var ttlPts = parseInt(player["64"])+parseInt(player["32"])+parseInt(player["Sweet 16"])+
             // parseInt(player["Elite 8"])+parseInt(player["Final 4"])+parseInt(player["Championship"]);
             // return ttlPts;
-            // console.log("Player total: ",player.Total, name);
             return parseInt(player.Total);
           };
 
@@ -74,7 +71,6 @@ angular
           };
 
           $scope.playerTeam = function(name){
-            // console.log("playerTeam: ",name);
             var player = $scope.getPlayer(name);
             return player.Team;
           };
