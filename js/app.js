@@ -17,7 +17,7 @@ angular
     Tabletop.then(function(ttdata){
       var data = ttdata[0];
 
-      console.log("DATA",data);
+      // console.log("DATA",data);
       $scope.players = data.Players.elements;
       $scope.entries= data.Standings.elements;
       console.log("Players: ",$scope.players);
@@ -72,7 +72,7 @@ angular
 
           $scope.playerPointsByRound = function(name, round){
             var player = $scope.getPlayer(name);
-            // return player[round];
+            return player[round];
           };
     });
 });
