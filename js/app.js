@@ -14,11 +14,11 @@ angular
       parseNumbers:true,
     });
   })
-.controller('PoolCtrl',['$interval'] function($scope, Tabletop, $filter, $timeout, $interval){
+.controller('PoolCtrl',['$interval'], function($scope, Tabletop, $filter, $timeout, $interval){
   $interval(function(){
     console.log("A");
     //Tabletop.fetch();
-  
+  //},3000);
     Tabletop.then(function(ttdata){
       console.log("B2");
       var data = ttdata[0];
