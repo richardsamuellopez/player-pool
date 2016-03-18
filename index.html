@@ -73,7 +73,7 @@
                           <td >{{playerPoints(entry[$index+1])}} pts</td>
                         </tr>
 
-                        <tr>
+                        <tr ng-class="{'eliminated':isEliminated(entry.WC1)}">
                           <td >#WC - {{entry.WC1}} </td>
                           <td > {{playerTeam(entry.WC1)}}</td>
                           <td> {{playerPointsByRound(entry.WC1,"64")}}</>
@@ -85,7 +85,7 @@
                           <td >{{playerPoints(entry.WC1)}} pts</td>
                         </tr>
 
-                        <tr>
+                        <tr ng-class="{'eliminated':isEliminated(entry.WC2)}">
                           <td >#WC - {{entry.WC2}} </td>
                           <td > {{playerTeam(entry.WC2)}}</td>
                           <td> {{playerPointsByRound(entry.WC2,"64")}}</td>
