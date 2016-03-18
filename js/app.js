@@ -17,7 +17,7 @@ angular
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout){
   $timeout(function(){
     console.log("A");
-    Tabletop.fetch();
+    //Tabletop.fetch();
   },3000);
     Tabletop.then(function(ttdata){
       console.log("B");
