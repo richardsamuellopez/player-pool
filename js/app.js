@@ -15,10 +15,10 @@ angular
     });
   })
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
-  $interval(function(){
-    console.log("Refresh");
-    
-    Tabletop.then(function(ttdata){
+  LoadData();
+  $interval(LoadData,97000);
+  
+    function LoadData(){Tabletop.then(function(ttdata){
       var currTS = new Date();
       console.log("Load Data: ",currTS);
       var data = ttdata[0];
@@ -91,5 +91,5 @@ angular
             return player.StillAlive==="No";
           };
     });
-  },97000);
+  }
 });
