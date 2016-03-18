@@ -22,7 +22,7 @@ $scope.prevPlayers="";
   LoadData();
   $interval(LoadData,97000);
 
-    function LoadData(){Tabletop.fetch().then(function(ttdata){
+    function LoadData(){Tabletop.then(function(ttdata){
       var currTS = new Date();
       console.log("Load Data: ",currTS);
       var data = ttdata[0];
