@@ -19,7 +19,7 @@ angular
 
       // console.log("DATA",data);
       $scope.players = data.Players.elements;
-      $scope.entries= data.Standings.elements;
+      $scope.entries= orderByFilter(data.Standings.elements, 'Total Points');
       // console.log("Players: ",$scope.players);
       // console.log("Entires: ",$scope.entries);
       $scope.seeds = 9;
