@@ -16,11 +16,11 @@ angular
   })
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
   $interval(function(){
-    console.log("A");
-    //Tabletop.fetch();
-  //},3000);
+    // console.log("A");
+    
     Tabletop.then(function(ttdata){
-      console.log("B2");
+      var currTS = new Date();
+      console.log("Load Data: ",currTS);
       var data = ttdata[0];
 
       // console.log("DATA",data);
@@ -31,7 +31,7 @@ angular
          entry.TotalPoints = parseFloat(entry.TotalPoints);
        });
        $scope.entries= orderBy($scope.entries, 'TotalPoints',  true);
-      console.log("Players: ",$scope.players);
+      // console.log("Players: ",$scope.players);
       // console.log("Entires: ",$scope.entries);
       $scope.seeds = 9;
       $scope.myOtherNumber = 10;
@@ -91,5 +91,5 @@ angular
             return player.StillAlive==="No";
           };
     });
-  },3000);
+  },97000);
 });
