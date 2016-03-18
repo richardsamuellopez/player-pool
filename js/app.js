@@ -56,13 +56,16 @@ angular
 
           $scope.teamPoints = function(team){
             // console.log("teamPoints: ");
+            console.log("TEAM: ", team);
             var points = 0;
             for(i=1;i<10;i++){
+              console.log("PLAYER POINTS: ", i, $scope.playerPoints(team[i]));
               points+=$scope.playerPoints(team[i]);
             }
             points+=$scope.playerPoints(team.WC1);
             points+=$scope.playerPoints(team.WC2);
             team.totalTeamPoints=points;
+            console.log("POINTS: ",points);
             return points;
           };
 
