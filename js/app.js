@@ -53,7 +53,7 @@ angular
             // var ttlPts = parseInt(player["64"])+parseInt(player["32"])+parseInt(player["Sweet 16"])+
             // parseInt(player["Elite 8"])+parseInt(player["Final 4"])+parseInt(player["Championship"]);
             // return ttlPts;
-            console.log("Player total: ",player.Total);
+            console.log("Player total: ",player.Total, name);
             return player.Total;
           };
 
