@@ -16,7 +16,7 @@ angular
   })
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
   $interval(function(){
-    // console.log("A");
+    console.log("Refresh");
     
     Tabletop.then(function(ttdata){
       var currTS = new Date();
