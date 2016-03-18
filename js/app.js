@@ -96,8 +96,6 @@ $scope.prevData="";
             var player=$scope.getPlayer(name);
             return player.StillAlive==="No";
           };
-
-           $scope.$apply();
     });
   }
 });
