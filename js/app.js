@@ -49,24 +49,25 @@ angular
           $scope.playerPoints = function(name){
             // console.log("playerPoints: ");
             var player = $scope.getPlayer(name)
-            console.log("PLAYER: ",player);
-            var ttlPts = parseInt(player["64"])+parseInt(player["32"])+parseInt(player["Sweet 16"])+
-            parseInt(player["Elite 8"])+parseInt(player["Final 4"])+parseInt(player["Championship"]);
-            return ttlPts;
+            // console.log("PLAYER: ",player);
+            // var ttlPts = parseInt(player["64"])+parseInt(player["32"])+parseInt(player["Sweet 16"])+
+            // parseInt(player["Elite 8"])+parseInt(player["Final 4"])+parseInt(player["Championship"]);
+            // return ttlPts;
+            return player.Total;
           };
 
           $scope.teamPoints = function(team){
             // console.log("teamPoints: ");
-            console.log("TEAM: ", team);
+            // console.log("TEAM: ", team);
             var points = 0;
             for(i=1;i<10;i++){
-              console.log("PLAYER POINTS: ", i, $scope.playerPoints(team[i]));
+              // console.log("PLAYER POINTS: ", i, $scope.playerPoints(team[i]));
               points+=$scope.playerPoints(team[i]);
             }
             points+=$scope.playerPoints(team.WC1);
             points+=$scope.playerPoints(team.WC2);
             team.totalTeamPoints=points;
-            console.log("POINTS: ",points);
+            // console.log("POINTS: ",points);
             return points;
           };
 
