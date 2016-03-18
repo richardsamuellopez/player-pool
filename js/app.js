@@ -17,6 +17,8 @@ angular
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout){
   $timeout(function(){
     console.log("A");
+    Tabletop.fetch();
+  },3000);
     Tabletop.then(function(ttdata){
       console.log("B");
       var data = ttdata[0];
@@ -89,5 +91,4 @@ angular
             return player.StillAlive==="No";
           };
     });
-  },3000);
 });
