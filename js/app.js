@@ -106,8 +106,3 @@ TabletopProvider.
     });
   }
 });
-
-
-function RefreshCtrl($scope) {
-    $scope.reloadPage = function(){window.location.reload();}
-}
