@@ -52,7 +52,7 @@
                     <div class="col-xs-12">
                     <uib-accordion>
 
-                  <uib-accordion-group is-open="status.open" ng-repeat="entry in entries | orderBy: '-totalTeamPoints' | filter:searchText">
+                  <uib-accordion-group is-open="status.open" ng-repeat="entry in entries | orderBy: '-totalTeamPoints' | filter:searchText track by $index">
                       <!-- <uib-accordion-group is-open="status.open" ng-repeat="entry in entries track by $index | orderBy: '-totalTeamPoints'"> -->
                         <!-- <uib-accordion-group  ng-repeat="entry in entries"> -->
                         <uib-accordion-heading ng-click="status.open=!status.open">
