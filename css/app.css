@@ -34,7 +34,7 @@ body {
   background-color:#E06666;
 }
 
-a::focus{
+a:focus{
   outline:none;
 }
 @media screen and (max-width: 768px) {
