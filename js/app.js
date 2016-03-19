@@ -1,9 +1,9 @@
-angular
+var myapp=angular
 .module('pool', [
   'times.tabletop',
   'ui.bootstrap'
-])
-.config(function(TabletopProvider){
+]);
+myapp.config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
       //2015 richardsamuellopez player Pool
       //  key: 'https://docs.google.com/spreadsheets/d/1o0qgdnj9YgMSNxm3vpRxRN39fa8xvE45S9PaqdXU-uk/pubhtml',
