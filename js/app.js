@@ -1,9 +1,9 @@
-var myapp=angular
+angular
 .module('pool', [
   'times.tabletop',
   'ui.bootstrap'
-]);
-myapp.config(function(TabletopProvider){
+])
+.config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
       //2015 richardsamuellopez player Pool
       //  key: 'https://docs.google.com/spreadsheets/d/1o0qgdnj9YgMSNxm3vpRxRN39fa8xvE45S9PaqdXU-uk/pubhtml',
@@ -107,22 +107,3 @@ $scope.reloadPage = function(){window.location.reload();}
     });
   }
 });
-// Common directive for Focus
-angular.module('pool').directive('focus',
-	function($timeout) {
-		return {
-			scope : {
-				trigger : '@focus'
-			},
-			link : function(scope, element) {
-				scope.$watch('trigger', function(value) {
-					if (value === "true") {
-						$timeout(function() {
-							element[0].focus();
-						});
-					}
-				});
-			}
-		};
-	}
-);
