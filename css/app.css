@@ -33,6 +33,10 @@ body {
 .eliminated{
   background-color:#E06666;
 }
+
+a::focus{
+  outline:none;
+}
 @media screen and (max-width: 768px) {
 
 }
