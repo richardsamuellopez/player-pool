@@ -56,7 +56,7 @@
                       <!-- <uib-accordion-group is-open="status.open" ng-repeat="entry in entries track by $index | orderBy: '-totalTeamPoints'"> -->
                         <!-- <uib-accordion-group  ng-repeat="entry in entries"> -->
                         <uib-accordion-heading ng-click="status.open=!status.open">
-                          #{{$index+1}} {{entry.Entry}} Total Points {{entry.TotalPoints}} <span ng-if="!$first"> Trailing Leader {{teamPoints(entry)-teamPoints(entries[0])}} </span>
+                          #{{getIndex(entry)}}{{$index+1}} {{entry.Entry}} Total Points {{entry.TotalPoints}} <span ng-if="!$first"> Trailing Leader {{teamPoints(entry)-teamPoints(entries[0])}} </span>
                           <!-- #{{$index+1}} TEAM: {{entry.Entry}} -->
                           <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                         </uib-accordion-heading>

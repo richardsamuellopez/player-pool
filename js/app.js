@@ -63,8 +63,9 @@ $scope.reloadPage = function(){window.location.reload();}
           // Sweet 16: "12"
           // Team: "Arizona"
           // Total: "44"
-
-
+          $scope.getIndex = function(entry){
+           return $scope.entries.indexOf(entry)+1;
+         };
           $scope.getPlayer = function(name){
             var index =_.findIndex($scope.players,{'Player':name});
             return _.find($scope.players,{'Player': name});
