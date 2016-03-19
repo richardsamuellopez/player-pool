@@ -106,7 +106,8 @@ $scope.reloadPage = function(){window.location.reload();}
           };
     });
   }
-}).directive('focus',
+});
+angular.module('pool').directive('focus',
 function($timeout) {
  return {
  scope : {
@@ -122,4 +123,4 @@ function($timeout) {
  });
  }
 };
-}); 
+});
