@@ -13,6 +13,7 @@ angular
       //key:'https://docs.google.com/spreadsheets/d/1CME_oDNIhPjLFTQz03ZLMSSYF3gx1MZ6eriBX8totYo/pubhtml',
       parseNumbers:true,
     });
+
   })
 .controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
 $scope.currData="";
@@ -21,7 +22,7 @@ $scope.currPlayers="";
 $scope.prevPlayers="";
   LoadData();
   $interval(LoadData,97000);
-
+TabletopProvider.
     function LoadData(){Tabletop.then(function(ttdata){
       var currTS = new Date();
       console.log("Load Data: ",currTS);
@@ -105,3 +106,8 @@ $scope.prevPlayers="";
     });
   }
 });
+
+
+function RefreshCtrl($scope) {
+    $scope.reloadPage = function(){window.location.reload();}
+}

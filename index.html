@@ -36,7 +36,15 @@
             </header> -->
             <div class="container" ng-cloak >
                 <section id="rankings" >
-                    <h1 >Rankings</h1>
+                    <div class="col-xs-10">
+                      <h1 >Rankings</h1>
+                    </div>
+
+                    <div class="col-xs-2" ng-controller="RefreshCtrl">
+                        <!-- <button  ng-click="reloadPage();">Reset</button> -->
+                        <i class="pull-right glyphicon glyphicon-refresh" ng-click="reloadPage();"></i>
+                    </div>
+
                     <uib-accordion>
                       <uib-accordion-group is-open="status.open" ng-repeat="entry in entries track by $index | orderBy: '-totalTeamPoints'">
                         <!-- <uib-accordion-group  ng-repeat="entry in entries"> -->
