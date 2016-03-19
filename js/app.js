@@ -23,9 +23,6 @@ $scope.prevPlayers="";
   LoadData();
   $interval(LoadData,97000);
 
-  $scope.$on('$viewContentLoaded', function(){
-    $scope.searchFocus=true;
-  });
 $scope.reloadPage = function(){window.location.reload();}
     function LoadData(){Tabletop.then(function(ttdata){
       var currTS = new Date();
