@@ -22,6 +22,9 @@ $scope.currPlayers="";
 $scope.prevPlayers="";
   LoadData();
   $interval(LoadData,97000);
+$scope.clearSearch = function(){
+$scope.searchText="";  
+};
 
 $scope.reloadPage = function(){window.location.reload();}
     function LoadData(){Tabletop.then(function(ttdata){

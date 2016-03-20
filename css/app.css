@@ -40,6 +40,11 @@ a:focus{
 .header-margin{
   margin-top:20px;
 }
+.clear-button{
+    position: relative;
+    left: -22px;
+    top: 2px;
+}
 @media screen and (max-width: 768px) {
 
 }
