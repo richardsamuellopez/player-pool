@@ -12,6 +12,7 @@ angular
       //coreywaddell 2016
       //key:'https://docs.google.com/spreadsheets/d/1CME_oDNIhPjLFTQz03ZLMSSYF3gx1MZ6eriBX8totYo/pubhtml',
       parseNumbers:true,
+      wanted:["Standings","Players"]
     });
 
   })
@@ -23,7 +24,7 @@ $scope.prevPlayers="";
   LoadData();
   $interval(LoadData,97000);
 $scope.clearSearch = function(){
-$scope.searchText="";  
+$scope.searchText="";
 };
 
 $scope.reloadPage = function(){window.location.reload();}
