@@ -30,19 +30,19 @@ $scope.searchText="";
 $scope.reloadPage = function(){window.location.reload();}
     function LoadData(){Tabletop.then(function(ttdata){
       var currTS = new Date();
-      console.log("Load Data: ",currTS);
+      // console.log("Load Data: ",currTS);
       var data = ttdata[0];
       $scope.prevData=$scope.currData;
       $scope.currData=data;
 
 
-      console.log("DATA",data);
+      // console.log("DATA",data);
       $scope.players = data.Players.elements;
       $scope.prevPlayers=$scope.currPlayers;
       $scope.currPlayers=$scope.players;
 
       $scope.diffPlayers=_.difference($scope.currPlayers,$scope.prevPlayers);
-      console.log("DIFF: ",$scope.diffPlayers);
+      // console.log("DIFF: ",$scope.diffPlayers);
       $scope.entries= data.Standings.elements;
        var orderBy = $filter('orderBy');
        angular.forEach($scope.entries, function (entry) {
