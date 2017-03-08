@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html id="top" lang="en" ng-app="pool">
+    <head>
+        <title>Player Pool 2017</title>
+
+        <!-- <link href="logo/UI_Shield.png" rel="shortcut icon"> -->
+        <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"> -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+
+    <body ng-controller="PoolCtrl">
+        <header class="navbar navbar-default">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="http://richardsamuellopez.github.io/player-pool/">Player Pool 2016</a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div>
+            <!-- <header class="jumbotron" id="overview">
+                <div class="container" ng-repeat="entry in entries">
+                  <div><label>TEAM NAME: <label><span ng-bind="entry.Entry"></span></div>
+                  <div>{{entry}}</div>
+                </div>
+            </header> -->
+            <div class="container" ng-cloak >
+                <section id="rankings" >
+                    <div class="col-xs-5">
+                      <h2 >Rankings</h2>
+                    </div>
+
+                    <div class="col-xs-5 header-margin">
+                      <label>Search: <input type="text" autofocus name="search" ng-model="searchText" id="search">
+                        <i class="glyphicon glyphicon-remove-circle clear-button" ng-click="clearSearch()"></i>
+                      </label>
+                    </div>
+
+                    <div class="col-xs-2 header-margin" >
+                        <!-- <button  ng-click="reloadPage();">Reset</button> -->
+                        <i class="pull-right glyphicon glyphicon-refresh fa-2x" ng-click="reloadPage();"></i>
+                    </div>
+
+                    <div class="col-xs-12">
+                    <uib-accordion>
+
+                  <uib-accordion-group is-open="status.open" ng-repeat="entry in entries | filter:searchText track by $index">
+                      <!-- <uib-accordion-group is-open="status.open" ng-repeat="entry in entries track by $index | orderBy: '-totalTeamPoints'"> -->
+                        <!-- <uib-accordion-group  ng-repeat="entry in entries"> -->
+                        <uib-accordion-heading ng-click="status.open=!status.open">
+                          #{{getIndex(entry)}} {{entry.Entry}} Total Points {{entry.TotalPoints}} <span ng-if="getIndex(entry)>1"> Trailing Leader {{teamPoints(entry)-teamPoints(entries[0])}} </span>
+                          <!-- #{{$index+1}} TEAM: {{entry.Entry}} -->
+                          <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </uib-accordion-heading>
+                        <table class="table table-hover table-condensed table-responsive">
+                          <th >Seed - Player</th>
+                          <th >Team</th>
+                          <th class="hidden-xs hidden-sm">Round 1</th>
+                          <th class="visible-xs visible-sm">64</th>
+                          <th class="hidden-xs hidden-sm">Round 2</th>
+                          <th class="visible-xs visible-sm">32</th>
+                          <th class="hidden-xs hidden-sm">Sweet 16</th>
+                          <th class="visible-xs visible-sm">S16</th>
+                          <th class="hidden-xs hidden-sm">Elite 8</th>
+                          <th class="visible-xs visible-sm">E8</th>
+                          <th class="hidden-xs hidden-sm">Final 4</th>
+                          <th class="visible-xs visible-sm">F4</th>
+                          <th class="">Title</th>
+                          <th class="col-xs-2 col-sm-2">Total</th>
+
+                        <tr ng-repeat="i in getSeed(seeds) track by $index" ng-class="{'eliminated':isEliminated(entry[$index+1])}">
+                          <td >#{{$index+1}} - {{entry[$index+1]}} </td>
+                          <td > {{playerTeam(entry[$index+1])}}</td>
+                          <td> {{playerPointsByRound(entry[$index+1],"64")}}</td>
+                          <td> {{playerPointsByRound(entry[$index+1],"32")}}</td>
+                          <td> {{playerPointsByRound(entry[$index+1],"Sweet 16")}}</td>
+                          <td> {{playerPointsByRound(entry[$index+1],"Elite 8")}}</td>
+                          <td> {{playerPointsByRound(entry[$index+1],"Final 4")}}</td>
+                          <td> {{playerPointsByRound(entry[$index+1],"Championship")}}</td>
+                          <td >{{playerPoints(entry[$index+1])}} pts</td>
+                        </tr>
+
+                        <tr ng-class="{'eliminated':isEliminated(entry.WC1)}">
+                          <td >#WC - {{entry.WC1}} </td>
+                          <td > {{playerTeam(entry.WC1)}}</td>
+                          <td> {{playerPointsByRound(entry.WC1,"64")}}</>
+                          <td> {{playerPointsByRound(entry.WC1,"32")}}</td>
+                          <td> {{playerPointsByRound(entry.WC1,"Sweet 16")}}</td>
+                          <td> {{playerPointsByRound(entry.WC1,"Elite 8")}}</td>
+                          <td> {{playerPointsByRound(entry.WC1,"Final 4")}}</td>
+                          <td> {{playerPointsByRound(entry.WC1,"Championship")}}</td>
+                          <td >{{playerPoints(entry.WC1)}} pts</td>
+                        </tr>
+
+                        <tr ng-class="{'eliminated':isEliminated(entry.WC2)}">
+                          <td >#WC - {{entry.WC2}} </td>
+                          <td > {{playerTeam(entry.WC2)}}</td>
+                          <td> {{playerPointsByRound(entry.WC2,"64")}}</td>
+                          <td> {{playerPointsByRound(entry.WC2,"32")}}</td>
+                          <td> {{playerPointsByRound(entry.WC2,"Sweet 16")}}</td>
+                          <td> {{playerPointsByRound(entry.WC2,"Elite 8")}}</td>
+                          <td> {{playerPointsByRound(entry.WC2,"Final 4")}}</td>
+                          <td> {{playerPointsByRound(entry.WC2,"Championship")}}</td>
+                          <td >{{playerPoints(entry.WC2)}} pts</td>
+                        </tr>
+
+                      </table>
+
+                        <!-- <div>{{entry}}</div> -->
+                      </uib-accordion-group>
+                    </uib-accordion>
+</div>
+                </section>
+            </div>
+        </div>
+
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script> -->
+        <script src="js/angularjs/1.4.1/angular.js"></script>
+        <!-- <script src="//cdn.rawgit.com/jsoma/tabletop/7b2024af62d71d52ac5c6cecc2256b04da00161e/src/tabletop.js"></script> -->
+        <script src="js/tabletop.js"></script>
+        <!-- <script src="//raw.githack.com/times/angular-tabletop/master/TabletopProvider.js"></script> -->
+        <script src="js/TabletopProvider.js"></script>
+        <!--<script src="https://raw.githubusercontent.com/times/angular-tabletop/master/TabletopProvider.js"></script>-->
+        <!--<script src="https://rawgithub.com/richardsamuellopez/player-pool/gh-pages/js/TabletopProvider.js"></script>-->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+        <script src="js/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
