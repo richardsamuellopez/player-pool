@@ -8,7 +8,8 @@ angular
       //2015 richardsamuellopez player Pool
       //  key: 'https://docs.google.com/spreadsheets/d/1o0qgdnj9YgMSNxm3vpRxRN39fa8xvE45S9PaqdXU-uk/pubhtml',
        // NCAA test live scores
-       key: 'https://docs.google.com/spreadsheets/d/14KkunRjof2-HEpgVHIp9Ryw9B-FSa0A0YoEwcfCURKM/pubhtml',
+       //key: 'https://docs.google.com/spreadsheets/d/14KkunRjof2-HEpgVHIp9Ryw9B-FSa0A0YoEwcfCURKM/pubhtml',
+      key: 'https://docs.google.com/spreadsheets/d/1Q5zuEKmG5WonI2e85GRBElLrZkzjn2d6flDFT0dOmic/pubhtml',
       //coreywaddell 2016
       //key:'https://docs.google.com/spreadsheets/d/1CME_oDNIhPjLFTQz03ZLMSSYF3gx1MZ6eriBX8totYo/pubhtml',
       parseNumbers:true,
