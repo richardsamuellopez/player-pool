@@ -36,7 +36,7 @@ $scope.reloadPage = function(){window.location.reload();}
       console.log("DATA",data);
       $scope.teams = data.Seed1.elements;
       console.log("$scope.teams A: ", $scope.teams);
-      $scope.teams = _.filter($scope.teams, function(o) { return o.team != "NO"; });
+      $scope.teams = _.filter($scope.teams, function(o) { return o.Team != "NO" && isNaN(o.Team); });
       console.log("$scope.teams B: ", $scope.teams);
       // $scope.players = data.Players.elements;
       // $scope.prevPlayers=$scope.currPlayers;
