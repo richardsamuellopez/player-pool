@@ -40,7 +40,7 @@ $scope.reloadPage = function(){window.location.reload();}
       console.log("$scope.teams B: ", $scope.teams);
       $scope.players=[];
       var currTeam = ""
-      for(x=0; x<=data.Seed1.elements.length(); x++){
+      for(x=0; x<=data.Seed1.elements.length; x++){
         if(data.Seed1.elements[x].Team!="NO" && isNaN(data.Seed1.elements[x].Team)){
           currTeam = data.Seed1.elements[x].Team
         } else {
