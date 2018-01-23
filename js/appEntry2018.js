@@ -6,9 +6,12 @@ angular
 .config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
       //2018 richardsamuellopez player Pool
-      key: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTKqNLAb_8imNcULZU33HT5Y3za77qz-P05bpj3KkHwlSrz98h087XCbFAVwrP3JHAyPFJ_0uBDWTJM/pubhtml',
+      // key: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTKqNLAb_8imNcULZU33HT5Y3za77qz-P05bpj3KkHwlSrz98h087XCbFAVwrP3JHAyPFJ_0uBDWTJM/pubhtml',
+      // parseNumbers:true,
+      // wanted:["Seed1","Seed2"]
+      key: 'https://docs.google.com/spreadsheets/d/1Q5zuEKmG5WonI2e85GRBElLrZkzjn2d6flDFT0dOmic/pubhtml',
       parseNumbers:true,
-      wanted:["Seed1","Seed2"]
+      wanted:["Standings","Players"]
     });
 
   })
