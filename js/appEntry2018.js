@@ -6,7 +6,7 @@ angular
 .config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
       //2018 richardsamuellopez player Pool
-      key: 'https://docs.google.com/spreadsheets/d/1RSb4W4XnXXOGCy2VBso3o8wagOy2ITl-avCAQWlwFRk/edit?usp=sharing',
+      key: '1RSb4W4XnXXOGCy2VBso3o8wagOy2ITl-avCAQWlwFRk',
       // key: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTKqNLAb_8imNcULZU33HT5Y3za77qz-P05bpj3KkHwlSrz98h087XCbFAVwrP3JHAyPFJ_0uBDWTJM/pubhtml',
       parseNumbers:true,
       wanted:["Seed1","Seed2"]
