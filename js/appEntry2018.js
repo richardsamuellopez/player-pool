@@ -19,7 +19,7 @@ $scope.prevData="";
 $scope.currPlayers="";
 $scope.prevPlayers="";
   LoadData();
-  $interval(LoadData,97000);
+  // $interval(LoadData,97000);
 $scope.clearSearch = function(){
 $scope.searchText="";
 };
@@ -34,6 +34,8 @@ $scope.reloadPage = function(){window.location.reload();}
 
 
       console.log("DATA",data);
+      $scope.teams = data.Seed1.elements;
+      console.log("$scope.teams: ", $scope.teams);
       // $scope.players = data.Players.elements;
       // $scope.prevPlayers=$scope.currPlayers;
       // $scope.currPlayers=$scope.players;
