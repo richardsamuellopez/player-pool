@@ -38,6 +38,17 @@ $scope.reloadPage = function(){window.location.reload();}
       console.log("$scope.teams A: ", $scope.teams);
       $scope.teams = _.filter($scope.teams, function(o) { return o.Team != "NO" && isNaN(o.Team); });
       console.log("$scope.teams B: ", $scope.teams);
+      $scope.players=[];
+      var currTeam = ""
+      for(x=0; x<=data.Seed1.elements.length(); x++){
+        if(data.Seed1.elements[x].Team!="NO" && isNaN(data.Seed1.elements[x].Team)){
+          currTeam = data.Seed1.elements[x].Team
+        } else {
+          $scope.players.push({team: currTeam, player: data.Seed1.elements[x].Player})
+        }
+      }
+      console.log("TEAMS: ", $scope.teams);
+      console.log("Players: ", $scope.players);
       // $scope.players = data.Players.elements;
       // $scope.prevPlayers=$scope.currPlayers;
       // $scope.currPlayers=$scope.players;
