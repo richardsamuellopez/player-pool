@@ -34,22 +34,27 @@ $scope.reloadPage = function(){window.location.reload();}
 
 
       console.log("DATA",data);
-      $scope.teams = data.Seed1.elements;
-      console.log("$scope.teams A: ", $scope.teams);
-      $scope.teams = _.filter($scope.teams, function(o) { return o.Team != "NO" && isNaN(o.Team); });
-      console.log("$scope.teams B: ", $scope.teams);
-      $scope.players=[];
-      var currTeam = ""
-      for(x=0; x<data.Seed1.elements.length; x++){
-        if(data.Seed1.elements[x].Team!="NO" && isNaN(data.Seed1.elements[x].Team)){
-          currTeam = data.Seed1.elements[x].Team
-        } else {
-          if(data.Seed1.elements[x].Team!="NO")
-            $scope.players.push({team: currTeam, player: data.Seed1.elements[x].Player})
+      $scope.Seed1=loadSeedData(data.Seed1.elements);
+      function loadSeedData(SeedData){
+        console.log("SeedData: ", SeedData);
+        var teams = _.filter(SeedData, function(o) { return o.Team != "NO" && isNaN(o.Team); });
+        console.log("teams: ", teams);
+        var players=[];
+        var currTeam = ""
+        for(x=0; x<SeedData.length; x++){
+          if(SeedData[x].Team!="NO" && isNaN(SeedData[x].Team)){
+            currTeam = SeedData[x].Team
+          } else {
+            if(SeedData[x].Team!="NO")
+              players.push({team: currTeam, player: SeedData[x].Player})
+          }
         }
+        console.log("TEAMS: ", teams);
+        console.log("Players: ", players);
+        return {teams, players};
       }
-      console.log("TEAMS: ", $scope.teams);
-      console.log("Players: ", $scope.players);
+
+      console.log("SEED1DATA: ", $scope.Seed1);
       // $scope.players = data.Players.elements;
       // $scope.prevPlayers=$scope.currPlayers;
       // $scope.currPlayers=$scope.players;
