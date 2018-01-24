@@ -35,6 +35,21 @@ $scope.reloadPage = function(){window.location.reload();}
 
       console.log("DATA",data);
       $scope.Seed1=loadSeedData(data.Seed1.elements);
+      $scope.Seed2=loadSeedData(data.Seed2.elements);
+      $scope.Seed3=loadSeedData(data.Seed3.elements);
+      $scope.Seed4=loadSeedData(data.Seed4.elements);
+      $scope.Seed5=loadSeedData(data.Seed5.elements);
+      $scope.Seed6=loadSeedData(data.Seed6.elements);
+      $scope.Seed7=loadSeedData(data.Seed7.elements);
+      $scope.Seed8=loadSeedData(data.Seed8.elements);
+      $scope.Seed9=loadSeedData(data.Seed9.elements);
+      $scope.Seed10=loadSeedData(data.Seed10.elements);
+      $scope.Seed11=loadSeedData(data.Seed11.elements);
+      $scope.Seed12=loadSeedData(data.Seed12.elements);
+      $scope.Seed13=loadSeedData(data.Seed13.elements);
+      $scope.Seed14=loadSeedData(data.Seed14.elements);
+      $scope.Seed15=loadSeedData(data.Seed15.elements);
+      $scope.Seed16=loadSeedData(data.Seed16.elements);
       function loadSeedData(SeedData){
         console.log("SeedData: ", SeedData);
         var teams = _.filter(SeedData, function(o) { return o.Team != "NO" && isNaN(o.Team); });
