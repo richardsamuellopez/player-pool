@@ -9,7 +9,7 @@ angular
       key: '1RSb4W4XnXXOGCy2VBso3o8wagOy2ITl-avCAQWlwFRk',
       // key: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTKqNLAb_8imNcULZU33HT5Y3za77qz-P05bpj3KkHwlSrz98h087XCbFAVwrP3JHAyPFJ_0uBDWTJM/pubhtml',
       parseNumbers:true,
-      wanted:["Seed1","Seed2"]
+      wanted:["Seed1","Seed2","Seed3","Seed4","Seed5","Seed6","Seed7","Seed8","Seed9","Seed10","Seed11","Seed12","Seed13","Seed14","Seed15","Seed16"]
     });
 
   })
