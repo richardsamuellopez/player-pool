@@ -30,13 +30,14 @@
             <div class="row">
               <div class="col-sm">
                 <div class="form-group">
-                  <label for="exampleFormControlSelect1">Seed #1:</label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team">
-                    <option ng-repeat="team in Seed1.teams" value="{{team.Team}}">{{team.Team}}</option>
-                  </select>
+                  <label for="exampleFormControlSelect1">Seed #1:</label>A:{{data.seed1Team}}B:{{seed1Team}}
+                  <select name="seed1Team" id="seed1Team" ng-model="seed1Team" ng-options="team for team in seed1.teams"></select>
+                  <!-- <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team" ng-change="seed1Change()"> -->
+                    <!-- <option ng-repeat="team in Seed1.teams" value="{{team.Team}}">{{team.Team}}</option> -->
+                  <!-- </select> -->
                   <label for="exampleFormControlSelect1">Seed #1 Player:</label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team">
-                    <option ng-repeat="player in Seed1.players" value="{{player.player}}">{{player.player}}</option>
+                  <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Player">
+                    <option ng-repeat="player in Seed1.players | filter: seed1Team" value="{{player.player}}">{{player.player}}</option>
                   </select>
                 </div>
 
