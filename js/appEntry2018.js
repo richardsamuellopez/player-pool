@@ -52,13 +52,14 @@ $scope.reloadPage = function(){window.location.reload();}
       $scope.Seed16=loadSeedData(data.Seed16.elements);
       function loadSeedData(SeedData){
         console.log("SeedData: ", SeedData);
-        var teams = _.filter(SeedData, function(o) { return o.Team != "NO" && isNaN(o.Team); });
+        var teams = [];// _.filter(SeedData, function(o) { return o.Team != "NO" && isNaN(o.Team); });
         console.log("teams: ", teams);
         var players=[];
         var currTeam = ""
         for(x=0; x<SeedData.length; x++){
           if(SeedData[x].Team!="NO" && isNaN(SeedData[x].Team)){
             currTeam = SeedData[x].Team
+            teams.push(currTeam);
           } else {
             if(SeedData[x].Team!="NO")
               players.push({team: currTeam, player: SeedData[x].Player})
