@@ -34,7 +34,7 @@
                   TEAM{{Seed1.teams}}
                   PLAYERS{{Seed1.players}}
                   <label for="exampleFormControlSelect1">Seed #1:</label>
-                  <select name="seed1Team" id="seed1Team" ng-model="seed1Team" ng-options="team for team in Seed1.teams"></select>
+                  <select name="seed1Team" id="seed1Team" ng-model="seed1Team" ng-options="team for Team in Seed1.teams"></select>
                   <!-- <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team" ng-change="seed1Change()"> -->
                     <!-- <option ng-repeat="team in Seed1.teams" value="{{team.Team}}">{{team.Team}}</option> -->
                   <!-- </select> -->
@@ -46,8 +46,8 @@
 
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Seed #2:</label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team">
-                    <option ng-repeat="team in Seed2.teams" value="{{team.Team}}">{{team.Team}}</option>
+                  <select name="repeatSelect" id="repeatSelect" ng-model="data.seed2Team">
+                    <option ng-repeat="team in Seed2.teams" value="{{team.Team}}">{{Team}}</option>
                   </select>
                   <label for="exampleFormControlSelect1">Seed #2 Player:</label>
                   <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team">
@@ -57,7 +57,7 @@
 
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Seed #3:</label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="data.seed1Team">
+                  <select name="repeatSelect" id="repeatSelect" ng-model="seed3Team">
                     <option ng-repeat="team in Seed3.teams" value="{{team.Team}}">{{team.Team}}</option>
                   </select>
                   <label for="exampleFormControlSelect1">Seed #3 Player:</label>
