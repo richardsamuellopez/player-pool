@@ -45,6 +45,17 @@ a:focus{
     left: -22px;
     top: 2px;
 }
+label{ float: left; }
+
+ span
+ {
+     display: block;
+     overflow: hidden;
+     padding-right: 5px;
+     padding-left: 10px;
+ }
+
+ span > select{ width: 100%; }
 @media screen and (max-width: 768px) {
 
 }
