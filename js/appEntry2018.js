@@ -50,7 +50,7 @@ $scope.reloadPage = function(){window.location.reload();}
       // $scope.Seed14=loadSeedData(data.Seed14.elements);
       // $scope.Seed15=loadSeedData(data.Seed15.elements);
       // $scope.Seed16=loadSeedData(data.Seed16.elements);
-      $scope.WC1=loadSeedData(_.concat(data.Seed11.elements, data.Seed12.elements,data.Seed13.elements,data.Seed14.elements,data.Seed15.elements,data.Seed16.elements));
+      $scope.WC1=loadSeedData(_.union(data.Seed11.elements, data.Seed12.elements,data.Seed13.elements,data.Seed14.elements,data.Seed15.elements,data.Seed16.elements));
       $scope.WC2=$scope.WC1;
       function loadSeedData(SeedData){
         console.log("SeedData: ", SeedData);
