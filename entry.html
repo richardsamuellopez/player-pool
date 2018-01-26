@@ -18,7 +18,25 @@
         <nav class="navbar navbar-light bg-light">
           <span class="navbar-brand mb-0 h1">Player Pool 2018 Entry Form</span>
         </nav>
+        <div class="container">
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Rules
+                  </button>
+                </h5>
+              </div>
 
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  Here are the rules for the player pool
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="container entry-form" ng-cloak>
           <form>
             <div class="row">
@@ -152,7 +170,7 @@
               <label for="exampleFormControlTextarea1">Example textarea</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div> -->
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
               <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </div>
           </form>
