@@ -45,9 +45,10 @@ a:focus{
     left: -22px;
     top: 2px;
 }
-.entry-form{
+main .entry-form{
   padding-top: 1rem;
 }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
