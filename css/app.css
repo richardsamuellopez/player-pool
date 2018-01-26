@@ -45,7 +45,7 @@ a:focus{
     left: -22px;
     top: 2px;
 }
-main .entry-form{
+main, .entry-form{
   padding-top: 1rem;
 }
 
