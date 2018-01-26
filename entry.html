@@ -38,52 +38,53 @@
               </div>
             </div>
           </div>
+
           <div class="container entry-form" ng-cloak>
-            <form>
+            <form name="playerPoolEntry" id="playerPoolEntry" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
               <div class="row">
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  <input type="email" class="form-control" id="entry.2120297232" name="entry.2120297232" placeholder="name@example.com">
                 </div>
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Entry Name</label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  <input type="text" class="form-control" id="entry.383545338" name="entry.383545338" placeholder="">
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm">
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Seed #1</label>
-                    <select class="form-control"  name="seed1Team" id="seed1Team" ng-model="seed1Team" ng-options="team for team in Seed1.teams"></select>
+                    <select class="form-control"  name="entry.1059009687" id="entry.1059009687" ng-model="seed1Team" ng-options="team for team in Seed1.teams"></select>
                     <label for="exampleFormControlSelect1">Seed #1 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed1Player">
+                    <select class="form-control"  name="entry.1589326624" id="entry.1589326624" ng-model="data.seed1Player">
                       <option ng-repeat="player in Seed1.players | filter: seed1Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect2">Seed #2</label>
-                    <select class="form-control"  name="seed2Team" id="seed2Team" ng-model="seed2Team" ng-options="team for team in Seed2.teams"></select>
+                    <select class="form-control"  name="entry.1792899743" id="entry.1792899743" ng-model="seed2Team" ng-options="team for team in Seed2.teams"></select>
                     <label for="exampleFormControlSelect2">Seed #2 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed2Player">
+                    <select class="form-control"  name="entry.496616414" id="entry.496616414" ng-model="data.seed2Player">
                       <option ng-repeat="player in Seed2.players | filter: seed2Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect3">Seed #3</label>
-                    <select class="form-control"  name="seed3Team" id="seed3Team" ng-model="seed3Team" ng-options="team for team in Seed3.teams"></select>
+                    <select class="form-control"  name="entry.298248963" id="entry.298248963" ng-model="seed3Team" ng-options="team for team in Seed3.teams"></select>
                     <label for="exampleFormControlSelect3">Seed #3 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed3Player">
+                    <select class="form-control"  name="entry.228107489" id="entry.228107489" ng-model="data.seed3Player">
                       <option ng-repeat="player in Seed3.players | filter: seed3Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect4">Seed #4</label>
-                    <select class="form-control"  name="seed4Team" id="seed4Team" ng-model="seed4Team" ng-options="team for team in Seed4.teams"></select>
+                    <select class="form-control"  name="entry.1260734803" id="entry.1260734803" ng-model="seed4Team" ng-options="team for team in Seed4.teams"></select>
                     <label for="exampleFormControlSelect4">Seed #4 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed4Player">
+                    <select class="form-control"  name="entry.1929196631" id="entry.1929196631" ng-model="data.seed4Player">
                       <option ng-repeat="player in Seed4.players | filter: seed4Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
@@ -92,36 +93,36 @@
                 <div class="col-sm">
                   <div class="form-group">
                     <label for="exampleFormControlSelect5">Seed #5</label>
-                    <select class="form-control"  name="seed5Team" id="seed5Team" ng-model="seed5Team" ng-options="team for team in Seed5.teams"></select>
+                    <select class="form-control"  name="entry.265627880" id="entry.265627880" ng-model="seed5Team" ng-options="team for team in Seed5.teams"></select>
                     <label for="exampleFormControlSelect5">Seed #5 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed5Player">
+                    <select class="form-control"  name="entry.1438588206" id="entry.1438588206" ng-model="data.seed5Player">
                       <option ng-repeat="player in Seed5.players | filter: seed5Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect6">Seed #6</label>
-                    <select class="form-control"  name="seed6Team" id="seed6Team" ng-model="seed6Team" ng-options="team for team in Seed6.teams"></select>
+                    <select class="form-control"  name="entry.688877146" id="entry.688877146" ng-model="seed6Team" ng-options="team for team in Seed6.teams"></select>
                     <label for="exampleFormControlSelect6">Seed #6 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed6Player">
+                    <select class="form-control"  name="entry.718296763" id="entry.718296763" ng-model="data.seed6Player">
                       <option ng-repeat="player in Seed6.players | filter: seed6Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect7">Seed #7</label>
-                    <select class="form-control"  name="seed7Team" id="seed7Team" ng-model="seed7Team" ng-options="team for team in Seed7.teams"></select>
+                    <select class="form-control"  name="entry.1554732274" id="entry.1554732274" ng-model="seed7Team" ng-options="team for team in Seed7.teams"></select>
                     <label for="exampleFormControlSelect7">Seed #7 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed7Player">
+                    <select class="form-control"  name="entry.1222291357" id="entry.1222291357" ng-model="data.seed7Player">
                       <option ng-repeat="player in Seed7.players | filter: seed7Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect8">Seed #8</label>
-                    <select class="form-control"  name="seed8Team" id="seed8Team" ng-model="seed8Team" ng-options="team for team in Seed8.teams"></select>
+                    <select class="form-control"  name="entry.1767171400" id="entry.1767171400" ng-model="seed8Team" ng-options="team for team in Seed8.teams"></select>
                     <label for="exampleFormControlSelect8">Seed #8 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed8Player">
+                    <select class="form-control"  name="entry.581849140" id="entry.581849140" ng-model="data.seed8Player">
                       <option ng-repeat="player in Seed8.players | filter: seed8Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
@@ -130,36 +131,36 @@
                 <div class="col-sm">
                   <div class="form-group">
                     <label for="exampleFormControlSelect6">Seed #9</label>
-                    <select class="form-control"  name="seed9Team" id="seed9Team" ng-model="seed9Team" ng-options="team for team in Seed9.teams"></select>
+                    <select class="form-control"  name="entry.99488968" id="entry.99488968" ng-model="seed9Team" ng-options="team for team in Seed9.teams"></select>
                     <label for="exampleFormControlSelect9">Seed #9 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed9Player">
+                    <select class="form-control"  name="entry.859580858" id="entry.859580858" ng-model="data.seed9Player">
                       <option ng-repeat="player in Seed9.players | filter: seed9Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect10">Seed #10</label>
-                    <select class="form-control"  name="seed10Team" id="seed10Team" ng-model="seed10Team" ng-options="team for team in Seed10.teams"></select>
+                    <select class="form-control"  name="entry.1493900890" id="entry.1493900890" ng-model="seed10Team" ng-options="team for team in Seed10.teams"></select>
                     <label for="exampleFormControlSelect10">Seed #10 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.seed10Player">
+                    <select class="form-control"  name="entry.2080503407" id="entry.2080503407" ng-model="data.seed10Player">
                       <option ng-repeat="player in Seed10.players | filter: seed10Team" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect11">Wild Card #1</label>
-                    <select class="form-control"  name="WC1TEAM" id="WC1TEAM" ng-model="WC1TEAM" ng-options="team for team in WC1.teams"></select>
+                    <select class="form-control"  name="entry.654414173" id="entry.654414173" ng-model="WC1TEAM" ng-options="team for team in WC1.teams"></select>
                     <label for="exampleFormControlSelect11">Wild Card #1 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.WC1Player">
+                    <select class="form-control"  name="entry.1145243786" id="entry.1145243786" ng-model="data.WC1Player">
                       <option ng-repeat="player in WC1.players | filter: WC1TEAM" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleFormControlSelect12">Wild Card #2</label>
-                    <select class="form-control"  name="WC2TEAM" id="WC2TEAM" ng-model="WC2TEAM" ng-options="team for team in WC2.teams"></select>
+                    <select class="form-control"  name="entry.713813158" id="entry.713813158" ng-model="WC2TEAM" ng-options="team for team in WC2.teams"></select>
                     <label for="exampleFormControlSelect12">Wild Card #2 Player</label>
-                    <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.WC2Player">
+                    <select class="form-control"  name="entry.862600197" id="entry.862600197" ng-model="data.WC2Player">
                       <option ng-repeat="player in WC2.players | filter: WC2TEAM" value="{{player.player}}">{{player.player}}</option>
                     </select>
                   </div>
@@ -177,6 +178,8 @@
             </form>
           </div>
         </main>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
         <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script> -->
         <script src="js/angularjs/1.4.1/angular.js"></script>
         <!-- <script src="//cdn.rawgit.com/jsoma/tabletop/7b2024af62d71d52ac5c6cecc2256b04da00161e/src/tabletop.js"></script> -->
@@ -197,5 +200,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/appEntry2018.js"></script>
+
+        <script type="text/javascript">var submitted=false;</script>
+        <script type="text/javascript">
+        $('#playerPoolEntry').on('submit', function(e) {
+          $('#playerPoolEntry *').fadeOut(2000);
+          $('#playerPoolEntry').prepend('Your submission has been processed...');
+          });
+        </script>
     </body>
 </html>
