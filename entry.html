@@ -55,7 +55,9 @@
                 <div class="col-sm">
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Seed #1</label>
-                    <select class="form-control"  name="entry.1059009687" id="entry.1059009687" ng-model="seed1Team" ng-options="team for team in Seed1.teams"></select>
+                    <select class="form-control"  name="entry.1059009687" id="entry.1059009687" ng-model="seed1Team">
+                       <option ng-repeat="team for team in Seed1.teams" value={{team.team}}>{{team.team}}</option>
+                     </select>
                     <label for="exampleFormControlSelect1">Seed #1 Player</label>
                     <select class="form-control"  name="entry.1589326624" id="entry.1589326624" ng-model="data.seed1Player">
                       <option ng-repeat="player in Seed1.players | filter: seed1Team" value="{{player.player}}">{{player.player}}</option>
