@@ -44,11 +44,11 @@
               <div class="row">
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" class="form-control" id="entry.2120297232" name="entry.2120297232" placeholder="name@example.com" required>
+                  <input type="email" ng-model="email" class="form-control" id="entry.2120297232" name="entry.2120297232" placeholder="name@example.com" required>
                 </div>
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Entry Name</label>
-                  <input type="text" class="form-control" id="entry.383545338" name="entry.383545338" placeholder="" required>
+                  <input type="text" ng-model="entryName" class="form-control" id="entry.383545338" name="entry.383545338" placeholder="" required>
                 </div>
               </div>
               <div class="row">
@@ -171,7 +171,20 @@
                 </div>
 
               </div>
-
+              {{email}}
+              {{entryName}}
+              {{Seed1Player}}
+              {{Seed2Player}}
+              {{Seed3Player}}
+              {{Seed4Player}}
+              {{Seed5Player}}
+              {{Seed6Player}}
+              {{Seed7Player}}
+              {{Seed8Player}}
+              {{Seed9Player}}
+              {{Seed10Player}}
+              {{WC1Player}}
+              {{WC2Player}}
               <!-- <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

@@ -34,6 +34,8 @@ $scope.reloadPage = function(){window.location.reload();}
 
 
       console.log("DATA",data);
+      $scope.email="TEMP EMAIL";
+      $scope.entryName="TEMP ENTRY";
       $scope.Seed1=loadSeedData(data.Seed1.elements);
       $scope.Seed2=loadSeedData(data.Seed2.elements);
       $scope.Seed3=loadSeedData(data.Seed3.elements);
