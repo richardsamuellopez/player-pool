@@ -171,20 +171,6 @@
                 </div>
 
               </div>
-              {{email}}
-              {{entryName}}
-              {{seed1Player}}
-              {{seed2Player}}
-              {{seed3Player}}
-              {{seed4Player}}
-              {{seed5Player}}
-              {{seed6Player}}
-              {{seed7Player}}
-              {{seed8Player}}
-              {{seed9Player}}
-              {{seed10Player}}
-              {{WC1Player}}
-              {{WC2Player}}
               <!-- <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -196,19 +182,21 @@
           </div>
           <div class="container" id="finalRoster" style="display:none;">
             <div><label>Email: </label>{{email}}</div>
-            <div><label>Entry:</label>{{entryName}}</div>
-            <div><label>#1:</label>{{seed1Player}}<label>Team: </label>{{seed1Team}}</div>
-            <div><label>#2:</label>{{seed2Player}}<label>Team: </label>{{seed2Team}}</div>
-            <div><label>#3:</label>{{seed3Player}}<label>Team: </label>{{seed3Team}}</div>
-            <div><label>#4:</label>{{seed4Player}}<label>Team: </label>{{seed4Team}}</div>
-            <div><label>#5:</label>{{seed5Player}}<label>Team: </label>{{seed5Team}}</div>
-            <div><label>#6:</label>{{seed6Player}}<label>Team: </label>{{seed6Team}}</div>
-            <div><label>#7:</label>{{seed7Player}}<label>Team: </label>{{seed7Team}}</div>
-            <div><label>#8:</label>{{seed8Player}}<label>Team: </label>{{seed8Team}}</div>
-            <div><label>#9:</label>{{seed9Player}}<label>Team: </label>{{seed9Team}}</div>
-            <div><label>#10:</label>{{seed10Player}}<label>Team: </label>{{seed10Team}}</div>
-            <div><label>WC#1:</label>{{WC1Player}}<label>Team: </label>{{WC1Team}}</div>
-            <div><label>WC#2:</label>{{WC2Player}}<label>Team: </label>{{WC1Team}}</div>
+            <div><label>Entry: </label>{{entryName}}</div>
+            <div><label>#1: </label>{{seed1Player.name}} - {{seed1Player.team}}</div>
+            <div><label>#2: </label>{{seed2Player.name}} - {{seed2Player.team}}</div>
+            <div><label>#3: </label>{{seed3Player.name}} - {{seed3Player.team}}</div>
+            <div><label>#4: </label>{{seed4Player.name}} - {{seed4Player.team}}</div>
+            <div><label>#5: </label>{{seed5Player.name}} - {{seed5Player.team}}</div>
+            <div><label>#6: </label>{{seed6Player.name}} - {{seed6Player.team}}</div>
+            <div><label>#7: </label>{{seed7Player.name}} - {{seed7Player.team}}</div>
+            <div><label>#8: </label>{{seed8Player.name}} - {{seed8Player.team}}</div>
+            <div><label>#9: </label>{{seed9Player.name}} - {{seed9Player.team}}</div>
+            <div><label>#10: </label>{{seed10Player.name}} - {{seed10Player.team}}</div>
+            <div><label>WC#1: </label>{{WC1Player.name}} - {{WC1Player.team}}</div>
+            <div><label>WC#2: </label>{{WC2Player.name}} - {{WC2Player.team}}</div>
+
+            </br></br><a href='http://richardsamuellopez.github.io/player-pool/entry.html'>Fill out another</a>
           </div>
         </main>
 
@@ -243,9 +231,9 @@
         <script type="text/javascript">
         $('#gform').on('submit', function(e) {
           $('#gform *').fadeOut(2000);
-          $('#gform').prepend("Your submission has been processed...</br></br><a href='http://richardsamuellopez.github.io/player-pool/entry.html'>Fill out another</a>");
+          $('#gform').prepend("Your submission has been processed...");
+          $('#finalRoster').fadeIn(2000);
           });
-          $('#finalRoster *').fadeIn(2000);
         </script>
     </body>
 </html>
