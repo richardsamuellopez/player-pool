@@ -56,12 +56,12 @@
                   <div class="form-group">
                     <label>Seed #1</label>
                     <select class="form-control" name="entry.1059009687" id="entry.1059009687"
-                    ng-model="seed1Team.toString()" ng-options="team.value as team.name for team in Seed1.teams" required>
+                    ng-model="seed1Team" ng-options="team.value as team.name for team in Seed1.teams track by team.name" required>
                       <!-- <option ng-disabled="true"  ng-selected="true" value="">Select a team</option> -->
                     </select>
                     <label>Seed #1 Player</label>{{}}
                     <select class="form-control" name="entry.1589326624" id="entry.1589326624"
-                    ng-model="seed1Player.toString()" ng-options="player.value as player.name for player in Seed1.players | filter:{team:seed1Team}" required>
+                    ng-model="seed1Player" ng-options="player.value as player.name for player in Seed1.players track by player.name | filter:{team:seed1Team}" required>
                       <!-- <option ng-disabled="true"  ng-selected="true" value="">Select a player</option> -->
                     </select>
                   </div>
