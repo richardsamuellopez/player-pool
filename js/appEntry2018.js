@@ -64,7 +64,7 @@ $scope.reloadPage = function(){window.location.reload();}
             teams.push({name: currTeam});
           } else {
             if(SeedData[x].Team!="NO")
-              players.push({team: currTeam, player: SeedData[x].Player})
+              players.push({team: currTeam, name: SeedData[x].Player})
           }
         }
         console.log("TEAMS: ", teams);
