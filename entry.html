@@ -59,7 +59,7 @@
                        <option ng-repeat="team in Seed1.teams" value={{team.name}}>{{team.name}}</option>
                      </select>
                     <label for="exampleFormControlSelect1">Seed #1 Player</label>
-                    <select class="form-control"  name="entry.1589326624" id="entry.1589326624" ng-model="data.seed1Player">
+                    <select class="form-control"  name="entry.1589326624" id="entry.1589326624" ng-model="data.seed1Player" required>
                       <option ng-repeat="player in Seed1.players | filter: seed1Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -70,7 +70,7 @@
                       <option ng-repeat="team in Seed2.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect2">Seed #2 Player</label>
-                    <select class="form-control"  name="entry.496616414" id="entry.496616414" ng-model="data.seed2Player">
+                    <select class="form-control"  name="entry.496616414" id="entry.496616414" ng-model="data.seed2Player" required>
                       <option ng-repeat="player in Seed2.players | filter: seed2Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -81,7 +81,7 @@
                       <option ng-repeat="team in Seed3.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect3">Seed #3 Player</label>
-                    <select class="form-control"  name="entry.228107489" id="entry.228107489" ng-model="data.seed3Player">
+                    <select class="form-control"  name="entry.228107489" id="entry.228107489" ng-model="data.seed3Player" required>
                       <option ng-repeat="player in Seed3.players | filter: seed3Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -92,7 +92,7 @@
                       <option ng-repeat="team in Seed4.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect4">Seed #4 Player</label>
-                    <select class="form-control"  name="entry.1929196631" id="entry.1929196631" ng-model="data.seed4Player">
+                    <select class="form-control"  name="entry.1929196631" id="entry.1929196631" ng-model="data.seed4Player" required>
                       <option ng-repeat="player in Seed4.players | filter: seed4Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -105,7 +105,7 @@
                       <option ng-repeat="team in Seed5.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect5">Seed #5 Player</label>
-                    <select class="form-control"  name="entry.1438588206" id="entry.1438588206" ng-model="data.seed5Player">
+                    <select class="form-control"  name="entry.1438588206" id="entry.1438588206" ng-model="data.seed5Player" required>
                       <option ng-repeat="player in Seed5.players | filter: seed5Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -116,7 +116,7 @@
                       <option ng-repeat="team in Seed6.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect6">Seed #6 Player</label>
-                    <select class="form-control"  name="entry.718296763" id="entry.718296763" ng-model="data.seed6Player">
+                    <select class="form-control"  name="entry.718296763" id="entry.718296763" ng-model="data.seed6Player" required>
                       <option ng-repeat="player in Seed6.players | filter: seed6Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -127,7 +127,7 @@
                       <option ng-repeat="team in Seed7.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect7">Seed #7 Player</label>
-                    <select class="form-control"  name="entry.1222291357" id="entry.1222291357" ng-model="data.seed7Player">
+                    <select class="form-control"  name="entry.1222291357" id="entry.1222291357" ng-model="data.seed7Player" required>
                       <option ng-repeat="player in Seed7.players | filter: seed7Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -138,7 +138,7 @@
                       <option ng-repeat="team in Seed8.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect8">Seed #8 Player</label>
-                    <select class="form-control"  name="entry.581849140" id="entry.581849140" ng-model="data.seed8Player">
+                    <select class="form-control"  name="entry.581849140" id="entry.581849140" ng-model="data.seed8Player" required>
                       <option ng-repeat="player in Seed8.players | filter: seed8Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -151,7 +151,7 @@
                       <option ng-repeat="team in Seed9.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect9">Seed #9 Player</label>
-                    <select class="form-control"  name="entry.859580858" id="entry.859580858" ng-model="data.seed9Player">
+                    <select class="form-control"  name="entry.859580858" id="entry.859580858" ng-model="data.seed9Player" required>
                       <option ng-repeat="player in Seed9.players | filter: seed9Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -162,7 +162,7 @@
                       <option ng-repeat="team in Seed10.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect10">Seed #10 Player</label>
-                    <select class="form-control"  name="entry.2080503407" id="entry.2080503407" ng-model="data.seed10Player">
+                    <select class="form-control"  name="entry.2080503407" id="entry.2080503407" ng-model="data.seed10Player" required>
                       <option ng-repeat="player in Seed10.players | filter: seed10Team" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -173,7 +173,7 @@
                       <option ng-repeat="team in WC1.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect11">Wild Card #1 Player</label>
-                    <select class="form-control"  name="entry.1145243786" id="entry.1145243786" ng-model="data.WC1Player">
+                    <select class="form-control"  name="entry.1145243786" id="entry.1145243786" ng-model="data.WC1Player" required>
                       <option ng-repeat="player in WC1.players | filter: WC1TEAM" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -184,7 +184,7 @@
                       <option ng-repeat="team in WC2.teams" value={{team.name}}>{{team.name}}</option>
                     </select>
                     <label for="exampleFormControlSelect12">Wild Card #2 Player</label>
-                    <select class="form-control"  name="entry.862600197" id="entry.862600197" ng-model="data.WC2Player">
+                    <select class="form-control"  name="entry.862600197" id="entry.862600197" ng-model="data.WC2Player" required>
                       <option ng-repeat="player in WC2.players | filter: WC2TEAM" value="{{player.name}}">{{player.name}}</option>
                     </select>
                   </div>
@@ -197,7 +197,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div> -->
               <div class="row justify-content-center">
-                <button type="submit" value="Submit" class="btn btn-primary mb-2">Submit</button>
+                <button ng-disabled="form.$invalid" type="submit" value="Submit" class="btn btn-primary mb-2">Submit</button>
               </div>
             </form>
           </div>
