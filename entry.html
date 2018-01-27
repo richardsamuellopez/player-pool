@@ -194,6 +194,22 @@
               </div>
             </form>
           </div>
+          <div class="container" id="finalRoster" style="display:none;">
+            <div><label>Email: </label>{{email}}</div>
+            <div><label>Entry:</label>{{entryName}}</div>
+            <div><label>#1:</label>{{seed1Player}}<label>Team: </label>{{seed1Team}}</div>
+            <div><label>#2:</label>{{seed2Player}}<label>Team: </label>{{seed2Team}}</div>
+            <div><label>#3:</label>{{seed3Player}}<label>Team: </label>{{seed3Team}}</div>
+            <div><label>#4:</label>{{seed4Player}}<label>Team: </label>{{seed4Team}}</div>
+            <div><label>#5:</label>{{seed5Player}}<label>Team: </label>{{seed5Team}}</div>
+            <div><label>#6:</label>{{seed6Player}}<label>Team: </label>{{seed6Team}}</div>
+            <div><label>#7:</label>{{seed7Player}}<label>Team: </label>{{seed7Team}}</div>
+            <div><label>#8:</label>{{seed8Player}}<label>Team: </label>{{seed8Team}}</div>
+            <div><label>#9:</label>{{seed9Player}}<label>Team: </label>{{seed9Team}}</div>
+            <div><label>#10:</label>{{seed10Player}}<label>Team: </label>{{seed10Team}}</div>
+            <div><label>WC#1:</label>{{WC1Player}}<label>Team: </label>{{WC1Team}}</div>
+            <div><label>WC#2:</label>{{WC2Player}}<label>Team: </label>{{WC1Team}}</div>
+          </div>
         </main>
 
 
@@ -229,6 +245,7 @@
           $('#gform *').fadeOut(2000);
           $('#gform').prepend("Your submission has been processed...</br></br><a href='http://richardsamuellopez.github.io/player-pool/entry.html'>Fill out another</a>");
           });
+          $('#finalRoster *').fadeIn(2000);
         </script>
     </body>
 </html>
