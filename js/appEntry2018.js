@@ -61,7 +61,7 @@ $scope.reloadPage = function(){window.location.reload();}
         for(x=0; x<SeedData.length; x++){
           if(SeedData[x].Team!="NO" && isNaN(SeedData[x].Team) && SeedData[x].Team!="--"){
             currTeam = SeedData[x].Team
-            teams.push({name: currTeam});
+            teams.push({name: currTeam, value: currTeam});
           } else {
             if(SeedData[x].Team!="NO")
               players.push({team: currTeam, name: SeedData[x].Player})
