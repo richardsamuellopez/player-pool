@@ -64,8 +64,9 @@
                     ng-model="seed1Player" ng-options="player.value as player.name for player in Seed1.players track by player.value | filter:{team:seed1Team}" required>
                       <!-- <option ng-disabled="true"  ng-selected="true" value="">Select a player</option> -->
                     </select>
+
                   </div>
-                  {{seed1Player}}
+                  <div>TEAM: {{seed1Team}} PLAYER: {{seed1Player}}</div>
 
                   <div class="form-group">
                     <label>Seed #2</label>
