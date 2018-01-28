@@ -62,38 +62,34 @@
                     <label>Seed #1 Player</label>{{}}
                     <select class="form-control" name="entry.1589326624" id="entry.1589326624"
                     ng-model="seed1Player" ng-options="player as player.name for player in Seed1.players | filter:{team:seed1Team} track by player.name" required>
-                    <!-- ng-model="seed1Player" ng-options="player as player.name for player in Seed1.players track by player.name| filter:{team:seed1Team}" required> -->
                       <!-- <option ng-disabled="true"  ng-selected="true" value="">Select a player</option> -->
                     </select>
-
-                  </div>
-                  <div>TEAM: {{seed1Team}} PLAYER: {{seed1Player}}</div>
 
                   <div class="form-group">
                     <label>Seed #2</label>
                     <select class="form-control" name="entry.1792899743" id="entry.1792899743"
-                    ng-model="seed2Team" ng-options="team.value as team.name for team in Seed2.teams"required></select>
+                    ng-model="seed2Team" ng-options="team.value as team.name for team in Seed2.teams track by team.name" required></select>
                     <label>Seed #2 Player</label>
                     <select class="form-control" name="entry.496616414" id="entry.496616414"
-                    ng-model="seed2Player" ng-options="player.value as player.name for player in Seed2.players | filter:{team:seed2Team}" required></select>
+                    ng-model="seed2Player" ng-options="player as player.name for player in Seed2.players | filter:{team:seed2Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Seed #3</label>
                     <select class="form-control" name="entry.298248963" id="entry.298248963"
-                    ng-model="seed3Team" ng-options="team.value as team.name for team in Seed3.teams"required></select>
+                    ng-model="seed3Team" ng-options="team.value as team.name for team in Seed3.teams track by team.name" required></select>
                     <label>Seed #3 Player</label>
                     <select class="form-control" name="entry.228107489" id="entry.228107489"
-                    ng-model="seed3Player" ng-options="player.value as player.name for player in Seed3.players | filter:{team:seed3Team}" required></select>
+                    ng-model="seed3Player" ng-options="player as player.name for player in Seed3.players | filter:{team:seed3Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Seed #4</label>
                     <select class="form-control" name="entry.1260734803" id="entry.1260734803"
-                    ng-model="seed4Team" ng-options="team.value as team.name for team in Seed4.teams"required></select>
+                    ng-model="seed4Team" ng-options="team.value as team.name for team in Seed4.teams track by team.name" required></select>
                     <label>Seed #4 Player</label>
                     <select class="form-control" name="entry.1929196631" id="entry.1929196631"
-                    ng-model="seed4Player" ng-options="player.value as player.name for player in Seed4.players | filter:{team:seed4Team}" required></select>
+                    ng-model="seed4Player" ng-options="player as player.name for player in Seed4.players | filter:{team:seed4Team} track by player.name" required></select>
                   </div>
                 </div>
 
@@ -101,37 +97,37 @@
                   <div class="form-group">
                     <label>Seed #5</label>
                     <select class="form-control" name="entry.265627880" id="entry.265627880"
-                    ng-model="seed5Team" ng-options="team.value as team.name for team in Seed5.teams"required></select>
+                    ng-model="seed5Team" ng-options="team.value as team.name for team in Seed5.teams track by team.name" required></select>
                     <label>Seed #5 Player</label>
                     <select class="form-control" name="entry.1438588206" id="entry.1438588206"
-                    ng-model="seed5Player" ng-options="player.value as player.name for player in Seed5.players | filter:{team:seed5Team}" required></select>
+                    ng-model="seed5Player" ng-options="player as player.name for player in Seed5.players | filter:{team:seed5Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Seed #6</label>
                     <select class="form-control" name="entry.688877146" id="entry.688877146"
-                    ng-model="seed6Team" ng-options="team.value as team.name for team in Seed6.teams"required></select>
+                    ng-model="seed6Team" ng-options="team.value as team.name for team in Seed6.teams track by team.name" required></select>
                     <label>Seed #6 Player</label>
                     <select class="form-control" name="entry.718296763" id="entry.718296763"
-                    ng-model="seed6Player" ng-options="player.value as player.name for player in Seed6.players | filter:{team:seed6Team}" required></select>
+                    ng-model="seed6Player" ng-options="player as player.name for player in Seed6.players | filter:{team:seed6Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Seed #7</label>
                     <select class="form-control" name="entry.1554732274" id="entry.1554732274"
-                    ng-model="seed7Team" ng-options="team.value as team.name for team in Seed7.teams"required></select>
+                    ng-model="seed7Team" ng-options="team.value as team.name for team in Seed7.teams track by team.name" required></select>
                     <label>Seed #7 Player</label>
                     <select class="form-control" name="entry.1222291357" id="entry.1222291357"
-                    ng-model="seed7Player" ng-options="player.value as player.name for player in Seed7.players | filter:{team:seed7Team}" required></select>
+                    ng-model="seed7Player" ng-options="player as player.name for player in Seed7.players | filter:{team:seed7Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Seed #8</label>
                     <select class="form-control" name="entry.1767171400" id="entry.1767171400"
-                    ng-model="seed8Team" ng-options="team.value as team.name for team in Seed8.teams"required></select>
+                    ng-model="seed8Team" ng-options="team.value as team.name for team in Seed8.teams track by team.name" required></select>
                     <label>Seed #8 Player</label>
                     <select class="form-control" name="entry.581849140" id="entry.581849140"
-                    ng-model="seed8Player" ng-options="player.value as player.name for player in Seed8.players | filter:{team:seed8Team}" required></select>
+                    ng-model="seed8Player" ng-options="player as player.name for player in Seed8.players | filter:{team:seed8Team} track by player.name" required></select>
                   </div>
                 </div>
 
@@ -139,37 +135,37 @@
                   <div class="form-group">
                     <label>Seed #9</label>
                     <select class="form-control" name="entry.99488968" id="entry.99488968"
-                    ng-model="seed9Team" ng-options="team.value as team.name for team in Seed9.teams"required></select>
+                    ng-model="seed9Team" ng-options="team.value as team.name for team in Seed9.teams track by team.name" required></select>
                     <label>Seed #9 Player</label>
                     <select class="form-control" name="entry.859580858" id="entry.859580858"
-                    ng-model="seed9Player" ng-options="player.value as player.name for player in Seed9.players | filter:{team:seed9Team}" required></select>
+                    ng-model="seed9Player" ng-options="player as player.name for player in Seed9.players | filter:{team:seed9Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Seed #10</label>
                     <select class="form-control" name="entry.1493900890" id="entry.1493900890"
-                    ng-model="seed10Team" ng-options="team.value as team.name for team in Seed10.teams"required></select>
+                    ng-model="seed10Team" ng-options="team.value as team.name for team in Seed10.teams track by team.name" required></select>
                     <label>Seed #10 Player</label>
                     <select class="form-control" name="entry.2080503407" id="entry.2080503407"9
-                    ng-model="seed10Player" ng-options="player.value as player.name for player in Seed10.players | filter:{team:seed10Team}" required></select>
+                    ng-model="seed10Player" ng-options="player as player.name for player in Seed10.players | filter:{team:seed10Team} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Wild Card #1</label>
                     <select class="form-control" name="entry.654414173" id="entry.654414173"
-                    ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams"required></select>
+                    ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams track by team.name" required></select>
                     <label>Wild Card #1 Player</label>
                     <select class="form-control" name="entry.1145243786" id="entry.1145243786"
-                    ng-model="WC1Player" ng-options="player.value as player.name for player in WC1.players | filter:{team:WC1Team}" required></select>
+                    ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WCTeam} track by player.name" required></select>
                   </div>
 
                   <div class="form-group">
                     <label>Wild Card #2</label>
                     <select class="form-control" name="entry.713813158" id="entry.713813158"
-                    ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams"required></select>
+                    ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams track by team.name" required></select>
                     <label>Wild Card #2 Player</label>
                     <select class="form-control" name="entry.862600197" id="entry.862600197"
-                    ng-model="WC2Player" ng-options="player.value as player.name for player in WC2.players | filter:{team:WC2Team}" required></select>
+                    ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team} track by player.name" required></select>
                   </div>
                 </div>
 
