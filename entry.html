@@ -203,7 +203,7 @@
                   <div class="form-group">
                     <label>Wild Card #2</label>
                     <select class="form-control" name="entry.713813158" id="entry.713813158"
-                    ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams track | filter:{team:WC1Team} by team.name" required>
+                    ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams | filter:{team:WC1Team} track by team.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #2 Player</label>
