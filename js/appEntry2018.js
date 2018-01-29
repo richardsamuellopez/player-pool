@@ -26,9 +26,9 @@ angular
 
   $scope.reloadPage = function(){window.location.reload();}
   $scope.isSubmitDisabled = false;
-  $scope.oneClickCheck = function() {
-    if($scope.seed1Player)// && seed2Player && seed3Player && seed4Player && seed5Player && seed6Player && seed7Player && seed8Player && seed9Player && seed10Player && WC1Player && WC2Player )
-    $scope.isSubmitDisabled = true;
+  $scope.isFormComplete = function() {
+    if($scope.email && $scope.entryName && $scope.seed1Player && $scope.seed2Player && $scope.seed3Player && $scope.seed4Player && $scope.seed5Player && $scope.seed6Player && $scope.seed7Player && $scope.seed8Player && $scope.seed9Player && $scope.seed10Player && $scope.WC1Player && $scope.WC2Player )
+      $scope.isSubmitDisabled = true;
   };
   function LoadData(){Tabletop.then(function(ttdata){
     var currTS = new Date();
