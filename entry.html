@@ -190,7 +190,9 @@
                   <div class="form-group">
                     <label>Wild Card #1</label>{{WC1Team}}
                     <select class="form-control" name="entry.654414173" id="entry.654414173"
-                    ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams | filter: (WC2Team ? {name: '!' + WC2Team} : '') track by team.name" required>
+                    ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams track by team.name" required>
+                    <!-- Need to filter wc2team from wc1team dropdown -->
+                    <!-- ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams | filter: (WC2Team ? {name: '!' + WC2Team} : '') track by team.name" required> -->
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #1 Player</label>
