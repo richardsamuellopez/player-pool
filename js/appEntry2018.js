@@ -27,7 +27,7 @@ angular
   $scope.reloadPage = function(){window.location.reload();}
   $scope.isSubmitDisabled = false;
   $scope.oneClickCheck = function() {
-    if(seed1Player)// && seed2Player && seed3Player && seed4Player && seed5Player && seed6Player && seed7Player && seed8Player && seed9Player && seed10Player && WC1Player && WC2Player )
+    if($scope.seed1Player)// && seed2Player && seed3Player && seed4Player && seed5Player && seed6Player && seed7Player && seed8Player && seed9Player && seed10Player && WC1Player && WC2Player )
     $scope.isSubmitDisabled = true;
   };
   function LoadData(){Tabletop.then(function(ttdata){
