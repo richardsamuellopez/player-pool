@@ -2,7 +2,13 @@ angular
 .module('poolEntry2018', [
   'times.tabletop',
   'ui.bootstrap'
-])
+]).filter('excludeFrom',[function(){
+      return function(array,expression,comparator){
+        return array.filter(function(item){
+      return !expression || !angular.equals(item,expression);
+    });
+  };
+}])
 .config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
       //2018 richardsamuellopez player Pool
@@ -13,7 +19,7 @@ angular
     });
 
 })
-.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http){
+.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http, excludeFrom){
   $scope.currData="";
   $scope.prevData="";
   $scope.currPlayers="";
@@ -69,11 +75,4 @@ angular
     }
   });
   }
-}).filter('excludeFrom',[function(){
-      return function(array,expression,comparator){
-        return array.filter(function(item){
-      return !expression || !angular.equals(item,expression);
-    });
-  };
-}])
-;
+});
