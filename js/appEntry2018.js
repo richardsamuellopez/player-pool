@@ -13,7 +13,7 @@ angular
     });
 
 })
-.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval){
+.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http){
   $scope.currData="";
   $scope.prevData="";
   $scope.currPlayers="";
@@ -32,6 +32,7 @@ angular
   };
 
   $scope.submitEntryForm = function() {
+    console.log("submitEntryForm");
     $scope.entryData = {"entry.2120297232": $scope.email };
          $http({
              method : 'POST',
@@ -39,7 +40,7 @@ angular
              data : $scope.entryData
          })
   };
-  
+
   function LoadData(){Tabletop.then(function(ttdata){
     var currTS = new Date();
     // console.log("Load Data: ",currTS);
