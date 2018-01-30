@@ -13,14 +13,7 @@ angular
     });
 
 })
-.filter('excludeFrom',function(){
-      return function(array,expression,comparator){
-        return array.filter(function(item){
-      return !expression || !angular.equals(item,expression);
-    });
-  };
-})
-.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http, excludeFrom){
+.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http){
   $scope.currData="";
   $scope.prevData="";
   $scope.currPlayers="";
