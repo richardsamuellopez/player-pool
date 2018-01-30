@@ -40,8 +40,7 @@
           </div>
 
           <div class="container entry-form" ng-cloak>
-            <form novalidate method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;" ng-submit="submitEntryForm()">
-              <!-- action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" > -->
+            <form novalidate method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;" action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" >
               <div class="row">
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Email address</label>
@@ -223,7 +222,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div> -->
               <div class="row justify-content-center">
-                <button type="submit" value="Submit" class="btn btn-primary mb-2">Submit</button>
+                <button type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2">Submit</button>
                 <!-- <button type="submit" value="Submit" class="btn btn-primary mb-2" ng-disabled="isSubmitDisabled" ng-click="isFormComplete()">Submit</button> -->
                 <!-- <button ng-disabled="gform.$invalid" type="submit" value="Submit" class="btn btn-primary mb-2">Submit</button> -->
               </div>

@@ -31,16 +31,6 @@ angular
       $scope.isSubmitDisabled = true;
   };
 
-  $scope.submitEntryForm = function() {
-    console.log("submitEntryForm");
-    $scope.entryData = {"entry.2120297232": $scope.email };
-         $http({
-             method : 'POST',
-             url : 'https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?',
-             data : $scope.entryData
-         })
-  };
-
   function LoadData(){Tabletop.then(function(ttdata){
     var currTS = new Date();
     // console.log("Load Data: ",currTS);
