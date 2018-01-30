@@ -75,5 +75,5 @@ angular
         return array.filter(function(item){
       return !expression || !angular.equals(item,expression);
     });
- };
+ }
 }]);
