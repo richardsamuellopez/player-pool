@@ -19,7 +19,7 @@ angular
     });
 
 })
-.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http, excludeFrom){
+.controller('PoolCtrl', [excludeFrom, function($scope, Tabletop, $filter, $timeout, $interval, $http, excludeFrom){
   $scope.currData="";
   $scope.prevData="";
   $scope.currPlayers="";
@@ -75,4 +75,4 @@ angular
     }
   });
   }
-});
+}]);
