@@ -40,7 +40,8 @@
           </div>
 
           <div class="container entry-form" ng-cloak>
-            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;" ng-submit="submitEntryForm">
+              <!-- action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" > -->
               <div class="row">
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Email address</label>
@@ -221,22 +222,9 @@
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div> -->
- <div ng-if="email">$scope.email: {{email}}</div>
- <div ng-if="entryName">$scope.entryName: {{entryName}}</div>
- <div ng-if="seed1Player">$scope.seed1Player: {{seed1Player}} - {{seed1Team}}</div>
- <div ng-if="seed2Player">$scope.seed2Player: {{seed2Player}} - {{seed2Team}}</div>
- <div ng-if="seed3Player">$scope.seed3Player: {{seed3Player}} - {{seed3Team}}</div>
- <div ng-if="seed4Player">$scope.seed4Player: {{seed4Player}} - {{seed4Team}}</div>
- <div ng-if="seed5Player">$scope.seed5Player: {{seed5Player}} - {{seed5Team}}</div>
- <div ng-if="seed6Player">$scope.seed6Player: {{seed6Player}} - {{seed6Team}}</div>
- <div ng-if="seed7Player">$scope.seed7Player: {{seed7Player}} - {{seed7Team}}</div>
- <div ng-if="seed8Player">$scope.seed8Player: {{seed8Player}} - {{seed8Team}}</div>
- <div ng-if="seed9Player">$scope.seed9Player: {{seed9Player}} - {{seed9Team}}</div>
- <div ng-if="seed10Player">$scope.seed10Player: {{seed10Player}} - {{seed10Team}}</div>
- <div ng-if="WC1Player">$scope.WC1Player: {{WC1Player}} - {{WC1Team}}</div>
- <div ng-if="WC2Player">$scope.WC2Player: {{WC2Player}} - {{WC2Team}}</div>
               <div class="row justify-content-center">
-                <button type="submit" value="Submit" class="btn btn-primary mb-2" ng-disabled="isSubmitDisabled" ng-click="isFormComplete()">Submit</button>
+                <button type="submit" value="Submit" class="btn btn-primary mb-2">Submit</button>
+                <!-- <button type="submit" value="Submit" class="btn btn-primary mb-2" ng-disabled="isSubmitDisabled" ng-click="isFormComplete()">Submit</button> -->
                 <!-- <button ng-disabled="gform.$invalid" type="submit" value="Submit" class="btn btn-primary mb-2">Submit</button> -->
               </div>
             </form>
