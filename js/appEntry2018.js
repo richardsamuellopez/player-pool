@@ -27,7 +27,7 @@ angular
   $scope.reloadPage = function(){window.location.reload();}
   $scope.isSubmitDisabled = false;
   $scope.isFormComplete = function() {
-    if($scope.email && $scope.entryName && $scope.seed1Player && $scope.seed2Player && $scope.seed3Player && $scope.seed4Player && $scope.seed5Player && $scope.seed6Player && $scope.seed7Player && $scope.seed8Player && $scope.seed9Player && $scope.seed10Player && $scope.WC1Player && $scope.WC2Player && $scope.seed1Team && $scope.seed2Team && $scope.seed3Team && $scope.seed4Team && $scope.seed5Team && $scope.seed6Team && $scope.seed7Team && $scope.seed8Team && $scope.seed9Team && $scope.seed10Team && $scope.WC1Team && $scope.WC2Player )
+    if($scope.email && $scope.entryName && $scope.seed1Player && $scope.seed2Player && $scope.seed3Player && $scope.seed4Player && $scope.seed5Player && $scope.seed6Player && $scope.seed7Player && $scope.seed8Player && $scope.seed9Player && $scope.seed10Player && $scope.WC1Player && $scope.WC2Player && $scope.seed1Team && $scope.seed2Team && $scope.seed3Team && $scope.seed4Team && $scope.seed5Team && $scope.seed6Team && $scope.seed7Team && $scope.seed8Team && $scope.seed9Team && $scope.seed10Team && $scope.WC1Team && $scope.WC2Team )
       $scope.isSubmitDisabled = true;
   };
   function LoadData(){Tabletop.then(function(ttdata){
