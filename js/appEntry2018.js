@@ -57,10 +57,10 @@ angular.module('poolEntry2018', [
       for(x=0; x<SeedData.length; x++){
         if(SeedData[x].Team!="NO" && isNaN(SeedData[x].Team) && SeedData[x].Team!="--"){
           currTeam = SeedData[x].Team
-          teams.push({name: currTeam, value: currTeam});
+          teams.push({name: currTeam});
         } else {
           if(SeedData[x].Team!="NO")
-            players.push({team: currTeam, name: SeedData[x].Player, value: SeedData[x].Player})
+            players.push({team: currTeam, name: SeedData[x].Player})
         }
       }
       return {teams, players};
