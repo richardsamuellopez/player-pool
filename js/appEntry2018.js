@@ -1,5 +1,4 @@
-var app = angular
-.module('poolEntry2018', [
+angular.module('poolEntry2018', [
   'times.tabletop',
   'ui.bootstrap'
 ])
@@ -38,7 +37,7 @@ var app = angular
     $scope.prevData=$scope.currData;
     $scope.currData=data;
 
-    $scope.email="test";
+    $scope.email="";
     $scope.entryName="";
     $scope.Seed1=loadSeedData(data.Seed1.elements);
     $scope.Seed2=loadSeedData(data.Seed2.elements);
@@ -69,19 +68,4 @@ var app = angular
     }
   });
   }
-});
-
-app.filter('makeUppercase', function () {
-  console.log("makeUppsercase");
-  return function (item) {
-    console.log("makeUppsercase: ", item);
-      return item.toUpperCase();
-  };
-});
-app.filter('excludeFrom',function(){
-      return function(array,expression,comparator){
-        return array.filter(function(item){
-      return !expression || !angular.equals(item,expression);
-    });
-  };
 });

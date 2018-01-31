@@ -43,7 +43,7 @@
             <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;" action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" >
               <div class="row">
                 <div class="form-group col-sm">
-                  <label for="exampleFormControlInput1">Email address</label>1:{{email}}2:{{email | makeUppercase}}
+                  <label for="exampleFormControlInput1">Email address</label>
                   <input type="email" ng-model="email" class="form-control" id="entry.2120297232" name="entry.2120297232" placeholder="name@example.com" required>
                 </div>
                 <div class="form-group col-sm">
@@ -192,9 +192,6 @@
 
                     <select class="form-control" name="entry.654414173" id="entry.654414173"
                     ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams track by team.name" required>
-                    <!-- <select class="form-control" name="entry.654414173" id="entry.654414173"
-                    ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams | excludeFrom:WC2Team track by team.name" required> -->
-
                     <!-- Need to filter wc2team from wc1team dropdown -->
                     <!-- <select class="form-control" name="entry.654414173" id="entry.654414173"
                     <!-- ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams | filter: (WC2Team ? {name: '!' + WC2Team} : '') track by team.name" required>  -->
@@ -211,8 +208,6 @@
                     <label>Wild Card #2</label>{{WC2Team}}
                     <select class="form-control" name="entry.713813158" id="entry.713813158"
                     ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams | filter:{name: '!' + WC1Team} track by team.name" required>
-                    <!-- <select class="form-control" name="entry.713813158" id="entry.713813158"
-                    ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams | excludeFrom:WC2Team track by team.name" required> -->
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #2 Player</label>
