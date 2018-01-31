@@ -38,7 +38,7 @@ var app = angular
     $scope.prevData=$scope.currData;
     $scope.currData=data;
 
-    $scope.email="";
+    $scope.email="test";
     $scope.entryName="";
     $scope.Seed1=loadSeedData(data.Seed1.elements);
     $scope.Seed2=loadSeedData(data.Seed2.elements);
