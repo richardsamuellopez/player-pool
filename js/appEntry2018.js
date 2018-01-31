@@ -1,15 +1,8 @@
-angular
+var app = angular
 .module('poolEntry2018', [
   'times.tabletop',
   'ui.bootstrap'
 ])
-.filter('excludeFrom',function(){
-      return function(array,expression,comparator){
-        return array.filter(function(item){
-      return !expression || !angular.equals(item,expression);
-    });
-  };
-})
 .config(function(TabletopProvider){
     TabletopProvider.setTabletopOptions({
       //2018 richardsamuellopez player Pool
@@ -76,4 +69,17 @@ angular
     }
   });
   }
+});
+
+app.filter('makeUppercase', function () {
+  return function (item) {
+      return item.toUpperCase();
+  };
+});
+app.filter('excludeFrom',function(){
+      return function(array,expression,comparator){
+        return array.filter(function(item){
+      return !expression || !angular.equals(item,expression);
+    });
+  };
 });
