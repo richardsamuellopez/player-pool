@@ -188,31 +188,27 @@
                   </div>
 
                   <div class="form-group">
-                    <label>Wild Card #1</label>{{WC1Team}}
-
-                    <select class="form-control" name="entry.654414173" id="entry.654414173"
-                    ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams track by team.name" required>
-                    <!-- Need to filter wc2team from wc1team dropdown -->
-                    <!-- <select class="form-control" name="entry.654414173" id="entry.654414173"
-                    <!-- ng-model="WC1Team" ng-options="team.value as team.name for team in WC1.teams | filter: (WC2Team ? {name: '!' + WC2Team} : '') track by team.name" required>  -->
+                    <label>Wild Card #1</label>
+                    <select ng-init="WC1.teams=[]" class="form-control" name="entry.654414173" id="entry.654414173"
+                    ng-model="WC1Team" ng-options="team as team.name for team in WC1.teams | excludeFrom:WC2Team track by team.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #1 Player</label>
                     <select class="form-control" name="entry.1145243786" id="entry.1145243786"
-                    ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team} track by player.name" required>
+                    ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team.name} track by player.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                   </div>
 
                   <div class="form-group">
-                    <label>Wild Card #2</label>{{WC2Team}}
-                    <select class="form-control" name="entry.713813158" id="entry.713813158"
-                    ng-model="WC2Team" ng-options="team.value as team.name for team in WC2.teams | filter:{name: '!' + WC1Team} track by team.name" required>
+                    <label>Wild Card #2</label>
+                    <select ng-init="WC2.teams=[]" class="form-control" name="entry.713813158" id="entry.713813158"
+                    ng-model="WC2Team" ng-options="team as team.name for team in WC2.teams | excludeFrom:WC1Team track by team.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #2 Player</label>
                     <select class="form-control" name="entry.862600197" id="entry.862600197"
-                    ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team} track by player.name" required>
+                    ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team.name} track by player.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                   </div>
@@ -230,6 +226,7 @@
               </div>
             </form>
           </div>
+          
           <div class="container" id="finalRoster" style="display:none;">
             <div><label>Email: </label>{{email}}</div>
             <div><label>Entry: </label>{{entryName}}</div>
@@ -245,8 +242,7 @@
             <div><label>#10: </label>{{seed10Player.name}} - {{seed10Player.team}}</div>
             <div><label>WC#1: </label>{{WC1Player.name}} - {{WC1Player.team}}</div>
             <div><label>WC#2: </label>{{WC2Player.name}} - {{WC2Player.team}}</div>
-
-            </br></br><a href='http://richardsamuellopez.github.io/player-pool/entry.html'>Fill out another</a>
+            </br></br><button class="btn btn-primary mb-2" ng-click="reloadPage()">Fill out another</button>
           </div>
         </main>
 

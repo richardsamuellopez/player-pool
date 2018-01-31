@@ -12,23 +12,22 @@ angular.module('poolEntry2018', [
     });
 
 })
-.controller('PoolCtrl', function($scope, Tabletop, $filter, $timeout, $interval, $http){
+.filter('excludeFrom',function(){
+      return function(array,expression,comparator){
+        return array.filter(function(item){
+          return !expression || !angular.equals(item,expression);
+        });
+      };
+})
+.controller('PoolCtrl', ['$scope', 'Tabletop', '$filter', '$timeout', '$interval', '$http', 'excludeFromFilter', function($scope, Tabletop, $filter, $timeout, $interval, $http, excludeFromFilter){
   $scope.currData="";
   $scope.prevData="";
   $scope.currPlayers="";
   $scope.prevPlayers="";
+
   LoadData();
-  // $interval(LoadData,97000);
-  $scope.clearSearch = function(){
-    $scope.searchText="";
-  };
 
   $scope.reloadPage = function(){window.location.reload();}
-  $scope.isSubmitDisabled = false;
-  $scope.isFormComplete = function() {
-    if($scope.email && $scope.entryName && $scope.seed1Player && $scope.seed2Player && $scope.seed3Player && $scope.seed4Player && $scope.seed5Player && $scope.seed6Player && $scope.seed7Player && $scope.seed8Player && $scope.seed9Player && $scope.seed10Player && $scope.WC1Player && $scope.WC2Player && $scope.seed1Team && $scope.seed2Team && $scope.seed3Team && $scope.seed4Team && $scope.seed5Team && $scope.seed6Team && $scope.seed7Team && $scope.seed8Team && $scope.seed9Team && $scope.seed10Team && $scope.WC1Team && $scope.WC2Team )
-      $scope.isSubmitDisabled = true;
-  };
 
   function LoadData(){Tabletop.then(function(ttdata){
     var currTS = new Date();
@@ -52,7 +51,7 @@ angular.module('poolEntry2018', [
     $scope.WC1=loadSeedData(_.union(data.Seed11.elements, data.Seed12.elements,data.Seed13.elements,data.Seed14.elements,data.Seed15.elements,data.Seed16.elements));
     $scope.WC2=$scope.WC1;
     function loadSeedData(SeedData){
-      var teams = [];// _.filter(SeedData, function(o) { return o.Team != "NO" && isNaN(o.Team); });
+      var teams = [];
       var players=[];
       var currTeam = ""
       for(x=0; x<SeedData.length; x++){
@@ -68,4 +67,4 @@ angular.module('poolEntry2018', [
     }
   });
   }
-});
+}]);
