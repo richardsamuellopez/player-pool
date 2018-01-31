@@ -72,7 +72,9 @@ var app = angular
 });
 
 app.filter('makeUppercase', function () {
+  console.log("makeUppsercase");
   return function (item) {
+    console.log("makeUppsercase: ", item);
       return item.toUpperCase();
   };
 });
