@@ -15,6 +15,7 @@ public class HTMLRead {
   public static String TeamIDsFile = "TeamIDs.txt";
   public static String JSONFile = "2017Rosters.json";
   public static  ArrayList<Team> BracketList = new ArrayList<Team>();
+  public static String BracketURL = "https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
 
   static class Team {
     String name;
@@ -76,7 +77,7 @@ public class HTMLRead {
 
   public static void readBracket() throws IOException, MalformedURLException {
     System.out.println("Read Bracket From wikipedia");
-    URL url = new URL("https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds");
+    URL url = new URL(BracketURL);
     // Get the input stream through URL Connection
     URLConnection con = url.openConnection();
     InputStream is =con.getInputStream();
