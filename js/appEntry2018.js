@@ -30,6 +30,19 @@ angular.module('poolEntry2018', [
   $scope.reloadPage = function(){window.location.reload();}
 
   function LoadData(){Tabletop.then(function(ttdata){
+    // Local
+    // fetch("http://localhost:8080/2017Rosters.json", {
+    // Prod
+    fetch("./2017Rosters.json", {
+          headers : {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+
+        })
+    .then(response => response.json())
+    .then(json => console.log("LOAD: ", json));
+
     var currTS = new Date();
     // console.log("Load Data: ",currTS);
     var data = ttdata[0];
