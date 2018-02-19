@@ -53,17 +53,22 @@ public class HTMLRead {
     // Always wrap FileWriter in BufferedWriter.
     BufferedWriter bufferedWriter =
     new BufferedWriter(fileWriter);
-
-
+    int count = 0;
+    bufferedWriter.write("{\"teams\":[\n");
     for(Team team: BracketList){
       // System.out.println(team.name+ " "+ team.seed+" "+team.teamID+" "+team.roster);
       bufferedWriter.write("{");
       bufferedWriter.write("\"team\": \""+team.name+"\",");
       bufferedWriter.write("\"seed\": \""+team.seed+"\",");
       bufferedWriter.write("\"roster\": "+team.roster);
-      bufferedWriter.write("},\n");
+      if(count++ == BracketList.size() - 1){
+        // Last iteration
+        bufferedWriter.write("}\n");
+      } else {
+        bufferedWriter.write("},\n");
+      }
     }
-
+    bufferedWriter.write("]}");
     // Always close files.
     bufferedWriter.close();
 
@@ -248,7 +253,7 @@ public class HTMLRead {
                startPos = player.indexOf("\">")+2;
                endPos = player.indexOf("</a></td><td>");
                if(startPos>-1){
-                 playerName = player.substring(startPos, endPos);
+                 playerName = "\"" + player.substring(startPos, endPos) + "\"";
                  rosters.add(playerName);
                }
              }
