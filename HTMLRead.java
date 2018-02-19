@@ -13,7 +13,7 @@ import java.util.*;
 public class HTMLRead {
   public static String bracketFile = "Bracket.txt";
   public static String TeamIDsFile = "TeamIDs.txt";
-  public static String JSONFile = "JSONFile.txt";
+  public static String JSONFile = "2017Rosters.json";
   public static  ArrayList<Team> BracketList = new ArrayList<Team>();
 
   static class Team {
