@@ -190,7 +190,7 @@
                   <div class="form-group">
                     <label>Wild Card #1</label>
                     <select ng-init="WC1.teams=[]" class="form-control" name="entry.654414173" id="entry.654414173"
-                    ng-model="WC1Team" ng-options="team as team.name for team in WC1.teams | excludeFrom:WC2Team track by team.name" required>
+                    ng-model="WC1Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC1.teams | excludeFrom:WC2Team track by team.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #1 Player</label>
@@ -203,7 +203,7 @@
                   <div class="form-group">
                     <label>Wild Card #2</label>
                     <select ng-init="WC2.teams=[]" class="form-control" name="entry.713813158" id="entry.713813158"
-                    ng-model="WC2Team" ng-options="team as team.name for team in WC2.teams | excludeFrom:WC1Team track by team.name" required>
+                    ng-model="WC2Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC2.teams | excludeFrom:WC1Team track by team.name" required>
                       <option ng-disabled="true"  ng-selected="true" value=""></option>
                     </select>
                     <label>Wild Card #2 Player</label>

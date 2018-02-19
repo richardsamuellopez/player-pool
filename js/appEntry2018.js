@@ -50,7 +50,7 @@ angular.module('poolEntry2018', [
       //   }
       // }
       SeedData.forEach(team=>{
-        teams.push({name: team.team});
+        teams.push({name: team.team, seed: team.seed});
         team.roster.forEach(player=>{
           players.push({team: team.team, name: player});
         });
