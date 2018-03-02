@@ -35,8 +35,7 @@ angular.module('poolEntry2018', [
     $scope.Seed7=loadSeedData(_.where(json.teams,{seed:'7'}));
     $scope.Seed8=loadSeedData(_.where(json.teams,{seed:'8'}));
     $scope.Seed9=loadSeedData(_.where(json.teams,{seed:'9'}));
-    $scope.Seed10=loadSeedData(_.where(json.teams,{seed:'10'}));
-    $scope.WC1=loadSeedData(_.union(_.where(json.teams,{seed:'11'}), _.where(json.teams,{seed:'12'}),_.where(json.teams,{seed:'13'}),_.where(json.teams,{seed:'14'}),_.where(json.teams,{seed:'15'}),_.where(json.teams,{seed:'16'})));
+    $scope.WC1=loadSeedData(_.union(_.where(json.teams,{seed:'10'}),_.where(json.teams,{seed:'11'}), _.where(json.teams,{seed:'12'}),_.where(json.teams,{seed:'13'}),_.where(json.teams,{seed:'14'}),_.where(json.teams,{seed:'15'}),_.where(json.teams,{seed:'16'})));
     $scope.WC2=$scope.WC1;
     $scope.$apply()
     function loadSeedData(SeedData){
