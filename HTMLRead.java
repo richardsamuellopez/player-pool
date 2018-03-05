@@ -1,19 +1,13 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.io.FileWriter;
-import java.io.BufferedReader;
 import java.net.MalformedURLException;
-import java.io.BufferedWriter;
 import java.util.*;
 
 public class HTMLRead {
   public static String bracketFile = "Bracket.txt";
   public static String TeamIDsFile = "TeamIDs.txt";
-  public static String JSONFile = "2017Rosters.json";
+  public static String JSONFile = "Rosters.json";
   public static  ArrayList<Team> BracketList = new ArrayList<Team>();
   public static String BracketURL = "https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
 
@@ -25,12 +19,12 @@ public class HTMLRead {
   }
 
   public static void main(String[] args) throws IOException {
-
     // Read seeds and teams from wikipedia
-    //DISABLED
-    readBracket();
+    //readBracket();
+    // If wikipedia is not updated add the seed, team to bracket.txt
+    forceFillBracket();
+
     // Read team ids from ESPN
-    //DISABLED
     readTeamIDs();
 
     // Read roster from ESPN
@@ -39,11 +33,11 @@ public class HTMLRead {
     // Output to json data to a file
     createJSONOutput();
 
-    // System.out.println("OUTPUT: " + BracketList);
+    // System.out.println("BracketList: "+ BracketList);
     // BracketList.forEach(team->System.out.println(team.name+ " "+ team.seed+" "+team.teamID+" "+team.roster));
 
     // for(ArrayList team: BracketList){
-    //   System.out.println("TEAM: ", team.name, team.seed);
+    //   System.out.println("TEAM: " + team.name + team.seed);
     //
     // }
   }
@@ -72,6 +66,40 @@ public class HTMLRead {
     bufferedWriter.write("]}");
     // Always close files.
     bufferedWriter.close();
+
+  }
+
+  public static void forceFillBracket()  throws IOException {
+    System.out.println("Force Read Bracket Manual file Bracket.txt");
+    FileReader fileReader =
+        new FileReader(bracketFile);
+
+    // Always wrap FileReader in BufferedReader.
+    BufferedReader bufferedReader =
+        new BufferedReader(fileReader);
+
+    List<String> lines = new ArrayList<String>();
+    String line = null;
+    String seed = "";
+    String team = "";
+    int startPos = -1;
+    int endPos = -1;
+    while((line = bufferedReader.readLine()) != null) {
+      endPos = line.indexOf(",");
+      startPos = 0;
+      seed = line.substring(startPos, endPos);
+      team = line.substring(endPos+1).trim();
+      Team newTeam = new Team();
+
+      newTeam.name = team;
+      newTeam.seed = Integer.parseInt(seed);
+      newTeam.teamID = 0;
+      BracketList.add(newTeam);
+
+    }
+
+    // Always close files.
+    bufferedReader.close();
 
   }
 
@@ -262,7 +290,6 @@ public class HTMLRead {
             team.roster=new ArrayList<String>(rosters);
         }
       }
-     }
+    }
   }
-
 }
