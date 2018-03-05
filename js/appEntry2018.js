@@ -13,9 +13,9 @@ angular.module('poolEntry2018', [
   $scope.reloadPage = function(){window.location.reload();}
 
   // Local
-  // fetch("http://localhost:8080/2017Rosters.json", {
+  // fetch("http://localhost:8080/Rosters.json", {
   // Prod
-  fetch("./2017Rosters.json", {
+  fetch("./Rosters.json", {
     headers : {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -26,7 +26,7 @@ angular.module('poolEntry2018', [
   .then(json => {
     $scope.email="";
     $scope.entryName="";
-    $scope.Seed1=loadSeedData(_.where(json.teams,{seed:'1'}))
+    $scope.Seed1=loadSeedData(_.where(json.teams,{seed:'1'}));
     $scope.Seed2=loadSeedData(_.where(json.teams,{seed:'2'}));
     $scope.Seed3=loadSeedData(_.where(json.teams,{seed:'3'}));
     $scope.Seed4=loadSeedData(_.where(json.teams,{seed:'4'}));
@@ -37,7 +37,8 @@ angular.module('poolEntry2018', [
     $scope.Seed9=loadSeedData(_.where(json.teams,{seed:'9'}));
     $scope.WC1=loadSeedData(_.union(_.where(json.teams,{seed:'10'}),_.where(json.teams,{seed:'11'}), _.where(json.teams,{seed:'12'}),_.where(json.teams,{seed:'13'}),_.where(json.teams,{seed:'14'}),_.where(json.teams,{seed:'15'}),_.where(json.teams,{seed:'16'})));
     $scope.WC2=$scope.WC1;
-    $scope.$apply()
+    $scope.$apply();
+
     function loadSeedData(SeedData){
       var teams = [];
       var players=[];
