@@ -11,6 +11,13 @@ angular.module('poolEntry2018', [
 .controller('PoolCtrl', ['$scope', '$filter', '$timeout', '$interval', '$http', 'excludeFromFilter', function($scope, $filter, $timeout, $interval, $http, excludeFromFilter){
 
   $scope.reloadPage = function(){window.location.reload();}
+  $scope.setWCTeam = function(teams, player) {
+    if(player){
+      var teamObj = _.where(teams,{name: player.team});
+      var returnValue = {name: teamObj[0].name, seed: teamObj[0].seed};
+      return returnValue;
+    }
+  };
 
   // Local
   // fetch("http://localhost:8080/Rosters.json", {
