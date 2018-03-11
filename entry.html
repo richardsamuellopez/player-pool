@@ -218,7 +218,7 @@
                   </select>
                   <label>Wild Card #1 Player</label>
                   <select class="form-control" name="entry.1145243786" id="entry.1145243786"
-                  ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team.name} track by player.name"
+                  ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team.name}:true track by player.name"
                   ng-change="WC1Team===undefined?WC1Team=setWCTeam(WC1.teams, WC1Player):'';" required>
                     <option ng-selected="true" value=""></option>
                   </select>
@@ -233,7 +233,7 @@
                   </select>
                   <label>Wild Card #2 Player</label>
                   <select class="form-control" name="entry.862600197" id="entry.862600197"
-                  ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team.name} track by player.name"
+                  ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team.name}:true track by player.name"
                   ng-change="WC2Team===undefined?WC2Team=setWCTeam(WC2.teams, WC2Player):'';" required>
                     <option ng-selected="true" value=""></option>
                   </select>
