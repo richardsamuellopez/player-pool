@@ -9,7 +9,8 @@ public class HTMLRead {
   public static String TeamIDsFile = "TeamIDs.txt";
   public static String JSONFile = "Rosters.json";
   public static  ArrayList<Team> BracketList = new ArrayList<Team>();
-  public static String BracketURL = "https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
+  //public static String BracketURL = "https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
+  public static String BracketURL = "https://en.wikipedia.org/wiki/2018_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
 
   static class Team {
     String name;
@@ -172,6 +173,10 @@ public class HTMLRead {
               case "Miami (FL)":  team = "Miami";
                     break;
               case "Mount St. Mary's":  team = "Mt. St. Mary's";
+                    break;
+              case "Cal State Fullerton": team = "CS Fullerton";
+                    break;
+              case "College of Charleston": team = "Charleston";
                     break;
           }
 
