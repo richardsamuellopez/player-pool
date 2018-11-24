@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html id="top" lang="en" ng-app="poolEntry2018">
+    <head>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <title>Player Pool Entry 2018</title>
+
+
+      <link href="css/app.css" rel="stylesheet">
+    </head>
+
+    <body ng-controller="PoolCtrl">
+        <nav class="navbar navbar-light bg-light">
+          <span class="navbar-brand mb-0 h1">Player Pool 2K18 Entry Form</span>
+        </nav>
+        <main>
+          <div class="container">
+            <p>Welcome to the NCAA Players Pool 2K18.  If you've played before, welcome back!  If you're new to the pool, thanks for joining.  In an effort to streamline the process on my end, this form will be the only way to submit rosters into the pool.  Please check back on Selection Sunday!</p>
+            <h4>Rosters are due by noon EST, Thursday, March 15th. Entries entered after noon will not be accepted.</h3>
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      View pool rules
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    The rules are as follows:
+                    <ul>
+                      <li>The format of the pool is to construct a team of 11 individual players in the NCAA tournament.  The team with the most cumulative points at the end of the tournament wins.</li>
+                      <li>To start, you'll pick one player from each seed 1-9.   I.E. You pick one player from either Virginia (probably), Villanova (probably) and whoever gets the final #1 seeds.  Repeat for seeds 2 through 9.  The final two players come from any teams seeded 10-16, these are your "Wildcards".  This is a "set it and forget it" roster; once the tournament starts there are no changes allowed.</li>
+                      <li>Wildcard players <b>CANNOT</b> play for the same team.</li>
+                      <li>Play-In Games <b>DO NOT</b> count towards a player's total.  If you want a player on a Play-In team, you should wait and see if they advance to the field of 64 before submitting your roster.</li>
+                      <li>Obviously you are trying to pick players that score lots of points, but to be successful you also have to identify teams that will advance in the tournament.</li>
+                      <li>Rosters are due by noon EST, Thursday, March 15th.</li>
+                      <li>Entry fee is $40.  Payment instructions will be e-mailed to you once your form is submitted.  I think we'll payout the top 4-8 depending on how many entries I receive.  First place will take home 50%.  Other payouts will be determined once I see how many entries are received.  I'll send out the breakdown shortly after the tournament starts.</li>
+                      <li>2017's Payouts were as follows:</li>
+                      <li>1st Place - (50%)</li>
+                      <li>2nd Place - (15%)</li>
+                      <li>3rd Place - (10%)</li>
+                      <li>4th Place - (8%)</li>
+                      <li>5th Place - (7%)</li>
+                      <li>6th Place - (5%)</li>
+                      <li>7th Place - (3%)</li>
+                      <li>8th Place - (2%)</li>
+                      <li>You can enter however many rosters you'd like.  If you have any issues feel to e-mail me.   Also if you have an edit to a roster, please e-mail me vs. submitting a new form.</li>
+                      <li>In the event of a tie, we'll split the prize money between those parties.</li>
+                      <li>Once the tournament begins, I will send out a link to the tracker!  This is a Google Doc that will update the progress of the pool throughout the tournament.  I try to update this very frequently so you can follow the results closely.  <a href="https://docs.google.com/spreadsheets/d/1e6hSA3NeVW_nNcRHcVOQdUe2fLv_XTgQr2468IQzLDI/">Last Year's Tracker</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ng-show="Seed1.teams.length>0" class="container entry-form" ng-cloak>
+            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;" action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" >
+              <div class="row">
+                <div class="form-group col-sm">
+                  <label for="exampleFormControlInput1">Email address</label>
+                  <input type="email" ng-model="email" class="form-control" id="entry.2120297232" name="entry.2120297232" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group col-sm">
+                  <label for="exampleFormControlInput1">Entry Name</label>
+                  <input type="text" ng-model="entryName" class="form-control" id="entry.383545338" name="entry.383545338" placeholder="" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-4">
+                  <label>Seed #1</label>
+                  <select class="form-control" name="entry.1059009687" id="entry.1059009687"
+                  ng-model="seed1Team" ng-options="team as team.name for team in Seed1.teams track by team.name"
+                  ng-change="seed1Team===undefined?seed1Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #1 Player</label>{{}}
+                  <select class="form-control" name="entry.1589326624" id="entry.1589326624"
+                  ng-model="seed1Player" ng-options="player as player.name for player in Seed1.players | filter:{team:seed1Team.name}:true track by player.name"
+                  ng-change="seed1Player!==undefined?seed1Team={name: seed1Player.team, seed: 1}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #2</label>
+                  <select class="form-control" name="entry.1792899743" id="entry.1792899743"
+                  ng-model="seed2Team" ng-options="team as team.name for team in Seed2.teams track by team.name"
+                  ng-change="seed2Team===undefined?seed2Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #2 Player</label>
+                  <select class="form-control" name="entry.496616414" id="entry.496616414"
+                  ng-model="seed2Player" ng-options="player as player.name for player in Seed2.players | filter:{team:seed2Team.name}:true track by player.name"
+                  ng-change="seed2Player!==undefined?seed2Team={name: seed2Player.team, seed: 2}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #3</label>
+                  <select class="form-control" name="entry.298248963" id="entry.298248963"
+                  ng-model="seed3Team" ng-options="team as team.name for team in Seed3.teams track by team.name"
+                  ng-change="seed3Team===undefined?seed3Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #3 Player</label>
+                  <select class="form-control" name="entry.228107489" id="entry.228107489"
+                  ng-model="seed3Player" ng-options="player as player.name for player in Seed3.players | filter:{team:seed3Team.name}:true track by player.name"
+                  ng-change="seed3Player!==undefined?seed3Team={name: seed3Player.team, seed: 3}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #4</label>
+                  <select class="form-control" name="entry.1260734803" id="entry.1260734803"
+                  ng-model="seed4Team" ng-options="team as team.name for team in Seed4.teams track by team.name"
+                  ng-change="seed4Team===undefined?seed4Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #4 Player</label>
+                  <select class="form-control" name="entry.1929196631" id="entry.1929196631"
+                  ng-model="seed4Player" ng-options="player as player.name for player in Seed4.players | filter:{team:seed4Team.name}:true track by player.name"
+                  ng-change="seed4Player!==undefined?seed4Team={name: seed4Player.team, seed: 4}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #5</label>
+                  <select class="form-control" name="entry.265627880" id="entry.265627880"
+                  ng-model="seed5Team" ng-options="team as team.name for team in Seed5.teams track by team.name"
+                  ng-change="seed5Team===undefined?seed5Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #5 Player</label>
+                  <select class="form-control" name="entry.1438588206" id="entry.1438588206"
+                  ng-model="seed5Player" ng-options="player as player.name for player in Seed5.players | filter:{team:seed5Team.name}:true track by player.name"
+                  ng-change="seed5Player!==undefined?seed5Team={name: seed5Player.team, seed: 5}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #6</label>
+                  <select class="form-control" name="entry.688877146" id="entry.688877146"
+                  ng-model="seed6Team" ng-options="team as team.name for team in Seed6.teams track by team.name"
+                  ng-change="seed6Team===undefined?seed6Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #6 Player</label>
+                  <select class="form-control" name="entry.718296763" id="entry.718296763"
+                  ng-model="seed6Player" ng-options="player as player.name for player in Seed6.players | filter:{team:seed6Team.name}:true track by player.name"
+                  ng-change="seed6Player!==undefined?seed6Team={name: seed6Player.team, seed: 6}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #7</label>
+                  <select class="form-control" name="entry.1554732274" id="entry.1554732274"
+                  ng-model="seed7Team" ng-options="team as team.name for team in Seed7.teams track by team.name"
+                  ng-change="seed7Team===undefined?seed7Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #7 Player</label>
+                  <select class="form-control" name="entry.1222291357" id="entry.1222291357"
+                  ng-model="seed7Player" ng-options="player as player.name for player in Seed7.players | filter:{team:seed7Team.name}:true track by player.name"
+                  ng-change="seed7Player!==undefined?seed7Team={name: seed7Player.team, seed: 7}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #8</label>
+                  <select class="form-control" name="entry.1767171400" id="entry.1767171400"
+                  ng-model="seed8Team" ng-options="team as team.name for team in Seed8.teams track by team.name"
+                  ng-change="seed8Team===undefined?seed8Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #8 Player</label>
+                  <select class="form-control" name="entry.581849140" id="entry.581849140"
+                  ng-model="seed8Player" ng-options="player as player.name for player in Seed8.players | filter:{team:seed8Team.name}:true track by player.name"
+                  ng-change="seed8Player!==undefined?seed8Team={name: seed8Player.team, seed: 8}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Seed #9</label>
+                  <select class="form-control" name="entry.99488968" id="entry.99488968"
+                  ng-model="seed9Team" ng-options="team as team.name for team in Seed9.teams track by team.name"
+                  ng-change="seed9Team===undefined?seed9Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Seed #9 Player</label>
+                  <select class="form-control" name="entry.859580858" id="entry.859580858"
+                  ng-model="seed9Player" ng-options="player as player.name for player in Seed9.players | filter:{team:seed9Team.name}:true track by player.name"
+                  ng-change="seed9Player!==undefined?seed9Team={name: seed9Player.team, seed: 9}:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Wild Card #1</label>
+                  <select ng-init="WC1.teams=[]" class="form-control" name="entry.654414173" id="entry.654414173"
+                  ng-model="WC1Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC1.teams | excludeFrom:WC2Team track by team.name"
+                  ng-change="WC1Team===undefined?WC1Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Wild Card #1 Player</label>
+                  <select class="form-control" name="entry.1145243786" id="entry.1145243786"
+                  ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team.name}:true track by player.name"
+                  ng-change="WC1Team===undefined?WC1Team=setWCTeam(WC1.teams, WC1Player):'';" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Wild Card #2</label>
+                  <select ng-init="WC2.teams=[]" class="form-control" name="entry.713813158" id="entry.713813158"
+                  ng-model="WC2Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC2.teams | excludeFrom:WC1Team track by team.name"
+                  ng-change="WC2Team===undefined?WC2Player=undefined:''" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                  <label>Wild Card #2 Player</label>
+                  <select class="form-control" name="entry.862600197" id="entry.862600197"
+                  ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team.name}:true track by player.name"
+                  ng-change="WC2Team===undefined?WC2Team=setWCTeam(WC2.teams, WC2Player):'';" required>
+                    <option ng-selected="true" value=""></option>
+                  </select>
+                </div>
+                <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
+                  <button type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2">Submit</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+          <div class="container" id="finalRoster" style="display:none;">
+            <div><label>Email: </label>{{email}}</div>
+            <div><label>Entry: </label>{{entryName}}</div>
+            <div><label>#1: </label>{{seed1Player.name}} - {{seed1Player.team}}</div>
+            <div><label>#2: </label>{{seed2Player.name}} - {{seed2Player.team}}</div>
+            <div><label>#3: </label>{{seed3Player.name}} - {{seed3Player.team}}</div>
+            <div><label>#4: </label>{{seed4Player.name}} - {{seed4Player.team}}</div>
+            <div><label>#5: </label>{{seed5Player.name}} - {{seed5Player.team}}</div>
+            <div><label>#6: </label>{{seed6Player.name}} - {{seed6Player.team}}</div>
+            <div><label>#7: </label>{{seed7Player.name}} - {{seed7Player.team}}</div>
+            <div><label>#8: </label>{{seed8Player.name}} - {{seed8Player.team}}</div>
+            <div><label>#9: </label>{{seed9Player.name}} - {{seed9Player.team}}</div>
+            <div><label>WC#1: </label>{{WC1Player.name}} - {{WC1Player.team}}</div>
+            <div><label>WC#2: </label>{{WC2Player.name}} - {{WC2Player.team}}</div>
+            </br></br><button class="btn btn-primary mb-2" ng-click="reloadPage()">Fill out another</button>
+          </div>
+        </main>
+
+
+        <script type="text/javascript">var submitted=false;</script>
+
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script> -->
+        <script src="js/angularjs/1.4.1/angular.js"></script>
+        <!-- <script src="//cdn.rawgit.com/jsoma/tabletop/7b2024af62d71d52ac5c6cecc2256b04da00161e/src/tabletop.js"></script> -->
+        <!-- <script src="js/tabletop.js"></script> -->
+        <!-- <script src="//raw.githack.com/times/angular-tabletop/master/TabletopProvider.js"></script> -->
+        <!-- <script src="js/TabletopProvider.js"></script> -->
+        <!--<script src="https://raw.githubusercontent.com/times/angular-tabletop/master/TabletopProvider.js"></script>-->
+        <!--<script src="https://rawgithub.com/richardsamuellopez/player-pool/gh-pages/js/TabletopProvider.js"></script>-->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+        <!-- <script src="js/jquery/1.11.3/jquery.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/appEntry2018.js"></script>
+
+        <script type="text/javascript">
+        $('#gform').on('submit', function(e) {
+          $('#gform *').fadeOut(2000);
+          $('#gform').prepend("Your submission has been processed...");
+          $('#finalRoster').fadeIn(2000);
+          });
+        </script>
+    </body>
+</html>

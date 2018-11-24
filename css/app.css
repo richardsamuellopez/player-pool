@@ -1,0 +1,59 @@
+body {
+    /*margin-top: 40px;*/
+    /*margin-bottom: 80px;*/
+
+}
+.logo {
+    height: 150px;
+    background: url('../logo/UI_Shield.png') no-repeat;
+    background-size: contain;
+    background-position-x: 100%;
+    margin-top: 10px;
+}
+.bs-docs-social {
+    text-align: center;
+}
+.bs-docs-social-buttons {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.bs-docs-social-buttons li {
+    display: inline-block;
+    padding: 5px 8px;
+    line-height: 1;
+}
+
+.jumbotron {
+    padding-top: 28px;
+    padding-bottom: 18px;
+}
+
+.eliminated{
+  background-color:#E06666;
+}
+
+a:focus{
+  outline:none;
+}
+.header-margin{
+  margin-top:20px;
+}
+.clear-button{
+    position: relative;
+    left: -22px;
+    top: 2px;
+}
+main, .entry-form{
+  padding-top: 1rem;
+}
+#finalRoster label {
+  padding-right: 5px;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+@media screen and (max-width: 768px) {
+
+}
