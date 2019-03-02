@@ -1,4 +1,4 @@
-angular.module('poolEntry2018', [
+angular.module('poolEntry', [
   'ui.bootstrap'
 ])
 .filter('excludeFrom',function(){
@@ -20,9 +20,9 @@ angular.module('poolEntry2018', [
   };
 
   // Local
-  // fetch("http://localhost:8080/Rosters.json", {
+  // fetch("http://localhost:8080/data/Rosters.json", {
   // Prod
-  fetch("./Rosters.json", {
+  fetch("./data/Rosters.json", {
     headers : {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
