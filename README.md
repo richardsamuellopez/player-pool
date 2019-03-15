@@ -1,5 +1,7 @@
 # player-pool
 
+#Run locally
+python -m SimpleHTTPServer 8000
 
 Need to make sure the name="entry.2120297232" for the fields on the google form match the id and name on the form in entry.html
 Open google form click the 3 vertical buttons and select Get pre-filled link

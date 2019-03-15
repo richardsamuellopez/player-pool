@@ -250,6 +250,7 @@
           </div>
 
           <div class="container" id="finalRoster" style="display:none;">
+            <p>Your player pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.</p>
             <div><label>Email: </label>{{email}}</div>
             <div><label>Entry: </label>{{entryName}}</div>
             <div><label>#1: </label>{{seed1Player.team}} - {{seed1Player.name}}</div>
@@ -298,7 +299,7 @@
         <script type="text/javascript">
         $('#gform').on('submit', function(e) {
           $('#gform *').fadeOut(2000);
-          $('#gform').prepend("Your submission has been processed...");
+          $('#gform').prepend("Your player pool entry has been submitted...");
           $('#finalRoster').fadeIn(2000);
           });
         </script>
