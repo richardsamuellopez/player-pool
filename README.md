@@ -22,3 +22,6 @@ Notes: Do not need to publish any of the pages to the web unless doing some read
   Select event type - On form submit
   Failure notification settings - Nofity me immediately
 4. Click save - this will prompt to allow the script to access your account and send email as you
+
+#Clean up
+When cleaning up the data from the previous year on the Form Responses 1 sheet make sure to delete the rows and not just the data in them, the google script will just continue adding from the last row.
