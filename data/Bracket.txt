@@ -1,68 +1,68 @@
-1, Virginia
-2, Cincinnati
-3, Tennessee
-4, Arizona
-5, Kentucky
-6, Miami (FL)
-7, Nevada
-8, Creighton
-9, Kansas State
-10, Texas
-11, Loyola–Chicago
-12, Davidson
-13, Buffalo
-14, Wright State
-15, Georgia State
-16, UMBC
-1, Xavier
-2, North Carolina
-3, Michigan
-4, Gonzaga
-5, Ohio State
-6, Houston
-7, Texas A&amp;M
-8, Missouri
-9, Florida State
-10, Providence
-11, San Diego State
-12, South Dakota State
-13, UNC Greensboro
-14, Montana
-15, Lipscomb
+1, Duke
+2, Michigan State
+3, LSU
+4, Virginia Tech
+5, Mississippi State
+6, Maryland
+7, Louisville
+8, VCU
+9, UCF
+10, Minnesota
+11, Belmont
+11, Temple
+12, Liberty
+13, Saint Louis
+14, Yale
+15, Bradley
 16, North Carolina Central
-16, Texas Southern
-1, Villanova
-2, Purdue
-3, Texas Tech
-4, Wichita State
-5, West Virginia
-6, Florida
-7, Arkansas
-8, Virginia Tech
-9, Alabama
-10, Butler
-11, St. Bonaventure
-11, UCLA
-12, Murray State
-13, Marshall
-14, Stephen F. Austin
-15, Cal State Fullerton
-16, LIU Brooklyn
-16, Radford
-1, Kansas
-2, Duke
-3, Michigan State
-4, Auburn
-5, Clemson
-6, TCU
-7, Rhode Island
-8, Seton Hall
-9, NC State
-10, Oklahoma
-11, Arizona State
-11, Syracuse
+16, North Dakota State
+1, Virginia
+2, Tennessee
+3, Purdue
+4, Kansas State
+5, Wisconsin
+6, Villanova
+7, Cincinnati
+8, Ole Miss
+9, Oklahoma
+10, Iowa
+11, Saint Mary's
+12, Oregon
+13, UC Irvine
+14, Old Dominion
+15, Colgate
+16, Gardner-Webb
+1, North Carolina
+2, Kentucky
+3, Houston
+4, Kansas
+5, Auburn
+6, Iowa State
+7, Wofford
+8, Utah State
+9, Washington
+10, Seton Hall
+11, Ohio State
 12, New Mexico State
-13, College of Charleston
-14, Bucknell
-15, Iona
-16, Penn
+13, Northeastern
+14, Georgia State
+15, Abilene Christian
+16, Iona
+1, Gonzaga
+2, Michigan
+3, Texas Tech
+4, Florida State
+5, Marquette
+6, Buffalo
+7, Nevada
+8, Syracuse
+9, Baylor
+10, Florida
+11, Arizona State
+11, St. John's
+12, Murray State
+13, Vermont
+14, Northern Kentucky
+15, Montana
+16, Fairleigh Dickinson
+16, Prairie View A&M

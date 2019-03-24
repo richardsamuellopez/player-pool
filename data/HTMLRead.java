@@ -21,13 +21,16 @@ public class HTMLRead {
 
   public static void main(String[] args) throws IOException {
     // Read seeds and teams from wikipedia
-    readBracket();
+    //readBracket();
 
     // If wikipedia is not updated add the seed, team to bracket.txt and run fillBracket instead of readBracket
-    // fillBracket();
+     fillBracket();
 
-    // Read team ids from ESPN
-    readTeamIDs();
+    //Read team IDs from ESPN
+    // readTeamIDs();
+
+    //If team IDs have not changed do this and skip readTeamIDs
+    fillTeamIDs();
 
     // Read roster from ESPN
     readRosters();
@@ -95,6 +98,7 @@ public class HTMLRead {
       newTeam.name = team;
       newTeam.seed = Integer.parseInt(seed);
       newTeam.teamID = 0;
+      // System.out.println("TEAM: "+newTeam.name+newTeam.seed+newTeam.teamID);
       BracketList.add(newTeam);
 
     }
@@ -233,11 +237,14 @@ public class HTMLRead {
     // ArrayList<String> idList = new ArrayList<String>();
     while ((line = br.readLine()) != null) {
       // Get line from website
-      if(line.contains("<option value=\"\">Men's College Basketball Teams</option>")){
+      // if(line.contains("<option value=\"\">Men's College Basketball Teams</option>")) {
+        if(line.contains("<option data-url=\"/mens-college-basketball/team/stats\" value=\"Selected\">More NCAAM teams</option>")) {
           // idArray = line.split("</option><option value=\"http://www.espn.com/mens-college-basketball/team/stats/_/id/");
-          idArray = line.split("</option><option value=\"//www.espn.com/mens-college-basketball/team/stats/_/id/");
+          // idArray = line.split("</option><option value=\"//www.espn.com/mens-college-basketball/team/stats/_/id/");
+          idArray = line.split("<option data-url=\"/mens-college-basketball/team/stats/_/id/");
       }
     }
+
     String teamLine = "";
     int TeamCount = 0;
     int bracketPos = -1;
@@ -245,22 +252,31 @@ public class HTMLRead {
     String teamID = "";
     for(String IDline: idArray){
       teamLine = IDline.replace("\">",", ");
-      endPos = teamLine.indexOf("</option></select></form>");
+      endPos = teamLine.indexOf("</select>");
 
       if(endPos>-1){
         teamLine = teamLine.substring(1,endPos);
       }
       if(teamCount>0){
-        bufferedWriter.write(teamLine+"\n");
-        teamID = teamLine.split("\\,")[0];
+        // bufferedWriter.write(teamLine+"\n");
+        // System.out.println("teamline: "+teamLine);
+
+        teamID = teamLine.split("\" value=\"Selected, ")[0];
+        //System.out.println("teamID: "+teamID);
+        //System.out.println("teamline: "+teamLine);
+
         teamName = teamLine.substring(teamLine.indexOf(",")+1).trim();
+        teamName= teamName.substring(0,teamName.indexOf("</option>")-1);
         Team currTeam = new Team();
         currTeam.name=teamName;
         // bracketPos = BracketList.indexOf(teamName);
         final String finalTeam = teamName;
         final String finalID = teamID;
+        System.out.println("team "+teamName+" id "+teamID);
+        bufferedWriter.write(teamID+", "+teamName+"\n");
         BracketList.forEach(team->{
-          if(team.name.equals(finalTeam)){
+          // if(team.name.equals(finalTeam)){
+            if(team.name.startsWith(finalTeam)){
             team.teamID=Integer.parseInt(finalID);
           }
         });
@@ -270,6 +286,41 @@ public class HTMLRead {
     // Always close files.
     bufferedWriter.close();
     // return new Object();//{};
+  }
+
+  public static void fillTeamIDs() throws IOException, MalformedURLException {
+    System.out.println("FILL TEAMS");
+    FileReader fileReader =
+        new FileReader(TeamIDsFile);
+    // Always wrap FileReader in BufferedReader.
+    BufferedReader bufferedReader =
+        new BufferedReader(fileReader);
+
+    List<String> lines = new ArrayList<String>();
+    String line = null;
+    String teamid = "";
+    String teamName = "";
+    int startPos = -1;
+    int endPos = 0;
+    while((line = bufferedReader.readLine()) != null) {
+      System.out.println("line: "+line);
+      endPos = line.indexOf(",");
+      startPos = 0;
+      if(endPos>0){
+        teamid = line.substring(startPos, endPos);
+        teamName = line.substring(endPos+1).trim();
+        final String finalTeam = teamName;
+        final String finalID = teamid;
+        System.out.println("team "+teamName+" id "+teamid);
+        BracketList.forEach(team->{
+          // if(team.name.equals(finalTeam)){
+            if(team.name.startsWith(finalTeam)){
+            team.teamID=Integer.parseInt(finalID);
+          }
+        });
+      }
+    }
+    return;
   }
 
   public static void readRosters() throws IOException, MalformedURLException {
@@ -291,13 +342,14 @@ public class HTMLRead {
       while ((line = br.readLine()) != null) {
         // Get line from website
         if(line.contains("<table ")){
-             rosterArray = line.split("<a href=\"http://www.espn.com/mens-college-basketball/player");
+            //  rosterArray = line.split("<a href=\"http://www.espn.com/mens-college-basketball/player");
+             rosterArray = line.split("<figure class=\"Image aspect-ratio headshotV2 headshotV2--sm athlete silo\" style=\"border-color:\" title=\"");
              int endPos = -1;
              int startPos = -1;
              String playerName = "";
              for(String player: rosterArray){
-               startPos = player.indexOf("\">")+2;
-               endPos = player.indexOf("</a>");
+               startPos = 0;
+               endPos = player.indexOf("\">");
                if(startPos>-1){
                  playerName = "\"" + player.substring(startPos, endPos) + "\"";
                  rosters.add(playerName);

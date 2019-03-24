@@ -43,17 +43,19 @@
                       <li>Rosters are due by noon EST, Thursday, March 21st.</li>
                       <li>Entry fee is $40. Payment instructions will be e-mailed to you once your form is submitted. Only digital payments are accepted. We'll likely payout the top 10ish depending on how many entries are received. First place will take home 40%. Other payouts will be determined once I see how many entries are received. I'll send out the breakdown shortly after the tournament starts.</li>
                       <li>2018's Payouts were as follows:</li>
-                      <li>1st Place - (50%)</li>
-                      <li>2nd Place - (15%)</li>
-                      <li>3rd Place - (9%)</li>
-                      <li>4th Place - (7%)</li>
-                      <li>5th Place - (6%)</li>
-                      <li>6th Place - (4%)</li>
-                      <li>7th Place - (3%)</li>
-                      <li>8th Place - (2.5%)</li>
-                      <li>9th Place - (2.0%)</li>
-                      <li>10th Place - (1.5%)</li>
-                      <li>You can enter however many rosters you'd like. If you have any issues feel to e-mail me. Also if you have an edit to a roster, please e-mail me vs. submitting a new form.</li>
+                      <ul>
+                        <li>1st Place - 50%</li>
+                        <li>2nd Place - 15%</li>
+                        <li>3rd Place - 9%</li>
+                        <li>4th Place - 7%</li>
+                        <li>5th Place - 6%</li>
+                        <li>6th Place - 4%</li>
+                        <li>7th Place - 3%</li>
+                        <li>8th Place - 2.5%</li>
+                        <li>9th Place - 2.0%</li>
+                        <li>10th Place - 1.5%</li>
+                      </ul>
+                      <li>You can enter however many rosters you'd like. If you have any issues feel free to e-mail me. Also if you have an edit to a roster, please e-mail me vs. submitting a new form.</li>
                       <li>In the event of a tie, we'll split the prize money between those parties.</li>
                       <li>Once the tournament begins, I will send out a link to the tracker! This is a Google Doc that will update the progress of the pool throughout the tournament. I try to update this very frequently so you can follow the results closely. <a target="_blank" href="https://docs.google.com/spreadsheets/d/19zsFO0pD-0cxdRAbtFqoH5J7ekYcGY2qnJ7zHtca_pY">Last Year's Tracker</a></li>
                     </ul>
@@ -62,9 +64,8 @@
               </div>
             </div>
           </div>
-
           <div ng-show="Seed1.teams.length>0" class="container entry-form" ng-cloak>
-            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;" action="https://docs.google.com/forms/d/e/1FAIpQLSet4oUMSbXIM8plxyId3_LVBzAK4Yk_YDxrWd12MEsFadEHrQ/formResponse?" >
+            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded" target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;" action="https://docs.google.com/forms/d/e/1FAIpQLScTsxY6WklBqb8g_WZBbNnfV0pyAZUaZQf5o4zZrnMxm53pww/formResponse?" >
               <div class="row">
                 <div class="form-group col-sm">
                   <label for="exampleFormControlInput1">Email address</label>
@@ -249,19 +250,20 @@
           </div>
 
           <div class="container" id="finalRoster" style="display:none;">
+            <p>Your player pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.</p>
             <div><label>Email: </label>{{email}}</div>
             <div><label>Entry: </label>{{entryName}}</div>
-            <div><label>#1: </label>{{seed1Player.name}} - {{seed1Player.team}}</div>
-            <div><label>#2: </label>{{seed2Player.name}} - {{seed2Player.team}}</div>
-            <div><label>#3: </label>{{seed3Player.name}} - {{seed3Player.team}}</div>
-            <div><label>#4: </label>{{seed4Player.name}} - {{seed4Player.team}}</div>
-            <div><label>#5: </label>{{seed5Player.name}} - {{seed5Player.team}}</div>
-            <div><label>#6: </label>{{seed6Player.name}} - {{seed6Player.team}}</div>
-            <div><label>#7: </label>{{seed7Player.name}} - {{seed7Player.team}}</div>
-            <div><label>#8: </label>{{seed8Player.name}} - {{seed8Player.team}}</div>
-            <div><label>#9: </label>{{seed9Player.name}} - {{seed9Player.team}}</div>
-            <div><label>WC#1: </label>{{WC1Player.name}} - {{WC1Player.team}}</div>
-            <div><label>WC#2: </label>{{WC2Player.name}} - {{WC2Player.team}}</div>
+            <div><label>#1: </label>{{seed1Player.team}} - {{seed1Player.name}}</div>
+            <div><label>#2: </label>{{seed2Player.team}} - {{seed2Player.name}}</div>
+            <div><label>#3: </label>{{seed3Player.team}} - {{seed3Player.name}}</div>
+            <div><label>#4: </label>{{seed4Player.team}} - {{seed4Player.name}}</div>
+            <div><label>#5: </label>{{seed5Player.team}} - {{seed5Player.name}}</div>
+            <div><label>#6: </label>{{seed6Player.team}} - {{seed6Player.name}}</div>
+            <div><label>#7: </label>{{seed7Player.team}} - {{seed7Player.name}}</div>
+            <div><label>#8: </label>{{seed8Player.team}} - {{seed8Player.name}}</div>
+            <div><label>#9: </label>{{seed9Player.team}} - {{seed9Player.name}}</div>
+            <div><label>WC#1: </label>{{WC1Player.team}} - {{WC1Player.name}}</div>
+            <div><label>WC#2: </label>{{WC2Player.team}} - {{WC2Player.name}}</div>
             </br></br><button class="btn btn-primary mb-2" ng-click="reloadPage()">Fill out another</button>
           </div>
         </main>
@@ -297,7 +299,6 @@
         <script type="text/javascript">
         $('#gform').on('submit', function(e) {
           $('#gform *').fadeOut(2000);
-          $('#gform').prepend("Your submission has been processed...");
           $('#finalRoster').fadeIn(2000);
           });
         </script>
