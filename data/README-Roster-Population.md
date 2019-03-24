@@ -1,5 +1,5 @@
 #How to populate rosters for player pool entry form
-1. Go to player-pool folder
+1. Go to player-pool/data folder
 2. Run `javac HTMLRead.java`
 3. Run `java HTMLRead`
 4. Output is created in Rosters.json
