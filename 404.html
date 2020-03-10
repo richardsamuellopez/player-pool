@@ -1,0 +1,132 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting</title>
+  </head>
+  <body> -->
+  <!-- <body onload="redirect()"> -->
+      <!--
+    <h1 style="text-align: center; padding-top: 50px; display: block;">Redirecting...</h1>
+    <a id="back-link" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path fill="#00ad9f" d="M11.9998836,4.09370803 L8.55809517,7.43294953 C8.23531459,7.74611298 8.23531459,8.25388736 8.55809517,8.56693769 L12,11.9062921 L9.84187871,14 L4.24208544,8.56693751 C3.91930485,8.25388719 3.91930485,7.74611281 4.24208544,7.43294936 L9.84199531,2 L11.9998836,4.09370803 Z"></path>
+        </svg>
+        Back to our site
+       </a>
+	<script>
+	  function redirect() {
+		setTimeout(function(){ 
+				window.location.replace("/");
+			}
+			, 100);	
+		}
+	</script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script>
+
+var myGamePiece;
+var myBackground;
+
+function startGame() {
+    myGamePiece = new component(30, 30, "smiley.gif", 10, 120, "image");
+    myBackground = new component(656, 270, "citymarket.jpg", 0, 0, "image");
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    }
+}
+
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+    }
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        if (type == "image") {
+            ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;        
+    }    
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    myBackground.newPos();    
+    myBackground.update();
+    myGamePiece.newPos();    
+    myGamePiece.update();
+}
+
+function move(dir) {
+    myGamePiece.image.src = "angry.gif";
+    if (dir == "up") {myGamePiece.speedY = -1; }
+    if (dir == "down") {myGamePiece.speedY = 1; }
+    if (dir == "left") {myGamePiece.speedX = -1; }
+    if (dir == "right") {myGamePiece.speedX = 1; }
+}
+
+function clearmove() {
+    myGamePiece.image.src = "smiley.gif";
+    myGamePiece.speedX = 0; 
+    myGamePiece.speedY = 0; 
+}
+</script>
+<div style="text-align:center;width:480px;">
+  <button onmousedown="move('up')" onmouseup="clearmove()" ontouchstart="move('up')">UP</button><br><br>
+  <button onmousedown="move('left')" onmouseup="clearmove()" ontouchstart="move('left')">LEFT</button>
+  <button onmousedown="move('right')" onmouseup="clearmove()" ontouchstart="move('right')">RIGHT</button><br><br>
+  <button onmousedown="move('down')" onmouseup="clearmove()" ontouchstart="move('down')">DOWN</button>
+</div>
+
+<p>Update the background before updating other components to make sure the other components are dispalyed on top of the background.</p>
+</body>
+</html>
