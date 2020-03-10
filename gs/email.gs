@@ -182,7 +182,7 @@ function sendEmail(entryData) {
 //  var RowValues = typeof entryData !== 'undefined' ? entryData : RowData[0];
 
   var SendTo = RowValues[1];
-  var Subject = "Player Pool 2K19";  
+  var Subject = "Player Pool 2020";
   var message = buildBody(RowValues, false);
   var messageHTML = buildBody(RowValues, true);
   var options = {
@@ -200,7 +200,7 @@ function sendEmail(entryData) {
       console.log('Creating draft: ', RowValues[0], RowValues[1], RowValues[2], RowValues[25], RowValues[26]);
       GmailApp.createDraft(SendTo, Subject, message, options);
       if ( quota > 0) {
-        GmailApp.sendEmail("corey.waddell@gmail.com", "Player Pool 2K19 Email Limit Reached Quota: " + quota , "The email limit has been reached. Check the drafts folder for emails that need to be sent.");
+        GmailApp.sendEmail("corey.waddell@gmail.com", "Player Pool 2020 Email Limit Reached Quota: " + quota , "The email limit has been reached. Check the drafts folder for emails that need to be sent.");
       }
     } else {
       // Quota not reached so send the actual email  

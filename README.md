@@ -25,3 +25,7 @@ Notes: Do not need to publish any of the pages to the web unless doing some read
 
 ### Clean up
 When cleaning up the data from the previous year on the Form Responses 1 sheet make sure to delete the rows and not just the data in them, the google script will just continue adding from the last row.
+
+### Yearly Update
+1. Update dates in email.gs and save to the scripts for the google sheet
+2. Update the dates in entry.html
