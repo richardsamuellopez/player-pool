@@ -42,11 +42,9 @@ canvas {
 <script>
 
 var myGamePiece;
-var myBackground;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "smiley.gif", 10, 120, "image");
-    myBackground = new component(656, 270, "citymarket.jpg", 0, 0, "image");
+    myGamePiece = new component(30, 30, "/resources/smiley.gif", 10, 120, "image");
     myGameArea.start();
 }
 
@@ -95,19 +93,17 @@ function component(width, height, color, x, y, type) {
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY;        
-    }    
+    }
 }
 
 function updateGameArea() {
     myGameArea.clear();
-    myBackground.newPos();    
-    myBackground.update();
-    myGamePiece.newPos();    
+    myGamePiece.newPos();
     myGamePiece.update();
 }
 
 function move(dir) {
-    myGamePiece.image.src = "angry.gif";
+    myGamePiece.image.src = "/resources/angry.gif";
     if (dir == "up") {myGamePiece.speedY = -1; }
     if (dir == "down") {myGamePiece.speedY = 1; }
     if (dir == "left") {myGamePiece.speedX = -1; }
@@ -115,7 +111,7 @@ function move(dir) {
 }
 
 function clearmove() {
-    myGamePiece.image.src = "smiley.gif";
+    myGamePiece.image.src = "/resources/smiley.gif";
     myGamePiece.speedX = 0; 
     myGamePiece.speedY = 0; 
 }
@@ -127,6 +123,9 @@ function clearmove() {
   <button onmousedown="move('down')" onmouseup="clearmove()" ontouchstart="move('down')">DOWN</button>
 </div>
 
-<p>Update the background before updating other components to make sure the other components are dispalyed on top of the background.</p>
+<a id="back-link" href="/">
+    
+    Back to our site
+   </a>
 </body>
 </html>
