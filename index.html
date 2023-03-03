@@ -92,6 +92,7 @@
                   <label for="exampleFormControlInput1">PIN</label>
                   <input type="text"
                     maxlength="7"
+                    pattern="[0-9]*"
                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                     ng-model="pin" class="form-control" id={{pinID}} name={{pinID}} placeholder="" required>
                 </div>
