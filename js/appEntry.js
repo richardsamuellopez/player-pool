@@ -15,29 +15,31 @@ angular.module('poolEntry', [
   $scope.fee = "$50";
   $scope.emailID = "entry.2120297232";
   $scope.entryNameID = "entry.383545338";
-  $scope.pinID = "entry.new";
-  $scope.seed1Team = "entry.1059009687"
-  $scope.seed1Player = "entry.1589326624"
-  $scope.seed2Team = "entry.1792899743"
-  $scope.seed2Player = "entry.496616414"
-  $scope.seed3Team = "entry.298248963"
-  $scope.seed3Player = "entry.228107489"
-  $scope.seed4Team = "entry.1260734803"
-  $scope.seed4Player = "entry.1929196631"
-  $scope.seed5Team = "entry.265627880"
-  $scope.seed5Player = "entry.1438588206"
-  $scope.seed6Team = "entry.688877146"
-  $scope.seed6Player = "entry.718296763"
-  $scope.seed7Team = "entry.1554732274"
-  $scope.seed7Player = "entry.1222291357"
-  $scope.seed8Team = "entry.1767171400"
-  $scope.seed8Player = "entry.581849140"
-  $scope.seed9Team = "entry.99488968"
-  $scope.seed9Player = "entry.859580858"
-  $scope.seedWC1Team = "entry.654414173"
-  $scope.seedWC1Player = "entry.1145243786"
-  $scope.seedWC2Team = "entry.713813158"
-  $scope.seedWC2Player = "entry.862600197"
+  $scope.pinID = "entry.340221862";
+  $scope.entry = {
+    'seed1Team': 'entry.1059009687',
+    'seed1Player': 'entry.1589326624',
+    'seed2Team': 'entry.1792899743',
+    'seed2Player': 'entry.496616414',
+    'seed3Team': 'entry.298248963',
+    'seed3Player': 'entry.228107489',
+    'seed4Team': 'entry.1260734803',
+    'seed4Player': 'entry.1929196631',
+    'seed5Team': 'entry.265627880',
+    'seed5Player': 'entry.1438588206',
+    'seed6Team': 'entry.688877146',
+    'seed6Player': 'entry.718296763',
+    'seed7Team': 'entry.1554732274',
+    'seed7Player': 'entry.1222291357',
+    'seed8Team': 'entry.1767171400',
+    'seed8Player': 'entry.581849140',
+    'seed9Team': 'entry.99488968',
+    'seed9Player': 'entry.859580858',
+    'seedWC1Team': 'entry.654414173',
+    'seedWC1Player': 'entry.1145243786',
+    'seedWC2Team': 'entry.713813158',
+    'seedWC2Player': 'entry.862600197'
+  }
   // END OF VARIABLES TO UPDATE
 
   $scope.reloadPage = function(){window.location.reload();}

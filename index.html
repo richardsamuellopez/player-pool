@@ -77,7 +77,7 @@
             <!-- 2023 form update this -->
             <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
             target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
-              action="https://docs.google.com/forms/d/e/1R91x6RUs4rQgd1EdvfaQnfCeC50OBC7P7Tm8W4h33Rg/formResponse?"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSdidS7iOaR4cLvIdEVPABRITcHvB4-q5oxn8KlABWOopIPJLw/formResponse?"
             >
               <div class="row">
                 <div class="form-group col-sm">
@@ -100,13 +100,13 @@
               <div class="row">
                 <div class="form-group col-sm-4">
                   <label>Seed #1</label>
-                  <select class="form-control" name={{seed1Team}} id={{seed1Team}}
+                  <select class="form-control" name={{entry.seed1Team}} id={{entry.seed1Team}}
                   ng-model="seed1Team" ng-options="team as team.name for team in Seed1.teams track by team.name"
                   ng-change="seed1Team===undefined?seed1Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
-                  <label>Seed #1 Player</label>{{}}
-                  <select class="form-control" name={{seed1Player}} id={{seed1Player}}
+                  <label>Seed #1 Player</label>
+                  <select class="form-control" name={{entry.seed1Player}} id={{entry.seed1Player}}
                   ng-model="seed1Player" ng-options="player as player.name for player in Seed1.players | filter:{team:seed1Team.name}:true track by player.name"
                   ng-change="seed1Player!==undefined?seed1Team={name: seed1Player.team, seed: 1}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -115,13 +115,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #2</label>
-                  <select class="form-control" name={{seed2Team}} id={{seed2Team}}
+                  <select class="form-control" name={{entry.seed2Team}} id={{entry.seed2Team}}
                   ng-model="seed2Team" ng-options="team as team.name for team in Seed2.teams track by team.name"
                   ng-change="seed2Team===undefined?seed2Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #2 Player</label>
-                  <select class="form-control" name={{seed2Player}} id={{seed2Player}}
+                  <select class="form-control" name={{entry.seed2Player}} id={{entry.seed2Player}}
                   ng-model="seed2Player" ng-options="player as player.name for player in Seed2.players | filter:{team:seed2Team.name}:true track by player.name"
                   ng-change="seed2Player!==undefined?seed2Team={name: seed2Player.team, seed: 2}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -130,13 +130,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #3</label>
-                  <select class="form-control" name={{seed3Team}} id={{seed3Team}}
+                  <select class="form-control" name={{entry.seed3Team}} id={{entry.seed3Team}}
                   ng-model="seed3Team" ng-options="team as team.name for team in Seed3.teams track by team.name"
                   ng-change="seed3Team===undefined?seed3Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #3 Player</label>
-                  <select class="form-control" name={{seed3Player}} id={{seed3Player}}
+                  <select class="form-control" name={{entry.seed3Player}} id={{entry.seed3Player}}
                   ng-model="seed3Player" ng-options="player as player.name for player in Seed3.players | filter:{team:seed3Team.name}:true track by player.name"
                   ng-change="seed3Player!==undefined?seed3Team={name: seed3Player.team, seed: 3}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -145,13 +145,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #4</label>
-                  <select class="form-control" name={{seed4Team}} id={{seed4Team}}
+                  <select class="form-control" name={{entry.seed4Team}} id={{entry.seed4Team}}
                   ng-model="seed4Team" ng-options="team as team.name for team in Seed4.teams track by team.name"
                   ng-change="seed4Team===undefined?seed4Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #4 Player</label>
-                  <select class="form-control" name={{seed4Player}} id={{seed4Player}}
+                  <select class="form-control" name={{entry.seed4Player}} id={{entry.seed4Player}}
                   ng-model="seed4Player" ng-options="player as player.name for player in Seed4.players | filter:{team:seed4Team.name}:true track by player.name"
                   ng-change="seed4Player!==undefined?seed4Team={name: seed4Player.team, seed: 4}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -160,13 +160,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #5</label>
-                  <select class="form-control" name={{seed5Team}} id={{seed5Team}}
+                  <select class="form-control" name={{entry.seed5Team}} id={{entry.seed5Team}}
                   ng-model="seed5Team" ng-options="team as team.name for team in Seed5.teams track by team.name"
                   ng-change="seed5Team===undefined?seed5Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #5 Player</label>
-                  <select class="form-control" name={{seed5Player}} id={{seed5Player}}
+                  <select class="form-control" name={{entry.seed5Player}} id={{entry.seed5Player}}
                   ng-model="seed5Player" ng-options="player as player.name for player in Seed5.players | filter:{team:seed5Team.name}:true track by player.name"
                   ng-change="seed5Player!==undefined?seed5Team={name: seed5Player.team, seed: 5}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -175,13 +175,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #6</label>
-                  <select class="form-control" name={{seed6Team}} id={{seed6Team}}
+                  <select class="form-control" name={{entry.seed6Team}} id={{entry.seed6Team}}
                   ng-model="seed6Team" ng-options="team as team.name for team in Seed6.teams track by team.name"
                   ng-change="seed6Team===undefined?seed6Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #6 Player</label>
-                  <select class="form-control" name={{seed6Player}} id={{seed6Player}}
+                  <select class="form-control" name={{entry.seed6Player}} id={{entry.seed6Player}}
                   ng-model="seed6Player" ng-options="player as player.name for player in Seed6.players | filter:{team:seed6Team.name}:true track by player.name"
                   ng-change="seed6Player!==undefined?seed6Team={name: seed6Player.team, seed: 6}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -190,13 +190,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #7</label>
-                  <select class="form-control" name={{seed7Team}} id={{seed7Team}}
+                  <select class="form-control" name={{entry.seed7Team}} id={{entry.seed7Team}}
                   ng-model="seed7Team" ng-options="team as team.name for team in Seed7.teams track by team.name"
                   ng-change="seed7Team===undefined?seed7Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #7 Player</label>
-                  <select class="form-control" name={{seed7Player}} id={{seed7Player}}
+                  <select class="form-control" name={{entry.seed7Player}} id={{entry.seed7Player}}
                   ng-model="seed7Player" ng-options="player as player.name for player in Seed7.players | filter:{team:seed7Team.name}:true track by player.name"
                   ng-change="seed7Player!==undefined?seed7Team={name: seed7Player.team, seed: 7}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -205,13 +205,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #8</label>
-                  <select class="form-control" name={{seed8Team}} id={{seed8Team}}
+                  <select class="form-control" name={{entry.seed8Team}} id={{entry.seed8Team}}
                   ng-model="seed8Team" ng-options="team as team.name for team in Seed8.teams track by team.name"
                   ng-change="seed8Team===undefined?seed8Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #8 Player</label>
-                  <select class="form-control" name={{seed8Player}} id={{seed8Player}}
+                  <select class="form-control" name={{entry.seed8Player}} id={{entry.seed8Player}}
                   ng-model="seed8Player" ng-options="player as player.name for player in Seed8.players | filter:{team:seed8Team.name}:true track by player.name"
                   ng-change="seed8Player!==undefined?seed8Team={name: seed8Player.team, seed: 8}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -220,13 +220,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Seed #9</label>
-                  <select class="form-control" name={{seed9Team}} id={{seed9Team}}
+                  <select class="form-control" name={{entry.seed9Team}} id={{entry.seed9Team}}
                   ng-model="seed9Team" ng-options="team as team.name for team in Seed9.teams track by team.name"
                   ng-change="seed9Team===undefined?seed9Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Seed #9 Player</label>
-                  <select class="form-control" name={{seed9Player}} id={{seed9Player}}
+                  <select class="form-control" name={{entry.seed9Player}} id={{entry.seed9Player}}
                   ng-model="seed9Player" ng-options="player as player.name for player in Seed9.players | filter:{team:seed9Team.name}:true track by player.name"
                   ng-change="seed9Player!==undefined?seed9Team={name: seed9Player.team, seed: 9}:''" required>
                     <option ng-selected="true" value=""></option>
@@ -235,13 +235,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Wild Card #1</label>
-                  <select ng-init="WC1.teams=[]" class="form-control" name={{seedWC1Team}} id={{seedWC1Team}}
+                  <select ng-init="WC1.teams=[]" class="form-control" name={{entry.seedWC1Team}} id={{entry.seedWC1Team}}
                   ng-model="WC1Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC1.teams | excludeFrom:WC2Team track by team.name"
                   ng-change="WC1Team===undefined?WC1Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Wild Card #1 Player</label>
-                  <select class="form-control" name={{seedWC1Player}} id={{seedWC1Player}}
+                  <select class="form-control" name={{entry.seedWC1Player}} id={{entry.seedWC1Player}}
                   ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team.name}:true track by player.name"
                   ng-change="WC1Team===undefined?WC1Team=setWCTeam(WC1.teams, WC1Player):'';" required>
                     <option ng-selected="true" value=""></option>
@@ -250,13 +250,13 @@
 
                 <div class="form-group col-sm-4">
                   <label>Wild Card #2</label>
-                  <select ng-init="WC2.teams=[]" class="form-control" name={{seedWC2Team}} id={{seedWC2Team}}
+                  <select ng-init="WC2.teams=[]" class="form-control" name={{entry.seedWC2Team}} id={{entry.seedWC2Team}}
                   ng-model="WC2Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC2.teams | excludeFrom:WC1Team track by team.name"
                   ng-change="WC2Team===undefined?WC2Player=undefined:''" required>
                     <option ng-selected="true" value=""></option>
                   </select>
                   <label>Wild Card #2 Player</label>
-                  <select class="form-control" name={{seedWC2Player}} id={{seedWC2Player}}
+                  <select class="form-control" name={{entry.seedWC2Player}} id={{entry.seedWC2Player}}
                   ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team.name}:true track by player.name"
                   ng-change="WC2Team===undefined?WC2Team=setWCTeam(WC2.teams, WC2Player):'';" required>
                     <option ng-selected="true" value=""></option>
