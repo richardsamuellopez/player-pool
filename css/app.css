@@ -59,7 +59,7 @@ main, .entry-form{
 }
 
 @media screen and (max-width: 575px) {
-  button {
+  .submit-btn, .do-it-again-btn {
     margin-top: 2rem;
     width: 100%;
   }
