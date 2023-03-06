@@ -59,8 +59,8 @@ main, .entry-form{
 }
 
 @media screen and (max-width: 575px) {
-  .submit-btn, .do-it-again-btn {
-    margin-top: 2rem;
+  .btn-form {
+    margin-top: 1rem;
     width: 100%;
   }
 }

@@ -40,12 +40,37 @@ angular.module('poolEntry', [
     'seedWC2Team': 'entry.713813158',
     'seedWC2Player': 'entry.862600197'
   }
+  $scope.pinCheckKey = "AKfycbyuMyAxoi7TYzezriefRiSyUqw7F7Gjivvoy6koygB7pqneWW-Xv_c22F6tYpYwsUUpZA";
   // END OF VARIABLES TO UPDATE
 
+  $scope.error = false;
+  $scope.pinVerified = false;
+  $scope.checking = false;
   $scope.reloadPage = function(){window.location.reload();}
+  $scope.checkEntry = function(){
+    $scope.checking = true;
+    if($scope.email !== '' && $scope.pin !== ''){
+      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin)
+      .then(response => response.json())
+      .then(json => {
+        if(json.success === true && json.data && json.data.trim() !== '' && json.error === false){
+          $scope.entryName = json.data;
+          $scope.pinVerified = true;
+        } else {
+          $scope.error = true;
+        }
+        $scope.checking = false;
+        $scope.$apply();
+      });
+    } else {
+      $scope.checking = false;
+      $scope.$apply();
+    };
+  };
+
   $scope.setWCTeam = function(teams, player) {
     if(player){
-      var teamObj = _.where(teams,{name: player.team});
+      var teamObj = teams.filter(a => a.name === player.team);
       var returnValue = {name: teamObj[0].name, seed: teamObj[0].seed};
       return returnValue;
     }
@@ -64,18 +89,20 @@ angular.module('poolEntry', [
   .then(response => response.json())
   .then(json => {
     $scope.email="";
+    $scope.email="rsl1@gmail.com";
     $scope.entryName="";
     $scope.pin="";
-    $scope.Seed1=loadSeedData(_.where(json.teams,{seed:'1'}));
-    $scope.Seed2=loadSeedData(_.where(json.teams,{seed:'2'}));
-    $scope.Seed3=loadSeedData(_.where(json.teams,{seed:'3'}));
-    $scope.Seed4=loadSeedData(_.where(json.teams,{seed:'4'}));
-    $scope.Seed5=loadSeedData(_.where(json.teams,{seed:'5'}));
-    $scope.Seed6=loadSeedData(_.where(json.teams,{seed:'6'}));
-    $scope.Seed7=loadSeedData(_.where(json.teams,{seed:'7'}));
-    $scope.Seed8=loadSeedData(_.where(json.teams,{seed:'8'}));
-    $scope.Seed9=loadSeedData(_.where(json.teams,{seed:'9'}));
-    $scope.WC1=loadSeedData(_.union(_.where(json.teams,{seed:'10'}),_.where(json.teams,{seed:'11'}), _.where(json.teams,{seed:'12'}),_.where(json.teams,{seed:'13'}),_.where(json.teams,{seed:'14'}),_.where(json.teams,{seed:'15'}),_.where(json.teams,{seed:'16'})));
+    $scope.pin="6513333";
+    $scope.Seed1=loadSeedData(json.teams.filter(team => team.seed === '1'));
+    $scope.Seed2=loadSeedData(json.teams.filter(team => team.seed === '2'));
+    $scope.Seed3=loadSeedData(json.teams.filter(team => team.seed === '3'));
+    $scope.Seed4=loadSeedData(json.teams.filter(team => team.seed === '4'));
+    $scope.Seed5=loadSeedData(json.teams.filter(team => team.seed === '5'));
+    $scope.Seed6=loadSeedData(json.teams.filter(team => team.seed === '6'));
+    $scope.Seed7=loadSeedData(json.teams.filter(team => team.seed === '7'));
+    $scope.Seed8=loadSeedData(json.teams.filter(team => team.seed === '8'));
+    $scope.Seed9=loadSeedData(json.teams.filter(team => team.seed === '9'));
+    $scope.WC1=loadSeedData(json.teams.filter(team => parseInt(team.seed) >= 10).sort((a, b) => a.seed - b.seed));
     $scope.WC2=$scope.WC1;
     $scope.$apply();
 

@@ -14,7 +14,8 @@
       <link rel="apple-touch-icon-precomposed" href="/resources/icons/basketball-57-184778.png">
       <link rel="icon" href="/resources/icons/basketball-32-184778.png" sizes="32x32">
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
       <link href="css/app.css" rel="stylesheet">
 
@@ -68,19 +69,13 @@
               </div>
             </div>
           </div>
+
           <div ng-show="Seed1.teams.length>0" class="container entry-form" ng-cloak>
-            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
-              target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
-              action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeXmdcBSWdpHTSbj2jeGsDNdANOdH3yQZ2NBgyqYA9j4c3t4Q/formResponse"
-            >
+            <form ng-show="!pinVerified">
               <div class="row">
                 <div class="form-group col-sm-4">
-                  <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" ng-model="email" class="form-control" id={{emailID}} name={{emailID}} placeholder="name@example.com" required>
-                </div>
-                <div class="form-group col-sm-4">
-                  <label for="exampleFormControlInput1">Entry Name</label>
-                  <input type="text" ng-model="entryName" class="form-control" id={{entryNameID}} name={{entryNameID}} placeholder="" required>
+                  <label for="exampleFormControlInput1">Email Address</label>
+                  <input type="email" ng-model="email" ng-disabled="pinVerified || checking" class="form-control" placeholder="name@example.com" required>
                 </div>
                 <div class="form-group col-sm-4">
                   <label for="exampleFormControlInput1">PIN</label>
@@ -88,9 +83,47 @@
                     maxlength="7"
                     pattern="[0-9]*"
                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    ng-model="pin" ng-disabled="pinVerified || checking" class="form-control" placeholder="" required>
+                </div>
+                <div ng-show="error" class="col order-md-12">
+                  <div class="alert alert-danger" role="alert">
+                    The Email Address and PIN are not valid.
+                    <br>Please verify they are both correct and try again.
+                    <br>If the issues remains contact me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.
+                  </div>
+                </div>
+                <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
+                  <button type="submit" name="checkEntry" ng-disabled="checking" ng-click="checkEntry()" class="btn btn-primary mb-2 btn-form">
+                      <div ng-if="checking" class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                      <span ng-if="!checking">Continue</span>
+                    </button>
+                </div>
+             </div>
+            </form>
+
+            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
+              ng-show="pinVerified"
+              target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
+              action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeXmdcBSWdpHTSbj2jeGsDNdANOdH3yQZ2NBgyqYA9j4c3t4Q/formResponse"
+            >
+              <div class="row">
+                <div class="form-group col-sm-4">
+                  <label for="exampleFormControlInput1">Email Address</label>
+                  <input disabled type="email" ng-model="email" class="form-control" id={{emailID}} name={{emailID}} required>
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="exampleFormControlInput1">PIN</label>
+                  <input
+                    disabled
+                    type="text"
                     ng-model="pin" class="form-control" id={{pinID}} name={{pinID}} placeholder="" required>
                 </div>
-
+                <div class="form-group col-sm-4" ng-show="pinVerified">
+                  <label for="exampleFormControlInput1">Entry Name</label>
+                  <input disabled type="text" ng-model="entryName" class="form-control" id={{entryNameID}} name={{entryNameID}} placeholder="" required>
+                </div>
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label>Seed #1</label>
@@ -300,30 +333,33 @@
                   </div>
                 </div>
                 <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
-                  <button type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2 submit-btn">Submit</button>
+                  <button type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2 btn-form">Submit</button>
                 </div>
-
               </div>
             </form>
           </div>
 
           <div class="container" id="finalRoster" style="display:none;">
-            <p>Your player pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.</p>
-            <div><label>Email: </label>{{email}}</div>
-            <div><label>Entry: </label>{{entryName}}</div>
-            <div><label>PIN: </label>{{pin}}</div>
-            <div><label>#1: </label>{{seed1Player.team}} - {{seed1Player.name}}</div>
-            <div><label>#2: </label>{{seed2Player.team}} - {{seed2Player.name}}</div>
-            <div><label>#3: </label>{{seed3Player.team}} - {{seed3Player.name}}</div>
-            <div><label>#4: </label>{{seed4Player.team}} - {{seed4Player.name}}</div>
-            <div><label>#5: </label>{{seed5Player.team}} - {{seed5Player.name}}</div>
-            <div><label>#6: </label>{{seed6Player.team}} - {{seed6Player.name}}</div>
-            <div><label>#7: </label>{{seed7Player.team}} - {{seed7Player.name}}</div>
-            <div><label>#8: </label>{{seed8Player.team}} - {{seed8Player.name}}</div>
-            <div><label>#9: </label>{{seed9Player.team}} - {{seed9Player.name}}</div>
-            <div><label>WC#1: </label>{{WC1Player.team}} - {{WC1Player.name}}</div>
-            <div><label>WC#2: </label>{{WC2Player.team}} - {{WC2Player.name}}</div>
-            <button class="btn btn-primary mb-2 do-it-again-btn" ng-click="reloadPage()">Fill out another</button>
+            <div class="alert alert-success" role="alert">
+              Your player pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.
+            </div>
+            <div class="alert alert-primary" role="alert">
+              <div><label>Email: </label>{{email}}</div>
+              <div><label>Entry: </label>{{entryName}}</div>
+              <div><label>PIN: </label>{{pin}}</div>
+              <div><label>#1: </label>{{seed1Player.team}} - {{seed1Player.name}}</div>
+              <div><label>#2: </label>{{seed2Player.team}} - {{seed2Player.name}}</div>
+              <div><label>#3: </label>{{seed3Player.team}} - {{seed3Player.name}}</div>
+              <div><label>#4: </label>{{seed4Player.team}} - {{seed4Player.name}}</div>
+              <div><label>#5: </label>{{seed5Player.team}} - {{seed5Player.name}}</div>
+              <div><label>#6: </label>{{seed6Player.team}} - {{seed6Player.name}}</div>
+              <div><label>#7: </label>{{seed7Player.team}} - {{seed7Player.name}}</div>
+              <div><label>#8: </label>{{seed8Player.team}} - {{seed8Player.name}}</div>
+              <div><label>#9: </label>{{seed9Player.team}} - {{seed9Player.name}}</div>
+              <div><label>WC#1: </label>{{WC1Player.team}} - {{WC1Player.name}}</div>
+              <div><label>WC#2: </label>{{WC2Player.team}} - {{WC2Player.name}}</div>
+            </div>
+            <button class="btn btn-primary mb-2 btn-form" ng-click="reloadPage()">Fill out another</button>
           </div>
         </main>
 
@@ -343,15 +379,20 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
         <!-- <script src="js/jquery/1.11.3/jquery.min.js"></script> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
         <!-- Latest compiled and minified JavaScript -->
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
         <script src="js/appEntry.js"></script>
 
         <script type="text/javascript">
