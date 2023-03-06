@@ -40,7 +40,7 @@ angular.module('poolEntry', [
     'seedWC2Team': 'entry.713813158',
     'seedWC2Player': 'entry.862600197'
   }
-  $scope.pinCheckKey = "AKfycbyuMyAxoi7TYzezriefRiSyUqw7F7Gjivvoy6koygB7pqneWW-Xv_c22F6tYpYwsUUpZA";
+  $scope.pinCheckKey = "AKfycbzRiinQc1I4bY5OS6T-lHse6ZOX45o0H7T4HQ_4PE9CErz5n4SEFYaY1YtK6zOPoMbq";
   // END OF VARIABLES TO UPDATE
 
   $scope.error = false;
