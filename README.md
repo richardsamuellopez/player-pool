@@ -9,9 +9,10 @@ python3 -m http.server 8000
 
 ## Yearly Update
 ### Google form
-1. When cleaning up the data from the previous year on the Form Responses 1 sheet make sure to delete the rows and not just the data in them, the google script will just continue adding from the last row.
-2. ~~Update dates in email.gs and save to the scripts for the google sheet~~ Not sending emails anymore
-3. Get values from Google form for updating Website form.
+1. When cleaning up the data from the previous year on the Form Responses 1 sheet make sure to delete the rows and not just clear the data in them, the google script will just continue adding from the last row.
+2. Clear the entries in the google sheet form
+3. Update dates in email.gs and save to the scripts for the google sheet
+4. Get values from Google form for updating Website form.
 - Make sure the values Team and Player variables like "entry.2120297232" match the fields on the Google form.
 - Open google form click the 3 vertical buttons and select Get pre-filled link
 - On this page fill out the fields and click the button to get the pre filled link
@@ -64,6 +65,41 @@ Can hide this sheet after copying over all entries.
 
 Notes: Do not need to publish any of the pages to the web unless doing some reading of the sheets. i.e. reading the players and getting the stats live
 
+
+## Sheet for tracking payments and PINs
+Create a sheet tracking payments, this can not be the same one that collects form responses, that sheet can not have any data before hand it needs to only collect submissions. Currently called `Admin`
+Add the following columns
+Email
+Team Name
+PIN
+Paid
+
+### Populate PINs
+Code on google sheet to populate PINs
+```
+function populatePINs() {
+  var ui = SpreadsheetApp.getUi();
+  var response = ui.alert('Are you sure you want to populate new PINs? This will overwrite all existing PINs', ui.ButtonSet.YES_NO);
+  if(response == ui.Button.YES) {
+    var pinsToMake = 500;
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Entries");
+    var clearPins = sheet.getRange("AA2:AA").clear();
+    var formula = [['=arrayformula(array_constrain(unique(randbetween(1000000,9999999*sign(sequence('+pinsToMake+')))), '+pinsToMake+',1))']];
+    var range = sheet.getRange("AA2").setFormula(formula);
+    var pins = sheet.getRange(2, 27, pinsToMake).getValues();
+    var setPins = sheet.getRange(2, 27, pinsToMake).setValues(pins);
+  }
+}
+```
+Conditional formating to check for duplicates
+`=COUNTIF($AA$2:$AA,AA2)>1`
+
+#### How to run populatePINs
+On the Google Sheet go to Extensions -> Apps Script
+In the Code.gs file choose the populatePINs in the dropdown
+It is currently set to fill in the Admin sheet and the C column for 500 rows
+Click the Run button, go to the Admin sheet and click Yes on the alert `Are you sure you want to populate new PINs? This will overwrite all existing PINs` then the PIN column populates.
+
 ## Add a trigger if doing some emailing
 1. On google sheet select Tools -> Script Editor
 2. On the script editor select Edit -> Current project's triggers
@@ -74,3 +110,6 @@ Notes: Do not need to publish any of the pages to the web unless doing some read
   Select event type - On form submit
   Failure notification settings - Nofity me immediately
 4. Click save - this will prompt to allow the script to access your account and send email as you
+
+### Inputting payments from leaguesafe
+As payments come in from leaguesafe add them to the `Admin` sheet. Popuate the Email and Entry (Team Name) columns and mark the paid column if completed. The PIN column will be the PIN to email the user

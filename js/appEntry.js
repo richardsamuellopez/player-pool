@@ -15,7 +15,7 @@ angular.module('poolEntry', [
   $scope.fee = "$50";
   $scope.emailID = "entry.2120297232";
   $scope.entryNameID = "entry.383545338";
-  $scope.pinID = "entry.340221862";
+  $scope.pinID = "entry.1759913902";
   $scope.entry = {
     'seed1Team': 'entry.1059009687',
     'seed1Player': 'entry.1589326624',
