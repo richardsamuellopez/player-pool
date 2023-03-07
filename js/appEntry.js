@@ -40,7 +40,8 @@ angular.module('poolEntry', [
     'seedWC2Team': 'entry.713813158',
     'seedWC2Player': 'entry.862600197'
   }
-  $scope.pinCheckKey = "AKfycbzRiinQc1I4bY5OS6T-lHse6ZOX45o0H7T4HQ_4PE9CErz5n4SEFYaY1YtK6zOPoMbq";
+  $scope.pinCheckKey = "AKfycbzRiinQc1I4bY5OS6T-lHse6ZOX45o0H7T4HQ_4PE9CErz5n4SEFYaY1YtK6zOPoMbq";//LIVE
+  $scope.pinCheckKey = "AKfycbyuMyAxoi7TYzezriefRiSyUqw7F7Gjivvoy6koygB7pqneWW-Xv_c22F6tYpYwsUUpZA";
   // END OF VARIABLES TO UPDATE
 
   $scope.error = false;
@@ -50,7 +51,12 @@ angular.module('poolEntry', [
   $scope.checkEntry = function(){
     $scope.checking = true;
     if($scope.email !== '' && $scope.pin !== ''){
-      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin)
+      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
+        redirect: "follow",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        }
+      })
       .then(response => response.json())
       .then(json => {
         if(json.success === true && json.data && json.data.trim() !== '' && json.error === false){
