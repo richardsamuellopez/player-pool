@@ -19,16 +19,16 @@
 
       <link href="css/app.css" rel="stylesheet">
 
-      <title>Player Pool {{year}}</title>
+      <title>Players Pool {{year}}</title>
     </head>
 
     <body class="ng-cloak" >
         <nav class="navbar navbar-light bg-light">
-          <span class="navbar-brand mb-0 h1">Player Pool {{year}}</span>
+          <span class="navbar-brand mb-0 h1">Players Pool {{year}}</span>
         </nav>
         <main>
           <div class="container">
-            <p>Welcome to the NCAA Player Pool {{year}}. If you've played before, welcome back! If you're new to the pool, thanks for joining. In an effort to streamline the process on my end, this form will be the only way to submit rosters into the pool. Please check back on Selection Sunday!</p>
+            <p>Welcome to the NCAA Players Pool {{year}}. If you've played before, welcome back! If you're new to the pool, thanks for joining. In an effort to streamline the process on my end, this form will be the only way to submit rosters into the pool. Please check back on Selection Sunday!</p>
             <h4>Rosters are due by {{deadLine}}. Entries entered after noon will not be accepted.</h3>
             <div id="accordion">
               <div class="card">
@@ -369,7 +369,7 @@
                   </div>
                 </div>
                 <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
-                  <button type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2 btn-form">Submit</button>
+                  <button ng-disabled="!pinVerified" type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2 btn-form">Submit</button>
                 </div>
               </div>
             </form>
@@ -377,7 +377,7 @@
 
           <div class="container" id="finalRoster" style="display:none;">
             <div class="alert alert-success" role="alert">
-              Your player pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.
+              Your players pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.
             </div>
             <div class="alert alert-primary" role="alert">
               <div><label>Email: </label>{{email}}</div>
