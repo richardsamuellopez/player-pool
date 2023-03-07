@@ -100,14 +100,22 @@
                     required
                   >
                 </div>
-                <div ng-show="error" class="col order-md-12">
+                <div ng-if="error" class="col order-md-12">
                   <div class="alert alert-danger" role="alert">
-                    The Email Address and PIN combination was not successful.
-                    <br>Please verify they are both correct and try again.
-                    <br>If the issues remains contact me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.
+                    <div ng-switch="pinError">
+                      <div ng-switch-when="Duplicate-PIN">
+                        <div>That PIN has already been used to submit a roster.</div>
+                        <div>If there is an issue contact me at <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
+                      </div>
+                      <div ng-switch-default>
+                        <div>The Email Address and PIN combination was not successful.</div>
+                        <div>Please verify they are both correct and try again.</div>
+                        <div>If the issue remains contact me at <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div ng-show="pinVerified" class="form-group col-sm-4">
+                <div ng-if="pinVerified" class="form-group col-sm-4">
                   <label for="entryName">Entry Name</label>
                   <input
                     type="text"
@@ -119,7 +127,7 @@
                     required
                   >
                 </div>
-                <div ng-show="!pinVerified" class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
+                <div ng-if="!pinVerified" class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
                   <button type="submit" name="checkEntry" ng-disabled="checking" ng-click="checkEntry()" class="btn btn-primary mb-2 btn-form">
                       <div ng-if="checking" class="spinner-border text-light" role="status">
                         <span class="sr-only">Loading...</span>
@@ -131,7 +139,7 @@
             </form>
 
             <form method="POST" name="gForm" id="gForm" enctype="application/x-www-form-urlencoded"
-              ng-show="pinVerified"
+              ng-if="pinVerified"
               target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
               action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeXmdcBSWdpHTSbj2jeGsDNdANOdH3yQZ2NBgyqYA9j4c3t4Q/formResponse"
             >
@@ -377,7 +385,7 @@
 
           <div class="container" id="finalRoster" style="display:none;">
             <div class="alert alert-success" role="alert">
-              Your players pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.
+              Your Players Pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.
             </div>
             <div class="alert alert-primary" role="alert">
               <div><label>Email: </label>{{email}}</div>

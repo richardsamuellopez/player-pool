@@ -40,7 +40,8 @@ angular.module('poolEntry', [
     'seedWC2Team': 'entry.713813158',
     'seedWC2Player': 'entry.862600197'
   }
-  $scope.pinCheckKey = "AKfycbw58w5ogNRwUAQSFCDSSwKCS8tYu3AVdCXSCBBIcP2wdK1q789xAnHBwqsZ7sXQ7aqN";
+  $scope.pinCheckKey = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
+
   // END OF VARIABLES TO UPDATE
 
   $scope.error = false;
@@ -54,6 +55,7 @@ angular.module('poolEntry', [
   $scope.checkEntry = function(){
     $scope.checking = true;
     $scope.error = false;
+    $scope.pinError = false;
     $scope.email = $scope.email.trim();
     if($scope.email && $scope.pin){
       fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
@@ -69,6 +71,7 @@ angular.module('poolEntry', [
           $scope.pinVerified = true;
         } else {
           $scope.error = true;
+          $scope.pinError = json.error;
         }
         $scope.checking = false;
         $scope.$apply();
