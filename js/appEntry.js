@@ -46,10 +46,15 @@ angular.module('poolEntry', [
   $scope.error = false;
   $scope.pinVerified = false;
   $scope.checking = false;
+  $scope.email="";
+  $scope.entryName="";
+  $scope.pin="";
+
   $scope.reloadPage = function(){window.location.reload();}
   $scope.checkEntry = function(){
     $scope.checking = true;
-    if($scope.email !== '' && $scope.pin !== ''){
+    $scope.error = false;
+    if($scope.email && $scope.pin){
       fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
         redirect: "follow",
         headers: {
@@ -66,10 +71,14 @@ angular.module('poolEntry', [
         }
         $scope.checking = false;
         $scope.$apply();
+      })
+      .catch(error => {
+        $scope.error = true;
+        $scope.checking = false;
+        $scope.$apply();
       });
     } else {
       $scope.checking = false;
-      $scope.$apply();
     };
   };
 
@@ -93,11 +102,6 @@ angular.module('poolEntry', [
   })
   .then(response => response.json())
   .then(json => {
-    $scope.email="";
-    $scope.email="rsl1@gmail.com";
-    $scope.entryName="";
-    $scope.pin="";
-    $scope.pin="6513333";
     $scope.Seed1=loadSeedData(json.teams.filter(team => team.seed === '1'));
     $scope.Seed2=loadSeedData(json.teams.filter(team => team.seed === '2'));
     $scope.Seed3=loadSeedData(json.teams.filter(team => team.seed === '3'));
