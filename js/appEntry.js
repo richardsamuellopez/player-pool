@@ -40,8 +40,6 @@ angular.module('poolEntry', [
     'seedWC2Team': 'entry.713813158',
     'seedWC2Player': 'entry.862600197'
   }
-  $scope.pinCheckKey = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
-
   // END OF VARIABLES TO UPDATE
 
   $scope.error = false;
@@ -58,11 +56,12 @@ angular.module('poolEntry', [
     $scope.pinError = false;
     $scope.email = $scope.email.trim();
     if($scope.email && $scope.pin){
-      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
+      fetch('/.netlify/functions/verify-pin', {
         redirect: "follow",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
-        }
+        },
+        body: `{"email": ${$scope.email}, "pin": ${$scope.pin}}`
       })
       .then(response => response.json())
       .then(json => {
