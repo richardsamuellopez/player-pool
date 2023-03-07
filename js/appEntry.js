@@ -40,8 +40,7 @@ angular.module('poolEntry', [
     'seedWC2Team': 'entry.713813158',
     'seedWC2Player': 'entry.862600197'
   }
-  $scope.pinCheckKey = "AKfycbzRiinQc1I4bY5OS6T-lHse6ZOX45o0H7T4HQ_4PE9CErz5n4SEFYaY1YtK6zOPoMbq";// Live
-  // $scope.pinCheckKey = "AKfycbyuMyAxoi7TYzezriefRiSyUqw7F7Gjivvoy6koygB7pqneWW-Xv_c22F6tYpYwsUUpZA";// Test
+  $scope.pinCheckKey = "AKfycbzibVtGgi91JW0kRiBbKEeIegHkCkWdRTNFUgeP-YK8JudjQR9itiPQ4wazcJ_mT424";
   // END OF VARIABLES TO UPDATE
 
   $scope.error = false;
