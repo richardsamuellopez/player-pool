@@ -74,7 +74,7 @@
             <form name="pinForm" id="pinForm">
               <div class="row">
                 <div class="form-group col-sm-4">
-                  <label for="email">Email Address</label>
+                  <label for="email">E-mail Address</label>
                   <input
                     type="email"
                     id="email"
@@ -105,12 +105,12 @@
                     <div ng-switch="pinError">
                       <div ng-switch-when="Duplicate-PIN">
                         <div>That PIN has already been used to submit a roster.</div>
-                        <div>If there is an issue contact me at <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
+                        <div>If you need to make and edit or there is another issue please e-mail <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
                       </div>
                       <div ng-switch-default>
                         <div>The Email Address and PIN combination was not successful.</div>
                         <div>Please verify they are both correct and try again.</div>
-                        <div>If the issue remains contact me at <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
+                        <div>If the issue remains please e-mail <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
                       </div>
                     </div>
                   </div>
@@ -385,10 +385,10 @@
 
           <div class="container" id="finalRoster" style="display:none;">
             <div class="alert alert-success" role="alert">
-              Your Players Pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.
+              Your Players Pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.
             </div>
             <div class="alert alert-primary" role="alert">
-              <div><label>Email: </label>{{email}}</div>
+              <div><label>E-mail: </label>{{email}}</div>
               <div><label>Entry: </label>{{entryName}}</div>
               <div><label>PIN: </label>{{pin}}</div>
               <div><label>#1: </label>{{seed1Player.team}} - {{seed1Player.name}}</div>
