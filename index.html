@@ -105,12 +105,12 @@
                     <div ng-switch="pinError">
                       <div ng-switch-when="Duplicate-PIN">
                         <div>That PIN has already been used to submit a roster.</div>
-                        <div>If you need to make and edit or there is another issue please e-mail <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
+                        <div>If you need to make and edit or there is another issue please e-mail <a href="mailto:{{contactEmail}}?subject=Players Pool">{{contactEmail}}</a>.</div>
                       </div>
                       <div ng-switch-default>
                         <div>The Email Address and PIN combination was not successful.</div>
                         <div>Please verify they are both correct and try again.</div>
-                        <div>If the issue remains please e-mail <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.</div>
+                        <div>If the issue remains please e-mail <a href="mailto:{{contactEmail}}?subject=Players Pool">{{contactEmail}}</a>.</div>
                       </div>
                     </div>
                   </div>
@@ -385,7 +385,7 @@
 
           <div class="container" id="finalRoster" style="display:none;">
             <div class="alert alert-success" role="alert">
-              Your Players Pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail <a href="mailto:corey.waddell@gmail.com?subject=Players Pool">corey.waddell@gmail.com</a>.
+              Your Players Pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail <a href="mailto:{{contactEmail}}?subject=Players Pool">{{contactEmail}}</a>.
             </div>
             <div class="alert alert-primary" role="alert">
               <div><label>E-mail: </label>{{email}}</div>

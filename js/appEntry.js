@@ -41,7 +41,7 @@ angular.module('poolEntry', [
     'seedWC2Player': 'entry.862600197'
   }
   $scope.pinCheckKey = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
-
+  $scope.contactEmail = "corey.waddell@gmail.com";
   // END OF VARIABLES TO UPDATE
 
   $scope.error = false;
