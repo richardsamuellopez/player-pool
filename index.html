@@ -14,20 +14,21 @@
       <link rel="apple-touch-icon-precomposed" href="/resources/icons/basketball-57-184778.png">
       <link rel="icon" href="/resources/icons/basketball-32-184778.png" sizes="32x32">
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
       <link href="css/app.css" rel="stylesheet">
 
-      <title>Player Pool {{year}}</title>
+      <title>Players Pool {{year}}</title>
     </head>
 
     <body class="ng-cloak" >
         <nav class="navbar navbar-light bg-light">
-          <span class="navbar-brand mb-0 h1">Player Pool {{year}}</span>
+          <span class="navbar-brand mb-0 h1">Players Pool {{year}}</span>
         </nav>
         <main>
           <div class="container">
-            <p>Welcome to the NCAA Player Pool {{year}}. If you've played before, welcome back! If you're new to the pool, thanks for joining. In an effort to streamline the process on my end, this form will be the only way to submit rosters into the pool. Please check back on Selection Sunday!</p>
+            <p>Welcome to the NCAA Players Pool {{year}}. If you've played before, welcome back! If you're new to the pool, thanks for joining. In an effort to streamline the process on my end, this form will be the only way to submit rosters into the pool. Please check back on Selection Sunday!</p>
             <h4>Rosters are due by {{deadLine}}. Entries entered after noon will not be accepted.</h3>
             <div id="accordion">
               <div class="card">
@@ -68,297 +69,169 @@
               </div>
             </div>
           </div>
-          <div ng-show="Seed1.teams.length>0" class="container entry-form" ng-cloak>
+
+          <div ng-show="seed.length === 11" class="container animate-show animate-hide" ng-cloak>
             <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
               target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
               action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeXmdcBSWdpHTSbj2jeGsDNdANOdH3yQZ2NBgyqYA9j4c3t4Q/formResponse"
             >
               <div class="row">
                 <div class="form-group col-sm-4">
-                  <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" ng-model="email" class="form-control" id={{emailID}} name={{emailID}} placeholder="name@example.com" required>
+                  <label for="email">E-mail Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    ng-model="email"
+                    ng-disabled="pinVerified || checking"
+                    class="form-control"
+                    placeholder="name@example.com"
+                    required
+                  >
                 </div>
                 <div class="form-group col-sm-4">
-                  <label for="exampleFormControlInput1">Entry Name</label>
-                  <input type="text" ng-model="entryName" class="form-control" id={{entryNameID}} name={{entryNameID}} placeholder="" required>
-                </div>
-                <div class="form-group col-sm-4">
-                  <label for="exampleFormControlInput1">PIN</label>
-                  <input type="text"
+                  <label for="pin">PIN</label>
+                  <input
+                    type="text"
                     maxlength="7"
                     pattern="[0-9]*"
+                    id="pin"
                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                    ng-model="pin" class="form-control" id={{pinID}} name={{pinID}} placeholder="" required>
+                    ng-model="pin"
+                    ng-disabled="pinVerified || checking"
+                    class="form-control"
+                    placeholder=""
+                    required
+                  >
                 </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #1</label>
-                    <select class="form-control" name={{entry.seed1Team}} id={{entry.seed1Team}}
-                    ng-model="seed1Team" ng-options="team as team.name for team in Seed1.teams track by team.name"
-                    ng-change="seed1Team===undefined?seed1Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #1 Player</label>
-                    <select class="form-control" name={{entry.seed1Player}} id={{entry.seed1Player}}
-                    ng-model="seed1Player" ng-options="player as player.name for player in Seed1.players | filter:{team:seed1Team.name}:true track by player.name"
-                    ng-change="seed1Player!==undefined?seed1Team={name: seed1Player.team, seed: 1}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #2</label>
-                    <select class="form-control" name={{entry.seed2Team}} id={{entry.seed2Team}}
-                    ng-model="seed2Team" ng-options="team as team.name for team in Seed2.teams track by team.name"
-                    ng-change="seed2Team===undefined?seed2Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #2 Player</label>
-                    <select class="form-control" name={{entry.seed2Player}} id={{entry.seed2Player}}
-                    ng-model="seed2Player" ng-options="player as player.name for player in Seed2.players | filter:{team:seed2Team.name}:true track by player.name"
-                    ng-change="seed2Player!==undefined?seed2Team={name: seed2Player.team, seed: 2}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
+                <div ng-if="error" class="col order-md-12">
+                  <div class="alert alert-danger" role="alert">
+                    <div ng-switch="pinError">
+                      <div ng-switch-when="Duplicate-PIN">
+                        <div>That PIN has already been used to submit a roster.</div>
+                        <div>If you need to make and edit or there is another issue please e-mail <a href="mailto:{{contactEmail}}?subject=Players Pool">{{contactEmail}}</a>.</div>
+                      </div>
+                      <div ng-switch-default>
+                        <div>The Email Address and PIN combination was not successful.</div>
+                        <div>Please verify they are both correct and try again.</div>
+                        <div>If the issue remains please e-mail <a href="mailto:{{contactEmail}}?subject=Players Pool">{{contactEmail}}</a>.</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #3</label>
-                    <select class="form-control" name={{entry.seed3Team}} id={{entry.seed3Team}}
-                    ng-model="seed3Team" ng-options="team as team.name for team in Seed3.teams track by team.name"
-                    ng-change="seed3Team===undefined?seed3Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #3 Player</label>
-                    <select class="form-control" name={{entry.seed3Player}} id={{entry.seed3Player}}
-                    ng-model="seed3Player" ng-options="player as player.name for player in Seed3.players | filter:{team:seed3Team.name}:true track by player.name"
-                    ng-change="seed3Player!==undefined?seed3Team={name: seed3Player.team, seed: 3}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
+                <div ng-if="pinVerified" class="form-group col-sm-4">
+                  <label for="entryName">Entry Name</label>
+                  <input
+                    type="text"
+                    ng-disabled="pinVerified || checking"
+                    id="entryName"
+                    name="entryName"
+                    ng-model="entryName"
+                    class="form-control"
+                    required
+                  >
                 </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #4</label>
-                    <select class="form-control" name={{entry.seed4Team}} id={{entry.seed4Team}}
-                    ng-model="seed4Team" ng-options="team as team.name for team in Seed4.teams track by team.name"
-                    ng-change="seed4Team===undefined?seed4Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #4 Player</label>
-                    <select class="form-control" name={{entry.seed4Player}} id={{entry.seed4Player}}
-                    ng-model="seed4Player" ng-options="player as player.name for player in Seed4.players | filter:{team:seed4Team.name}:true track by player.name"
-                    ng-change="seed4Player!==undefined?seed4Team={name: seed4Player.team, seed: 4}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
+                <div ng-if="!pinVerified" class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
+                  <button id="checkEntry" name="checkEntry" ng-disabled="checking" ng-click="checkEntry()" class="btn btn-primary mb-2 btn-form">
+                      <div ng-if="checking" class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                      <span ng-if="!checking">Continue</span>
+                    </button>
                 </div>
-
-                <div class="col-sm-4">
+              </div>
+              <div class="row" ng-if="pinVerified">
+                <input
+                  hidden
+                  type="email"
+                  ng-model="email"
+                  id={{emailID}}
+                  name={{emailID}}
+                  required
+                >
+                <input
+                  hidden
+                  type="text"
+                  ng-model="pin"
+                  id={{pinID}}
+                  name={{pinID}}
+                  required
+                >
+                <input
+                  hidden
+                  type="text"
+                  ng-model="entryName"
+                  id={{entryNameID}}
+                  name={{entryNameID}}
+                  required
+                >
+                <div class="col-sm-4" ng-repeat="(index, group) in fieldGroups">
                   <div class="form-group">
-                    <label>Seed #5</label>
-                    <select class="form-control" name={{entry.seed5Team}} id={{entry.seed5Team}}
-                    ng-model="seed5Team" ng-options="team as team.name for team in Seed5.teams track by team.name"
-                    ng-change="seed5Team===undefined?seed5Player=undefined:''" required>
+                    <label>{{group.label}}</label>
+                    <select
+                      class="form-control"
+                      name={{group.team.entryId}}
+                      id={{group.team.entryId}}
+                      ng-model="group.team.value"
+                      ng-options="team as (index > 8 ? team.seed +' - '+ team.name : team.name ) for team in seed[index].teams | filter:skipTeam(index) track by team.name"
+                      ng-change="group.team.value===undefined?group.player.value=undefined:''"
+                      required
+                    >
                       <option ng-selected="true" value=""></option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Seed #5 Player</label>
-                    <select class="form-control" name={{entry.seed5Player}} id={{entry.seed5Player}}
-                    ng-model="seed5Player" ng-options="player as player.name for player in Seed5.players | filter:{team:seed5Team.name}:true track by player.name"
-                    ng-change="seed5Player!==undefined?seed5Team={name: seed5Player.team, seed: 5}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #6</label>
-                    <select class="form-control" name={{entry.seed6Team}} id={{entry.seed6Team}}
-                    ng-model="seed6Team" ng-options="team as team.name for team in Seed6.teams track by team.name"
-                    ng-change="seed6Team===undefined?seed6Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #6 Player</label>
-                    <select class="form-control" name={{entry.seed6Player}} id={{entry.seed6Player}}
-                    ng-model="seed6Player" ng-options="player as player.name for player in Seed6.players | filter:{team:seed6Team.name}:true track by player.name"
-                    ng-change="seed6Player!==undefined?seed6Team={name: seed6Player.team, seed: 6}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #7</label>
-                    <select class="form-control" name={{entry.seed7Team}} id={{entry.seed7Team}}
-                    ng-model="seed7Team" ng-options="team as team.name for team in Seed7.teams track by team.name"
-                    ng-change="seed7Team===undefined?seed7Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #7 Player</label>
-                    <select class="form-control" name={{entry.seed7Player}} id={{entry.seed7Player}}
-                    ng-model="seed7Player" ng-options="player as player.name for player in Seed7.players | filter:{team:seed7Team.name}:true track by player.name"
-                    ng-change="seed7Player!==undefined?seed7Team={name: seed7Player.team, seed: 7}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #8</label>
-                    <select class="form-control" name={{entry.seed8Team}} id={{entry.seed8Team}}
-                    ng-model="seed8Team" ng-options="team as team.name for team in Seed8.teams track by team.name"
-                    ng-change="seed8Team===undefined?seed8Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #8 Player</label>
-                    <select class="form-control" name={{entry.seed8Player}} id={{entry.seed8Player}}
-                    ng-model="seed8Player" ng-options="player as player.name for player in Seed8.players | filter:{team:seed8Team.name}:true track by player.name"
-                    ng-change="seed8Player!==undefined?seed8Team={name: seed8Player.team, seed: 8}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Seed #9</label>
-                    <select class="form-control" name={{entry.seed9Team}} id={{entry.seed9Team}}
-                    ng-model="seed9Team" ng-options="team as team.name for team in Seed9.teams track by team.name"
-                    ng-change="seed9Team===undefined?seed9Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Seed #9 Player</label>
-                    <select class="form-control" name={{entry.seed9Player}} id={{entry.seed9Player}}
-                    ng-model="seed9Player" ng-options="player as player.name for player in Seed9.players | filter:{team:seed9Team.name}:true track by player.name"
-                    ng-change="seed9Player!==undefined?seed9Team={name: seed9Player.team, seed: 9}:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Wild Card #1</label>
-                    <select ng-init="WC1.teams=[]" class="form-control" name={{entry.seedWC1Team}} id={{entry.seedWC1Team}}
-                    ng-model="WC1Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC1.teams | excludeFrom:WC2Team track by team.name"
-                    ng-change="WC1Team===undefined?WC1Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Wild Card #1 Player</label>
-                    <select class="form-control" name={{entry.seedWC1Player}} id={{entry.seedWC1Player}}
-                    ng-model="WC1Player" ng-options="player as player.name for player in WC1.players | filter:{team:WC1Team.name}:true track by player.name"
-                    ng-change="WC1Team===undefined?WC1Team=setWCTeam(WC1.teams, WC1Player):'';" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Wild Card #2</label>
-                    <select ng-init="WC2.teams=[]" class="form-control" name={{entry.seedWC2Team}} id={{entry.seedWC2Team}}
-                    ng-model="WC2Team" ng-options="team as (team.seed +' - '+ team.name) for team in WC2.teams | excludeFrom:WC1Team track by team.name"
-                    ng-change="WC2Team===undefined?WC2Player=undefined:''" required>
-                      <option ng-selected="true" value=""></option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Wild Card #2 Player</label>
-                    <select class="form-control" name={{entry.seedWC2Player}} id={{entry.seedWC2Player}}
-                    ng-model="WC2Player" ng-options="player as player.name for player in WC2.players | filter:{team:WC2Team.name}:true track by player.name"
-                    ng-change="WC2Team===undefined?WC2Team=setWCTeam(WC2.teams, WC2Player):'';" required>
+                    <label>{{group.label}} Player</label>
+                    <select
+                      class="form-control"
+                      name={{group.player.entryId}}
+                      id={{group.player.entryId}}
+                      ng-model="group.player.value"
+                      ng-options="player as player.name for player in seed[index].players | filter:{team:group.team.value.name}:true track by player.name"
+                      ng-change="group.player.value!==undefined? group.team.value= index < 9 ? {name: group.player.value.team, seed: index+1} : setWCTeam(seed[index].teams, group.player.value) :''"
+                      required
+                    >
                       <option ng-selected="true" value=""></option>
                     </select>
                   </div>
                 </div>
                 <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
-                  <button type="submit" name="entrySubmit" value="Submit" class="btn btn-primary mb-2 submit-btn">Submit</button>
+                  <button type="submit" name="entrySubmit" id="entrySubmit" value="Submit" ng-click="submitEntry()" class="btn btn-primary mb-2 submit-btn btn-form">Submit</button>
                 </div>
-
               </div>
             </form>
           </div>
 
           <div class="container" id="finalRoster" style="display:none;">
-            <p>Your player pool entry has been submitted. Keep an eye out for a confirmation e-mail with payment instructions. I sleep at night so late night submissions might not get a confirmation e-mail until the next morning. If you still don't see it remember to check your spam folder. If you have any issues feel free to e-mail me at <a href="mailto:corey.waddell@gmail.com">corey.waddell@gmail.com</a>.</p>
-            <div><label>Email: </label>{{email}}</div>
-            <div><label>Entry: </label>{{entryName}}</div>
-            <div><label>PIN: </label>{{pin}}</div>
-            <div><label>#1: </label>{{seed1Player.team}} - {{seed1Player.name}}</div>
-            <div><label>#2: </label>{{seed2Player.team}} - {{seed2Player.name}}</div>
-            <div><label>#3: </label>{{seed3Player.team}} - {{seed3Player.name}}</div>
-            <div><label>#4: </label>{{seed4Player.team}} - {{seed4Player.name}}</div>
-            <div><label>#5: </label>{{seed5Player.team}} - {{seed5Player.name}}</div>
-            <div><label>#6: </label>{{seed6Player.team}} - {{seed6Player.name}}</div>
-            <div><label>#7: </label>{{seed7Player.team}} - {{seed7Player.name}}</div>
-            <div><label>#8: </label>{{seed8Player.team}} - {{seed8Player.name}}</div>
-            <div><label>#9: </label>{{seed9Player.team}} - {{seed9Player.name}}</div>
-            <div><label>WC#1: </label>{{WC1Player.team}} - {{WC1Player.name}}</div>
-            <div><label>WC#2: </label>{{WC2Player.team}} - {{WC2Player.name}}</div>
-            <button class="btn btn-primary mb-2 do-it-again-btn" ng-click="reloadPage()">Fill out another</button>
+            <div class="alert alert-success" role="alert">
+              Your Players Pool entry has been submitted. Please verify you see it added to the <a target="_blank" href="https://docs.google.com/spreadsheets/d/1JBj3befZN1Ck4sS4CNfniyP3t2cGu1RrH1-aR__oTBY/edit#gid=0">tracker</a>. If you have any issues feel free to e-mail <a href="mailto:{{contactEmail}}?subject=Players Pool">{{contactEmail}}</a>.
+            </div>
+            <div class="alert alert-primary" role="alert">
+              <div><label>E-mail: </label>{{email}}</div>
+              <div><label>Entry: </label>{{entryName}}</div>
+              <div><label>PIN: </label>{{pin}}</div>
+              <div ng-repeat="(index, seed) in fieldGroups">
+                <div ng-switch="index">
+                  <label ng-switch-when="9">WC#1:</label>
+                  <label ng-switch-when="10">WC#2:</label>
+                  <label ng-switch-default>#{{index+1}}:</label>
+                  {{seed.player.value.team}} - {{seed.player.value.name}}
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary mb-2 btn-form" ng-click="reloadPage()">Fill out another</button>
           </div>
         </main>
 
         <script type="text/javascript">var submitted=false;</script>
 
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
-
-        <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script> -->
         <script src="js/angularjs/1.4.1/angular.js"></script>
-        <!-- <script src="//cdn.rawgit.com/jsoma/tabletop/7b2024af62d71d52ac5c6cecc2256b04da00161e/src/tabletop.js"></script> -->
-        <!-- <script src="js/tabletop.js"></script> -->
-        <!-- <script src="//raw.githack.com/times/angular-tabletop/master/TabletopProvider.js"></script> -->
-        <!-- <script src="js/TabletopProvider.js"></script> -->
-        <!--<script src="https://raw.githubusercontent.com/times/angular-tabletop/master/TabletopProvider.js"></script>-->
-        <!--<script src="https://rawgithub.com/richardsamuellopez/player-pool/gh-pages/js/TabletopProvider.js"></script>-->
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-        <!-- <script src="js/jquery/1.11.3/jquery.min.js"></script> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"></script>
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="js/appEntry.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-        <script type="text/javascript">
-        $('#gform').on('submit', function(e) {
-          $('#gform *').fadeOut(2000);
-          $('#finalRoster').fadeIn(2000);
-          });
-        </script>
+        <script src="js/appEntry.js"></script>
     </body>
 </html>

@@ -16,36 +16,208 @@ angular.module('poolEntry', [
   $scope.emailID = "entry.2120297232";
   $scope.entryNameID = "entry.383545338";
   $scope.pinID = "entry.1759913902";
-  $scope.entry = {
-    'seed1Team': 'entry.1059009687',
-    'seed1Player': 'entry.1589326624',
-    'seed2Team': 'entry.1792899743',
-    'seed2Player': 'entry.496616414',
-    'seed3Team': 'entry.298248963',
-    'seed3Player': 'entry.228107489',
-    'seed4Team': 'entry.1260734803',
-    'seed4Player': 'entry.1929196631',
-    'seed5Team': 'entry.265627880',
-    'seed5Player': 'entry.1438588206',
-    'seed6Team': 'entry.688877146',
-    'seed6Player': 'entry.718296763',
-    'seed7Team': 'entry.1554732274',
-    'seed7Player': 'entry.1222291357',
-    'seed8Team': 'entry.1767171400',
-    'seed8Player': 'entry.581849140',
-    'seed9Team': 'entry.99488968',
-    'seed9Player': 'entry.859580858',
-    'seedWC1Team': 'entry.654414173',
-    'seedWC1Player': 'entry.1145243786',
-    'seedWC2Team': 'entry.713813158',
-    'seedWC2Player': 'entry.862600197'
-  }
+
+  $scope.fieldGroups = [
+    {
+      label: 'Seed #1',
+      team: {
+        entryId: 'entry.1059009687',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1589326624',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #2',
+      team: {
+          entryId: 'entry.1792899743',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.496616414',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #3',
+      team: {
+          entryId: 'entry.298248963',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.228107489',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #4',
+      team: {
+        entryId: 'entry.1260734803',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1929196631',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #5',
+      team: {
+        entryId: 'entry.265627880',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1438588206',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #6',
+      team: {
+        entryId: 'entry.688877146',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.718296763',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #7',
+      team: {
+        entryId: 'entry.1554732274',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1222291357',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #8',
+      team: {
+        entryId: 'entry.1767171400',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.581849140',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #9',
+      team: {
+        entryId: 'entry.99488968',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.859580858',
+        value: ''
+      }
+    },
+    {
+      label: 'Wild Card #1',
+      team: {
+        entryId: 'entry.654414173',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1145243786',
+        value: ''
+      }
+    },
+    {
+      label: 'Wild Card #2',
+      team: {
+        entryId: 'entry.713813158',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.862600197',
+        value: ''
+      }
+    }
+  ];
+
+  $scope.pinCheckKey = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
+  $scope.contactEmail = "corey.waddell@gmail.com";
   // END OF VARIABLES TO UPDATE
 
+  $scope.error = false;
+  $scope.pinVerified = false;
+  $scope.checking = false;
+  $scope.email="";
+  $scope.entryName="";
+  $scope.pin="";
+  $scope.submitted = false;
+  $scope.submitEntry = function(){
+    $scope.submitted = true;
+    $('#gform *').fadeOut(2000);
+    $('#finalRoster').fadeIn(2000);
+  };
   $scope.reloadPage = function(){window.location.reload();}
+  $scope.checkEntry = function(){
+    $scope.checking = true;
+    $scope.error = false;
+    $scope.pinError = false;
+    $scope.email = $scope.email.trim();
+    if($scope.email && $scope.pin){
+      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
+        redirect: "follow",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        }
+      })
+      .then(response => response.json())
+      .then(json => {
+        if(json.success === true && json.data && json.data.trim() && json.error === false){
+          $scope.entryName = json.data;
+          $scope.pinVerified = true;
+        } else {
+          $scope.error = true;
+          $scope.pinError = json.error;
+        }
+        $scope.checking = false;
+        $scope.$apply();
+      })
+      .catch(error => {
+        $scope.error = true;
+        $scope.checking = false;
+        $scope.$apply();
+      });
+    } else {
+      $scope.checking = false;
+    };
+  };
+
+  $scope.skipTeam = function(seed) {
+    return function(value, index, array) {
+      if($scope.seed.length === 11){
+        if(seed > 8){
+          if($scope.isWCSelected(seed, value)){
+            return;
+          }
+        }
+        return value;
+      }
+    }
+};
+
+  $scope.isWCSelected = function(seed, team){
+    const WC1 = $scope.fieldGroups[9].team.value;
+    const WC2 = $scope.fieldGroups[10].team.value;
+    if((seed === 9 && WC2 && WC2.seed + " - " + WC2.name == `${team.seed} - ${team.name}`)
+    ||(seed === 10 && WC1 && WC1.seed + " - " + WC1.name == `${team.seed} - ${team.name}`)) {
+      return true;
+    }
+    return false;
+  };
+
   $scope.setWCTeam = function(teams, player) {
     if(player){
-      var teamObj = _.where(teams,{name: player.team});
+      var teamObj = teams.filter(a => a.name === player.team);
       var returnValue = {name: teamObj[0].name, seed: teamObj[0].seed};
       return returnValue;
     }
@@ -63,20 +235,18 @@ angular.module('poolEntry', [
   })
   .then(response => response.json())
   .then(json => {
-    $scope.email="";
-    $scope.entryName="";
-    $scope.pin="";
-    $scope.Seed1=loadSeedData(_.where(json.teams,{seed:'1'}));
-    $scope.Seed2=loadSeedData(_.where(json.teams,{seed:'2'}));
-    $scope.Seed3=loadSeedData(_.where(json.teams,{seed:'3'}));
-    $scope.Seed4=loadSeedData(_.where(json.teams,{seed:'4'}));
-    $scope.Seed5=loadSeedData(_.where(json.teams,{seed:'5'}));
-    $scope.Seed6=loadSeedData(_.where(json.teams,{seed:'6'}));
-    $scope.Seed7=loadSeedData(_.where(json.teams,{seed:'7'}));
-    $scope.Seed8=loadSeedData(_.where(json.teams,{seed:'8'}));
-    $scope.Seed9=loadSeedData(_.where(json.teams,{seed:'9'}));
-    $scope.WC1=loadSeedData(_.union(_.where(json.teams,{seed:'10'}),_.where(json.teams,{seed:'11'}), _.where(json.teams,{seed:'12'}),_.where(json.teams,{seed:'13'}),_.where(json.teams,{seed:'14'}),_.where(json.teams,{seed:'15'}),_.where(json.teams,{seed:'16'})));
-    $scope.WC2=$scope.WC1;
+    $scope.seed=[];
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '1')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '2')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '3')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '4')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '5')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '6')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '7')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '8')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => team.seed === '9')));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => parseInt(team.seed) >= 10).sort((a, b) => a.seed - b.seed)));
+    $scope.seed.push(loadSeedData(json.teams.filter(team => parseInt(team.seed) >= 10).sort((a, b) => a.seed - b.seed)));
     $scope.$apply();
 
     function loadSeedData(SeedData){
