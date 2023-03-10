@@ -151,7 +151,12 @@ angular.module('poolEntry', [
   $scope.email="";
   $scope.entryName="";
   $scope.pin="";
-
+  $scope.submitted = false;
+  $scope.submitEntry = function(){
+    $scope.submitted = true;
+    $('#gform *').fadeOut(2000);
+    $('#finalRoster').fadeIn(2000);
+  };
   $scope.reloadPage = function(){window.location.reload();}
   $scope.checkEntry = function(){
     $scope.checking = true;

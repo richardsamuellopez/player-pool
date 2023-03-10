@@ -12,15 +12,18 @@ body {
     background-position-x: 100%;
     margin-top: 10px;
 }
+
 .bs-docs-social {
     text-align: center;
 }
+
 .bs-docs-social-buttons {
     margin-left: 0;
     margin-bottom: 0;
     padding-left: 0;
     list-style: none;
 }
+
 .bs-docs-social-buttons li {
     display: inline-block;
     padding: 5px 8px;
@@ -39,14 +42,17 @@ body {
 a:focus{
   outline:none;
 }
+
 .header-margin{
   margin-top:20px;
 }
+
 .clear-button{
     position: relative;
     left: -22px;
     top: 2px;
 }
+
 main, .entry-form{
   padding-top: 1rem;
 }
