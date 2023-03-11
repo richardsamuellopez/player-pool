@@ -152,11 +152,61 @@ angular.module('poolEntry', [
   $scope.entryName="";
   $scope.pin="";
   $scope.submitted = false;
+  $scope.formStatus = "INITIAL";
+  $scope.formIsLoading = function(){
+    return $scope.formStatus === "LOADING";
+  };
+  $scope.formIsSuccess = function(){
+    return $scope.formStatus === "SUCCESS";
+  };
+  $scope.formIsError = function(){
+    return $scope.formStatus === "ERROR";
+  };
   $scope.submitEntry = function(){
     $scope.submitted = true;
-    $('#gform *').fadeOut(2000);
-    $('#finalRoster').fadeIn(2000);
+    $scope.formStatus = "LOADING";
+    const rosterBody = buildSubmitBody();
+    fetch("https://script.google.com/macros/s/AKfycbzwfR77gSUBhC_VwKwKIp7oxzVI7qgp9Mh8SpZMeWaTO_k9iNsAcDwyPKhewtkAWtjn/exec",{
+      method: "POST",
+      redirect: "follow",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: buildSubmitBody()
+    })
+    .then(response => response.json())
+    .then(json => {
+      if(json.success === true && json.error === false){
+        $scope.formStatus = "SUCCESS";
+        $('#gform *').fadeOut(2000);
+        $('#finalRoster').fadeIn(2000);
+      } else {
+        $scope.formStatus = "ERROR";
+      }
+      $scope.$apply();
+    });
   };
+  const buildSubmitBody = () => {
+    return `{
+      "email": "${$scope.email}",
+      "pin": "${$scope.pin}",
+      "entryName": "${$scope.entryName}",
+      "roster": [
+        "${$scope.fieldGroups[0].player.value.team}", "${$scope.fieldGroups[0].player.value.name}",
+        "${$scope.fieldGroups[1].player.value.team}", "${$scope.fieldGroups[1].player.value.name}",
+        "${$scope.fieldGroups[2].player.value.team}", "${$scope.fieldGroups[2].player.value.name}",
+        "${$scope.fieldGroups[3].player.value.team}", "${$scope.fieldGroups[3].player.value.name}",
+        "${$scope.fieldGroups[4].player.value.team}", "${$scope.fieldGroups[4].player.value.name}",
+        "${$scope.fieldGroups[5].player.value.team}", "${$scope.fieldGroups[5].player.value.name}",
+        "${$scope.fieldGroups[6].player.value.team}", "${$scope.fieldGroups[6].player.value.name}",
+        "${$scope.fieldGroups[7].player.value.team}", "${$scope.fieldGroups[7].player.value.name}",
+        "${$scope.fieldGroups[8].player.value.team}", "${$scope.fieldGroups[8].player.value.name}",
+        "${$scope.fieldGroups[9].player.value.team}", "${$scope.fieldGroups[9].player.value.name}",
+        "${$scope.fieldGroups[10].player.value.team}", "${$scope.fieldGroups[10].player.value.name}"
+      ]
+    }`;
+  };
+
   $scope.reloadPage = function(){window.location.reload();}
   $scope.checkEntry = function(){
     $scope.checking = true;
