@@ -141,7 +141,7 @@ angular.module('poolEntry', [
     }
   ];
 
-  $scope.pinCheckKey = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
+  $scope.API_KEY = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
   $scope.contactEmail = "corey.waddell@gmail.com";
   // END OF VARIABLES TO UPDATE
 
@@ -163,48 +163,49 @@ angular.module('poolEntry', [
     return $scope.formStatus === "ERROR";
   };
   $scope.submitEntry = function(){
-    $scope.submitted = true;
-    $scope.formStatus = "LOADING";
-    const rosterBody = buildSubmitBody();
-    fetch("https://script.google.com/macros/s/AKfycbzwfR77gSUBhC_VwKwKIp7oxzVI7qgp9Mh8SpZMeWaTO_k9iNsAcDwyPKhewtkAWtjn/exec",{
-      method: "POST",
-      redirect: "follow",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-      body: buildSubmitBody()
-    })
-    .then(response => response.json())
-    .then(json => {
-      if(json.success === true && json.error === false){
-        $scope.formStatus = "SUCCESS";
-        $('#gform *').fadeOut(2000);
-        $('#finalRoster').fadeIn(2000);
-      } else {
+    if($scope.gform.$valid){
+      $scope.submitted = true;
+      $scope.formStatus = "LOADING";
+      const rosterBody = buildSubmitBody();
+      fetch(`https://script.google.com/macros/s/${$scope.API_KEY}/exec`,{
+        method: "POST",
+        redirect: "follow",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: buildSubmitBody()
+      })
+      .then(response => response.json())
+      .then(json => {
+        if(json.success === true && json.error === false){
+          $scope.formStatus = "SUCCESS";
+          $('#gform *').fadeOut(2000);
+          $('#finalRoster').fadeIn(2000);
+        } else {
+          $scope.formStatus = "ERROR";
+        }
+        $scope.$apply();
+      }).catch(error => {
         $scope.formStatus = "ERROR";
-      }
-      $scope.$apply();
-    });
+        $scope.submitted = false;
+        $scope.$apply();
+      });
+    }
   };
+
   const buildSubmitBody = () => {
     return `{
       "email": "${$scope.email}",
       "pin": "${$scope.pin}",
       "entryName": "${$scope.entryName}",
       "roster": [
-        "${$scope.fieldGroups[0].player.value.team}", "${$scope.fieldGroups[0].player.value.name}",
-        "${$scope.fieldGroups[1].player.value.team}", "${$scope.fieldGroups[1].player.value.name}",
-        "${$scope.fieldGroups[2].player.value.team}", "${$scope.fieldGroups[2].player.value.name}",
-        "${$scope.fieldGroups[3].player.value.team}", "${$scope.fieldGroups[3].player.value.name}",
-        "${$scope.fieldGroups[4].player.value.team}", "${$scope.fieldGroups[4].player.value.name}",
-        "${$scope.fieldGroups[5].player.value.team}", "${$scope.fieldGroups[5].player.value.name}",
-        "${$scope.fieldGroups[6].player.value.team}", "${$scope.fieldGroups[6].player.value.name}",
-        "${$scope.fieldGroups[7].player.value.team}", "${$scope.fieldGroups[7].player.value.name}",
-        "${$scope.fieldGroups[8].player.value.team}", "${$scope.fieldGroups[8].player.value.name}",
-        "${$scope.fieldGroups[9].player.value.team}", "${$scope.fieldGroups[9].player.value.name}",
-        "${$scope.fieldGroups[10].player.value.team}", "${$scope.fieldGroups[10].player.value.name}"
+        ${buildRoster()}
       ]
     }`;
+  };
+
+  const buildRoster = () => {
+    return $scope.fieldGroups.map(seed => (`"${seed.player.value.team}", "${seed.player.value.name}"`));
   };
 
   $scope.reloadPage = function(){window.location.reload();}
@@ -214,7 +215,7 @@ angular.module('poolEntry', [
     $scope.pinError = false;
     $scope.email = $scope.email.trim();
     if($scope.email && $scope.pin){
-      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
+      fetch(`https://script.google.com/macros/s/${$scope.API_KEY}/exec?email=${$scope.email}&pin=${$scope.pin}`, {
         redirect: "follow",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",

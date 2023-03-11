@@ -75,9 +75,7 @@
               target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
               action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeXmdcBSWdpHTSbj2jeGsDNdANOdH3yQZ2NBgyqYA9j4c3t4Q/formResponse"
             > -->
-            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
-              target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
-            >
+            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded">
               <div class="row">
                 <div class="form-group col-sm-4">
                   <label for="email">E-mail Address</label>
@@ -200,22 +198,21 @@
                   </div>
                 </div>
                 <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
-                  <button type="submit" name="entrySubmit" id="entrySubmit" value="Submit" ng-click="submitEntry()" class="btn btn-primary mb-2 submit-btn btn-form">
+                  <button type="submit" ng-disabled="submitted" name="entrySubmit" id="entrySubmit" value="Submit" ng-click="submitEntry()" class="btn btn-primary mb-2 submit-btn btn-form">
                     <div ng-if="submitted" class="spinner-border text-light" role="status">
                       <span class="sr-only">Loading...</span>
                     </div>
                     <span ng-if="!submitted">Submit</span>
                   </button>
+                  <div class="container" id="finalRoster" ng-if="formIsError()">
+                    <div class="alert alert-danger" role="alert">
+                          <div>There was an error submitting your Player Pool form.</div>
+                          <div>Please try again and if you have issues send an e-mail <a href="mailto:{{contactEmail}}?subject=Player Pool">{{contactEmail}}</a>.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
-          </div>
-
-          <div class="container" id="finalRoster" ng-if="formIsError()">
-            <div class="alert alert-danger" role="alert">
-                  <div>There was an error submitting your Player Pool form.</div>
-                  <div>Please try again and if you have issues send an e-mail <a href="mailto:{{contactEmail}}?subject=Player Pool">{{contactEmail}}</a>.</div>
-            </div>
           </div>
 
           <div class="container" id="finalRoster" ng-if="formIsSuccess()">
@@ -241,7 +238,6 @@
 
         <script type="text/javascript">var submitted=false;</script>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
         <script src="js/angularjs/1.4.1/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
