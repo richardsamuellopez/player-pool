@@ -141,7 +141,7 @@ angular.module('poolEntry', [
     }
   ];
 
-  $scope.pinCheckKey = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
+  $scope.API_KEY = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
   $scope.contactEmail = "corey.waddell@gmail.com";
   // END OF VARIABLES TO UPDATE
 
@@ -152,11 +152,62 @@ angular.module('poolEntry', [
   $scope.entryName="";
   $scope.pin="";
   $scope.submitted = false;
-  $scope.submitEntry = function(){
-    $scope.submitted = true;
-    $('#gform *').fadeOut(2000);
-    $('#finalRoster').fadeIn(2000);
+  $scope.formStatus = "INITIAL";
+  $scope.formIsLoading = function(){
+    return $scope.formStatus === "LOADING";
   };
+  $scope.formIsSuccess = function(){
+    return $scope.formStatus === "SUCCESS";
+  };
+  $scope.formIsError = function(){
+    return $scope.formStatus === "ERROR";
+  };
+  $scope.submitEntry = function(){
+    if($scope.gform.$valid){
+      $scope.submitted = true;
+      $scope.formStatus = "LOADING";
+      const rosterBody = buildSubmitBody();
+      fetch(`https://script.google.com/macros/s/${$scope.API_KEY}/exec`,{
+        method: "POST",
+        redirect: "follow",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: buildSubmitBody()
+      })
+      .then(response => response.json())
+      .then(json => {
+        if(json.success === true && json.error === false){
+          $scope.formStatus = "SUCCESS";
+          $('#gform *').fadeOut(2000);
+          $('#finalRoster').fadeIn(2000);
+        } else {
+          $scope.formStatus = "ERROR";
+        }
+        $scope.$apply();
+      }).catch(error => {
+        $scope.formStatus = "ERROR";
+        $scope.submitted = false;
+        $scope.$apply();
+      });
+    }
+  };
+
+  const buildSubmitBody = () => {
+    return `{
+      "email": "${$scope.email}",
+      "pin": "${$scope.pin}",
+      "entryName": "${$scope.entryName}",
+      "roster": [
+        ${buildRoster()}
+      ]
+    }`;
+  };
+
+  const buildRoster = () => {
+    return $scope.fieldGroups.map(seed => (`"${seed.player.value.team}", "${seed.player.value.name}"`));
+  };
+
   $scope.reloadPage = function(){window.location.reload();}
   $scope.checkEntry = function(){
     $scope.checking = true;
@@ -164,7 +215,7 @@ angular.module('poolEntry', [
     $scope.pinError = false;
     $scope.email = $scope.email.trim();
     if($scope.email && $scope.pin){
-      fetch("https://script.google.com/macros/s/"+$scope.pinCheckKey+"/exec?email="+$scope.email+"&pin="+$scope.pin, {
+      fetch(`https://script.google.com/macros/s/${$scope.API_KEY}/exec?email=${$scope.email}&pin=${$scope.pin}`, {
         redirect: "follow",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",

@@ -70,11 +70,12 @@
             </div>
           </div>
 
-          <div ng-show="seed.length === 11" class="container animate-show animate-hide" ng-cloak>
-            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
+          <div ng-show="seed.length === 11" class="container entry-form" ng-cloak>
+            <!-- <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded"
               target="hidden_iframe" onsubmit="submitted=true;entrySubmit.disabled=true;"
               action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeXmdcBSWdpHTSbj2jeGsDNdANOdH3yQZ2NBgyqYA9j4c3t4Q/formResponse"
-            >
+            > -->
+            <form method="POST" name="gform" id="gform" enctype="application/x-www-form-urlencoded">
               <div class="row">
                 <div class="form-group col-sm-4">
                   <label for="email">E-mail Address</label>
@@ -172,6 +173,7 @@
                       name={{group.team.entryId}}
                       id={{group.team.entryId}}
                       ng-model="group.team.value"
+                      ng-disabled="submitted"
                       ng-options="team as (index > 8 ? team.seed +' - '+ team.name : team.name ) for team in seed[index].teams | filter:skipTeam(index) track by team.name"
                       ng-change="group.team.value===undefined?group.player.value=undefined:''"
                       required
@@ -186,6 +188,7 @@
                       name={{group.player.entryId}}
                       id={{group.player.entryId}}
                       ng-model="group.player.value"
+                      ng-disabled="submitted"
                       ng-options="player as player.name for player in seed[index].players | filter:{team:group.team.value.name}:true track by player.name"
                       ng-change="group.player.value!==undefined? group.team.value= index < 9 ? {name: group.player.value.team, seed: index+1} : setWCTeam(seed[index].teams, group.player.value) :''"
                       required
@@ -195,13 +198,24 @@
                   </div>
                 </div>
                 <div class="col-sm-4 justify-content-center" style="margin: auto; text-align: center;">
-                  <button type="submit" name="entrySubmit" id="entrySubmit" value="Submit" ng-click="submitEntry()" class="btn btn-primary mb-2 submit-btn btn-form">Submit</button>
+                  <button type="submit" ng-disabled="submitted" name="entrySubmit" id="entrySubmit" value="Submit" ng-click="submitEntry()" class="btn btn-primary mb-2 submit-btn btn-form">
+                    <div ng-if="submitted" class="spinner-border text-light" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <span ng-if="!submitted">Submit</span>
+                  </button>
+                  <div class="container" id="finalRoster" ng-if="formIsError()">
+                    <div class="alert alert-danger" role="alert">
+                          <div>There was an error submitting your Player Pool form.</div>
+                          <div>Please try again and if you have issues send an e-mail <a href="mailto:{{contactEmail}}?subject=Player Pool">{{contactEmail}}</a>.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
           </div>
 
-          <div class="container" id="finalRoster" style="display:none;">
+          <div class="container" id="finalRoster" ng-if="formIsSuccess()">
             <div class="alert alert-success" role="alert">
               Your Player Pool entry has been submitted. Please verify you see it added to the <a target="_blank" href="https://docs.google.com/spreadsheets/d/1JBj3befZN1Ck4sS4CNfniyP3t2cGu1RrH1-aR__oTBY/edit#gid=0">tracker</a>. If you have any issues feel free to e-mail <a href="mailto:{{contactEmail}}?subject=Player Pool">{{contactEmail}}</a>.
             </div>
@@ -224,7 +238,6 @@
 
         <script type="text/javascript">var submitted=false;</script>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
         <script src="js/angularjs/1.4.1/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
