@@ -14,7 +14,8 @@ public class HTMLRead {
   public static ArrayList<Team> BracketList = new ArrayList<Team>();
   // public static String BracketURL = "https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
   // public static String BracketURL = "https://en.wikipedia.org/wiki/2018_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
-  public static String BracketURL = "https://en.wikipedia.org/wiki/2022_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
+  // public static String BracketURL = "https://en.wikipedia.org/wiki/2022_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
+  public static String BracketURL = "https://en.wikipedia.org/wiki/2023_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
 
   static class Team {
     String name;
@@ -90,6 +91,7 @@ public class HTMLRead {
     int startPos = -1;
     int endPos = -1;
     while((line = bufferedReader.readLine()) != null) {
+      if(debug){System.out.println("LINE: "+line);}
       endPos = line.indexOf(",");
       startPos = 0;
       seed = line.substring(startPos, endPos);
