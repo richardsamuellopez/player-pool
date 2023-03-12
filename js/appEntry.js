@@ -13,6 +13,7 @@ angular.module('poolEntry', [
   $scope.year = '2023';
   $scope.deadLine = 'noon EST, Thursday, March 16th';
   $scope.fee = "$50";
+  $scope.leagueSafe = "https://leaguesafe.com/join/4092721";
   $scope.emailID = "entry.2120297232";
   $scope.entryNameID = "entry.383545338";
   $scope.pinID = "entry.1759913902";
