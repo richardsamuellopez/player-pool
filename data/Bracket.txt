@@ -17,7 +17,7 @@
 16, Southeast Missouri State
 1, Houston
 2, Texas
-3, Kent State
+3, Xavier
 4, Indiana
 5, Miami
 6, Iowa State
