@@ -59,7 +59,7 @@
 8, Arkansas
 9, Illinois
 10, Boise State
-11, Arizona
+11, Arizona State
 11, Nevada
 12, VCU
 13, Iona
