@@ -175,10 +175,10 @@ public class HTMLRead {
           // System.out.println("Team : "+line+"\n");
           getTeam = false;
           getSeed = false;
-          endPos = line.length()-4;//line.indexOf("</a></th>");
-          startPos = line.lastIndexOf("team\">", endPos)+6;
+          endPos = line.length();//line.indexOf("</a></th>");
+          startPos = line.lastIndexOf(">", endPos)+1;
           team = line.substring(startPos, endPos);
-          if(debug){System.out.println("TEAM: "+line+"\n");}
+          if(debug){System.out.println("TEAM: "+team+"\n");}
           // System.out.println("TEAM COUNT: " + teamCount+"\n");
           bufferedWriter.write(seed + ", ");
           bufferedWriter.write(team+"\n");
