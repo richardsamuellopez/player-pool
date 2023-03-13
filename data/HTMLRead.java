@@ -175,9 +175,12 @@ public class HTMLRead {
           // System.out.println("Team : "+line+"\n");
           getTeam = false;
           getSeed = false;
+          // The next few lines depend on what Wikipedia has
           endPos = line.length();//line.indexOf("</a></th>");
-          startPos = line.lastIndexOf(">", endPos)+1;
-          team = line.substring(startPos, endPos);
+          // startPos = line.lastIndexOf(">", endPos)+1;
+          startPos = line.lastIndexOf("team\">", endPos)+6;
+          // team = line.substring(startPos, endPos);
+          team = line.substring(startPos, endPos-4);
           if(debug){System.out.println("TEAM: "+team+"\n");}
           // System.out.println("TEAM COUNT: " + teamCount+"\n");
           bufferedWriter.write(seed + ", ");
