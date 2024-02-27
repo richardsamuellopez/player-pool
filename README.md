@@ -1,4 +1,4 @@
-# player-pool
+# [player-pool](http://player-pool.netlify.com)
 ## Deployed on Netlify
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3659526b-03ef-4cdb-acd3-0b9e297e9047/deploy-status)](https://app.netlify.com/sites/player-pool/deploys)
 
@@ -10,48 +10,58 @@ python3 -m http.server 8000
 ## Yearly Update Instructions
 1. Make copy of sheet for historical data. Update the existing sheet name with the new year 2k##. This will avoid having to update api and field keys when working with the google forms.
 
-2. Run Yearly Reset - In google script ADMIN_ONLY.gs file select and run YEARLY_RESET
+2. Run Yearly Reset - In google script ADMIN_ONLY.gs file select and run YEARLY_RESET. Should recieve a prompt to proceed on the google doc.
  - Clear Players tab
  - Clear Standings tab
- - Delete Form Responses 1 rows (does not clear but needs to delete the rows)
+ - Delete Form Responses 1 rows (does not clear but needs to delete the rows) ? Is this still used?
 
-3. Reset admin tab - In google script ADMIN_ONLY.gs file select and run RESET_ADMIN_TAB
+3. Reset admin tab - In google script ADMIN_ONLY.gs file select and run RESET_ADMIN_TAB. Should recieve a prompt to proceed on the google doc.
   - Populates PIN column (Admin tab A)
   - Clears Admin tab C2:AB
   - Populates Submission Column (Admin tab B)
-  - Turns form on - Standings tab will auto fill with entries as the are entered
 
-4. Initial website update
-- Year - 2K##
-- Deadline
-- Payment amount
-- ?Leaguesafe link
-- Empty rosters or disable form so form cannot be submitted
+4. Update Settings tab on google sheet. These are read by and displayed on the website.
+- YEAR
+- DEADLINE
+- ENTRY_FEE
+- CONTACT_EMAIL
+- LEAGUESAFE_LINK
+- TRACKER_LINK - This should be kept the same (See #1 above) but has the options to change if needed
+- OLD_TRACKER_LINK
+- BRACKET - TODO: The idea is to add the bracket/rosters here so the webiste reads from here and then it won't require an update to the rosters.json file and website deployment 
 
-5. ? Send notification email for payments in league safe
+5. Test the process
+- Insert email and team name on Admin sheet
+- In google script ADMIN_ONLY.gs select and run CREATE_DRAFT_EMAILS to create draft emails for the PINs, then verify the draft emails in gmail.
+- Can send email or not.
+- On ADMIN_ONLY.gs run TURN_ON
+- On the form enter email and pin and then submit a roster, verify it is added to the Admin sheet and displays on the Standings sheet
+- On ADMIN_ONLY.gs run TURN_OFF and then RESET_ADMIN_TAB
+- TESTING COMPLETE
 
-6. SELECTION SUNDAY - Bracket and rosters
-- Generate bracket and rosters
-- Update website with bracket and rosters
-- Enable form
-- In google script ADMIN_ONLY.gs select and run FORM_ON
+6. ? Send notification email for payments in league safe
 
-7. Update google sheet Players tab
+7. SELECTION SUNDAY - Bracket and rosters
+- Generate bracket and rosters using the [JAVA Code](https://github.com/richardsamuellopez/player-pool/blob/39ac7688ef0c968b01adabcc63f09890d45092c7/data/README-Roster-Population.md)
+- Update website rosters.json with bracket and rosters
+- Enable form - In google script ADMIN_ONLY.gs select and run FORM_ON
 
-8. As payments come in from leaguesafe add them to the `Admin` sheet. Populate the Email and Entry (Team Name) columns. The PIN column will be the PIN to email the user.
+8. Update google sheet Players tab
 
-9. In google script ADMIN_ONLY.gs select and run CREATE_DRAFT_EMAILS to create draft emails for the PINs, then go to draft emails in gmail and send PIN emails.
+9. As payments come in from leaguesafe add them to the Admin sheet. Populate the Email and Entry (Team Name) columns. The PIN column will be the PIN to email the user.
 
-10. User gets email with PIN and go to form, enter email & PIN, fill out roster then submit. Form Response 1 and Admin tab update with submissions. The Standings tab will also display entries as they come in and users can verify their team their. It will not auto sort until next step is done. NOTE: Not sending a confirmation email when user submits a roster
+10. In google script ADMIN_ONLY.gs select and run CREATE_DRAFT_EMAILS to create draft emails for the PINs, then go to draft emails in gmail and send PIN emails.
 
-11. At cut off time in google script admin.gs select and run FORM_OFF this will copy the final rosters from the Admin tab to Standings tab and it will now auto sort with points changes
+11. User gets email with PIN and go to form, enter email & PIN, fill out roster then submit. Form Response 1 and Admin tab update with submissions. The Standings tab will also display entries as they come in and users can verify their team their. It will not auto sort until next step is done. NOTE: Not sending a confirmation email when user submits a roster
+
+12. At cut off time in google script admin.gs select and run FORM_OFF this will copy the final rosters from the Admin tab to Standings tab and it will now auto sort with points changes
 
 
 ## Notes:
 #### Can hide the following sheets:
 - Admin
 - Settings
-- Form Responses 1
+- Form Responses 1 ? Is this even used? Can it be deleted?
 
 ## Publishing
  Do not need to publish any of the pages to the web unless doing some reading of the sheets. i.e. reading the players and getting the stats live
