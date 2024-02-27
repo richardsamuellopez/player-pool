@@ -164,7 +164,7 @@ angular.module('poolEntry', [
   .then(json => {
     if(json.data  && json.error === false){
       const settings = json.data.settings;
-      $scope.form_enabled = true;//settings.FORM_ENABLED;
+      $scope.form_enabled = settings.FORM_ENABLED;
       $scope.year = settings.YEAR;
       $scope.deadLine = settings.DEADLINE
       $scope.fee = settings.ENTRY_FEE;
