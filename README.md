@@ -13,7 +13,6 @@ python3 -m http.server 8000
 2. Run Yearly Reset - In google script ADMIN_ONLY.gs file select and run YEARLY_RESET. Should recieve a prompt to proceed on the google doc.
  - Clear Players tab
  - Clear Standings tab
- - Delete Form Responses 1 rows (does not clear but needs to delete the rows) ? Is this still used?
 
 3. Reset admin tab - In google script ADMIN_ONLY.gs file select and run RESET_ADMIN_TAB. Should recieve a prompt to proceed on the google doc.
   - Populates PIN column (Admin tab A)
@@ -52,7 +51,7 @@ python3 -m http.server 8000
 
 10. In google script ADMIN_ONLY.gs select and run CREATE_DRAFT_EMAILS to create draft emails for the PINs, then go to draft emails in gmail and send PIN emails.
 
-11. User gets email with PIN and go to form, enter email & PIN, fill out roster then submit. Form Response 1 and Admin tab update with submissions. The Standings tab will also display entries as they come in and users can verify their team their. It will not auto sort until next step is done. NOTE: Not sending a confirmation email when user submits a roster
+11. User gets email with PIN and go to form, enter email & PIN, fill out roster then submit. Admin tab updates with submissions. The Standings tab will also display entries as they come in and users can verify their team their. It will not auto sort until next step is done. NOTE: Not sending a confirmation email when user submits a roster
 
 12. At cut off time in google script admin.gs select and run FORM_OFF this will copy the final rosters from the Admin tab to Standings tab and it will now auto sort with points changes
 
@@ -61,7 +60,6 @@ python3 -m http.server 8000
 #### Can hide the following sheets:
 - Admin
 - Settings
-- Form Responses 1 ? Is this even used? Can it be deleted?
 
 ## Publishing
  Do not need to publish any of the pages to the web unless doing some reading of the sheets. i.e. reading the players and getting the stats live
