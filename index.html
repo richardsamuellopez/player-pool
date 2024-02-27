@@ -149,24 +149,18 @@
                   hidden
                   type="email"
                   ng-model="email"
-                  id={{emailID}}
-                  name={{emailID}}
                   required
                 >
                 <input
                   hidden
                   type="text"
                   ng-model="pin"
-                  id={{pinID}}
-                  name={{pinID}}
                   required
                 >
                 <input
                   hidden
                   type="text"
                   ng-model="entryName"
-                  id={{entryNameID}}
-                  name={{entryNameID}}
                   required
                 >
                 <div class="col-sm-4" ng-repeat="(index, group) in fieldGroups">
@@ -174,8 +168,6 @@
                     <label>{{group.label}}</label>
                     <select
                       class="form-control"
-                      name={{group.team.entryId}}
-                      id={{group.team.entryId}}
                       ng-model="group.team.value"
                       ng-disabled="submitted"
                       ng-options="team as (index > 8 ? team.seed +' - '+ team.name : team.name ) for team in seed[index].teams | filter:skipTeam(index) track by team.name"
@@ -189,8 +181,6 @@
                     <label>{{group.label}} Player</label>
                     <select
                       class="form-control"
-                      name={{group.player.entryId}}
-                      id={{group.player.entryId}}
                       ng-model="group.player.value"
                       ng-disabled="submitted"
                       ng-options="player as player.name for player in seed[index].players | filter:{team:group.team.value.name}:true track by player.name"
