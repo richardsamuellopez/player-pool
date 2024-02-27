@@ -27,7 +27,129 @@ angular.module('poolEntry', [
   $scope.pin="";
   $scope.submitted = false;
   $scope.formStatus = "INITIAL";
-
+  $scope.fieldGroups = [
+    {
+      label: 'Seed #1',
+      team: {
+        entryId: 'entry.1059009687',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1589326624',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #2',
+      team: {
+          entryId: 'entry.1792899743',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.496616414',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #3',
+      team: {
+          entryId: 'entry.298248963',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.228107489',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #4',
+      team: {
+        entryId: 'entry.1260734803',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1929196631',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #5',
+      team: {
+        entryId: 'entry.265627880',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1438588206',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #6',
+      team: {
+        entryId: 'entry.688877146',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.718296763',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #7',
+      team: {
+        entryId: 'entry.1554732274',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1222291357',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #8',
+      team: {
+        entryId: 'entry.1767171400',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.581849140',
+        value: ''
+      }
+    },
+    {
+      label: 'Seed #9',
+      team: {
+        entryId: 'entry.99488968',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.859580858',
+        value: ''
+      }
+    },
+    {
+      label: 'Wild Card #1',
+      team: {
+        entryId: 'entry.654414173',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.1145243786',
+        value: ''
+      }
+    },
+    {
+      label: 'Wild Card #2',
+      team: {
+        entryId: 'entry.713813158',
+        value: ''
+      },
+      player: {
+        entryId: 'entry.862600197',
+        value: ''
+      }
+    }
+  ];
   fetch(`https://script.google.com/macros/s/${$scope.API_KEY}/exec?email=&pin=`, {
     redirect: "follow",
     headers: {
