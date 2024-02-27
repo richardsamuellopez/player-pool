@@ -7,72 +7,54 @@
 
 python3 -m http.server 8000
 
-## Yearly Update
-### Google form
-1. When cleaning up the data from the previous year on the Form Responses 1 sheet make sure to delete the rows and not just clear the data in them, the google script will just continue adding from the last row.
-2. Clear the entries in the google sheet form
-3. Update dates in email.gs and save to the scripts for the google sheet
-4. Get values from Google form for updating Website form.
-- Make sure the values Team and Player variables like "entry.2120297232" match the fields on the Google form.
-- Open google form click the 3 vertical buttons and select Get pre-filled link
-- On this page fill out the fields and click the button to get the pre filled link
-- Click the copy link button
-- Update they formAction variable for the key for the new.
-- Example Link
-https://docs.google.com/forms/d/e/1FAIpQLScTsxY6WklBqb8g_WZBbNnfV0pyAZUaZQf5o4zZrnMxm53pww/viewform?usp=pp_url&entry.2120297232=richardsamuellopez@gmail.com&entry.383545338=RSL+Roster+1&entry.1759913902=1234567&entry.1059009687=t1&entry.1589326624=p1&entry.1792899743=s2&entry.496616414=p2&entry.298248963=s3&entry.228107489=p3&entry.1260734803=s4&entry.1929196631=p4&entry.265627880=s5&entry.1438588206=p5&entry.688877146=s6&entry.718296763=p6&entry.1554732274=s7&entry.1222291357=p7&entry.1767171400=s8&entry.581849140=p8&entry.99488968=s9&entry.859580858=p9&entry.654414173=twc1&entry.1145243786=pwc1&entry.713813158=twc2&entry.862600197=pwc2
+## Yearly Update Instructions
+1. Make copy of sheet for historical data. Update the existing sheet name with the new year 2k##. This will avoid having to update api and field keys when working with the google forms.
+
+2. Run Yearly Reset - In google script ADMIN_ONLY.gs file select and run YEARLY_RESET
+ - Clear Players tab
+ - Clear Standings tab
+ - Delete Form Responses 1 rows (does not clear but needs to delete the rows)
+
+3. Reset admin tab - In google script ADMIN_ONLY.gs file select and run RESET_ADMIN_TAB
+  - Populates PIN column (Admin tab A)
+  - Clears Admin tab C2:AB
+  - Populates Submission Column (Admin tab B)
+  - Turns form on - Standings tab will auto fill with entries as the are entered
+
+4. Initial website update
+- Year - 2K##
+- Deadline
+- Payment amount
+- ?Leaguesafe link
+- Empty rosters or disable form so form cannot be submitted
+
+5. ? Send notification email for payments in league safe
+
+6. SELECTION SUNDAY - Bracket and rosters
+- Generate bracket and rosters
+- Update website with bracket and rosters
+- Enable form
+- In google script ADMIN_ONLY.gs select and run FORM_ON
+
+7. Update google sheet Players tab
+
+8. As payments come in from leaguesafe add them to the `Admin` sheet. Populate the Email and Entry (Team Name) columns. The PIN column will be the PIN to email the user.
+
+9. In google script ADMIN_ONLY.gs select and run CREATE_DRAFT_EMAILS to create draft emails for the PINs, then go to draft emails in gmail and send PIN emails.
+
+10. User gets email with PIN and go to form, enter email & PIN, fill out roster then submit. Form Response 1 and Admin tab update with submissions. The Standings tab will also display entries as they come in and users can verify their team their. It will not auto sort until next step is done. NOTE: Not sending a confirmation email when user submits a roster
+
+11. At cut off time in google script admin.gs select and run FORM_OFF this will copy the final rosters from the Admin tab to Standings tab and it will now auto sort with points changes
 
 
-### Website form
-1. In index.html update the key in the url for the form action if necessary
-2. Update the variables in appEntry.js
-- Update year, deadline and fee
-- IDs are taken from the Google form
-```
-// UPDATE THE BELOW VARIABLES EACH YEAR
-  $scope.year = '2023';
-  $scope.deadLine = 'noon EST, Thursday, March 16th';
-  $scope.fee = "$50";
-  $scope.emailID = "entry.2120297232";
-  $scope.entryNameID = "entry.383545338";
-  $scope.pinID = "entry.340221862";
-  $scope.entry = {
-    'seed1Team': 'entry.1059009687',
-    'seed1Player': 'entry.1589326624',
-    'seed2Team': 'entry.1792899743',
-    'seed2Player': 'entry.496616414',
-    'seed3Team': 'entry.298248963',
-    'seed3Player': 'entry.228107489',
-    'seed4Team': 'entry.1260734803',
-    'seed4Player': 'entry.1929196631',
-    'seed5Team': 'entry.265627880',
-    'seed5Player': 'entry.1438588206',
-    'seed6Team': 'entry.688877146',
-    'seed6Player': 'entry.718296763',
-    'seed7Team': 'entry.1554732274',
-    'seed7Player': 'entry.1222291357',
-    'seed8Team': 'entry.1767171400',
-    'seed8Player': 'entry.581849140',
-    'seed9Team': 'entry.99488968',
-    'seed9Player': 'entry.859580858',
-    'seedWC1Team': 'entry.654414173',
-    'seedWC1Player': 'entry.1145243786',
-    'seedWC2Team': 'entry.713813158',
-    'seedWC2Player': 'entry.862600197'
-  }
-// END OF VARIABLES TO UPDATE```
+## Notes:
+#### Can hide the following sheets:
+- Admin
+- Settings
+- Form Responses 1
 
-Can hide this sheet after copying over all entries.
-
-Notes: Do not need to publish any of the pages to the web unless doing some reading of the sheets. i.e. reading the players and getting the stats live
-
-
-## Sheet for tracking payments and PINs
-Create a sheet tracking payments, this can not be the same one that collects form responses, that sheet can not have any data before hand it needs to only collect submissions. Currently called `Admin`
-Add the following columns
-Email
-Team Name
-PIN
-Paid
+## Publishing
+ Do not need to publish any of the pages to the web unless doing some reading of the sheets. i.e. reading the players and getting the stats live
 
 ### Populate PINs
 Code on google sheet to populate PINs
@@ -94,13 +76,13 @@ function populatePINs() {
 Conditional formating to check for duplicates
 `=COUNTIF($AA$2:$AA,AA2)>1`
 
-#### How to run populatePINs
+### How to run populatePINs
 On the Google Sheet go to Extensions -> Apps Script
 In the Code.gs file choose the populatePINs in the dropdown
 It is currently set to fill in the Admin sheet and the C column for 500 rows
 Click the Run button, go to the Admin sheet and click Yes on the alert `Are you sure you want to populate new PINs? This will overwrite all existing PINs` then the PIN column populates.
 
-## Add a trigger if doing some emailing
+### Add a trigger if doing some emailing
 1. On google sheet select Tools -> Script Editor
 2. On the script editor select Edit -> Current project's triggers
 3. ON triggers page select Add Trigger with following:
@@ -110,6 +92,3 @@ Click the Run button, go to the Admin sheet and click Yes on the alert `Are you 
   Select event type - On form submit
   Failure notification settings - Nofity me immediately
 4. Click save - this will prompt to allow the script to access your account and send email as you
-
-### Inputting payments from leaguesafe
-As payments come in from leaguesafe add them to the `Admin` sheet. Popuate the Email and Entry (Team Name) columns and mark the paid column if completed. The PIN column will be the PIN to email the user

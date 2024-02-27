@@ -8,16 +8,20 @@ angular.module('poolEntry', [
     });
   };
 })
-.controller('PoolCtrl', ['$scope', '$filter', '$timeout', '$interval', '$http', 'excludeFromFilter', function($scope, $filter, $timeout, $interval, $http, excludeFromFilter){
-  // UPDATE THE BELOW VARIABLES EACH YEAR
-  $scope.year = '2023';
-  $scope.deadLine = 'noon EST, Thursday, March 16th';
-  $scope.fee = "$50";
-  $scope.leagueSafe = "https://leaguesafe.com/join/4092721";
+.filter('safeHtml', function ($sce) {
+  return function (val) {
+      return $sce.trustAsHtml(val);
+  };
+})
+.controller('PoolCtrl', ['$scope', '$filter', '$timeout', '$interval', '$http', 'excludeFromFilter', '$sce', function($scope, $filter, $timeout, $interval, $http, excludeFromFilter, $sce){
+  $scope.form_enabled = false;
+  $scope.loadingError = false;
+  $scope.loading = true;
+  $scope.loaded = false;
+  $scope.API_KEY = "AKfycbw0Cth4JngSOr76bKjG9t_psihg4S0ONrmcTkyOC6NhMuqtjixXUvFDFWUU4YtP3ObD";
   $scope.emailID = "entry.2120297232";
   $scope.entryNameID = "entry.383545338";
   $scope.pinID = "entry.1759913902";
-
   $scope.fieldGroups = [
     {
       label: 'Seed #1',
@@ -141,11 +145,6 @@ angular.module('poolEntry', [
       }
     }
   ];
-
-  $scope.API_KEY = "AKfycbwtwIjZgIRlnKpF4i_0Xph_reBstwlOsx08e1linn42Rt2WJZe8RsQkgSAbtG3glg3N";
-  $scope.contactEmail = "corey.waddell@gmail.com";
-  // END OF VARIABLES TO UPDATE
-
   $scope.error = false;
   $scope.pinVerified = false;
   $scope.checking = false;
@@ -154,15 +153,77 @@ angular.module('poolEntry', [
   $scope.pin="";
   $scope.submitted = false;
   $scope.formStatus = "INITIAL";
+
+  fetch(`https://script.google.com/macros/s/${$scope.API_KEY}/exec?email=&pin=`, {
+    redirect: "follow",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    }
+  })
+  .then(response => response.json())
+  .then(json => {
+    if(json.data  && json.error === false){
+      const settings = json.data.settings;
+      $scope.form_enabled = true;//settings.FORM_ENABLED;
+      $scope.year = settings.YEAR;
+      $scope.deadLine = settings.DEADLINE
+      $scope.fee = settings.ENTRY_FEE;
+      $scope.leagueSafe = settings.LEAGUESAFE_LINK;
+      $scope.contactEmail = settings.CONTACT_EMAIL;
+      $scope.bracketData = settings.BRACKET;
+      $scope.trackerLink = settings.TRACKER_LINK;
+      $scope.oldTrackerLink = settings.OLD_TRACKER_LINK;
+      $scope.rules = json.data.rules.filter(function (el) {
+        return el[0].length > 0;
+      });
+      $scope.rules.map(function(el){
+        if (el[0].includes("Place -")) {
+          el.push('PAYOUT');
+        }
+        if (el[0].includes('LeagueSafe')){
+          el[0] = el[0].replace('LeagueSafe', `<a href="${$scope.leagueSafe}" target="_blank">LeagueSafe</a>`);
+        }
+        if (el[0].includes('Old Example Here')){
+          el[0] = el[0].replace('Old Example Here', `<a href="${$scope.oldTrackerLink}" target="_blank">Old Example Here</a>`);
+        }
+        if (el[0].includes('CANNOT')){
+          el[0] = el[0].replace('CANNOT', `<b>CANNOT</b>`);
+        }
+        if (el[0].includes('DO NOT')){
+          el[0] = el[0].replace('DO NOT', `<b>DO NOT</b>`);
+        }
+        if (el[0].includes('Important')){
+          el[0] = el[0].replace('Important', `<b>Important</b>`);
+        }
+      })
+    } else {
+      $scope.form_enabled = false;
+      $scope.loadingError = true;
+    }
+    $scope.loading = false;
+    $scope.loaded = !$scope.loading && !$scope.loadingError;
+
+    $scope.$apply();
+  })
+  .catch(error => {
+    $scope.loadingError = true;
+    $scope.loading = false;
+
+    $scope.$apply();
+  });
+
   $scope.formIsLoading = function(){
     return $scope.formStatus === "LOADING";
   };
+
   $scope.formIsSuccess = function(){
     return $scope.formStatus === "SUCCESS";
   };
+
   $scope.formIsError = function(){
     return $scope.formStatus === "ERROR";
   };
+
   $scope.submitEntry = function(){
     if($scope.gform.$valid){
       $scope.submitted = true;
@@ -210,6 +271,7 @@ angular.module('poolEntry', [
   };
 
   $scope.reloadPage = function(){window.location.reload();}
+
   $scope.checkEntry = function(){
     $scope.checking = true;
     $scope.error = false;
@@ -255,7 +317,7 @@ angular.module('poolEntry', [
         return value;
       }
     }
-};
+  };
 
   $scope.isWCSelected = function(seed, team){
     const WC1 = $scope.fieldGroups[9].team.value;
@@ -283,7 +345,6 @@ angular.module('poolEntry', [
       'Content-Type': 'application/json',
       'Accept': 'application/json'
      }
-
   })
   .then(response => response.json())
   .then(json => {
