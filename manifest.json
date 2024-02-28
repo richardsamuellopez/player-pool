@@ -2,7 +2,7 @@
   "name": "Player Pool",
   "short_name": "Player-Pool",
   "start_url": "",
-  "display": "fullscreen",
+  "display": "browser",
   "icons": [
     {
       "src":"/resources/icons/basketball-144-184778.png",
