@@ -168,15 +168,15 @@ angular.module('poolEntry', [
     if(json.data && json.data.settings && json.error === false){
       const settings = json.data.settings;
       $scope.form_enabled = settings.FORM_ENABLED;
-      $scope.year = settings.YEAR;
-      $scope.deadLine = settings.DEADLINE
-      $scope.fee = settings.ENTRY_FEE;
-      $scope.leagueSafe = settings.LEAGUESAFE_LINK;
-      $scope.contactEmail = settings.CONTACT_EMAIL;
-      $scope.trackerLink = settings.TRACKER_LINK;
-      $scope.oldTrackerLink = settings.OLD_TRACKER_LINK;
-
-      var bracket = JSON.parse(settings.BRACKET).teams;
+      $scope.year = settings.YEAR || console.log("Error: Setting YEAR not found");
+      $scope.deadLine = settings.DEADLINE || console.log("Error: Setting DEADLINE not found");
+      $scope.fee = settings.ENTRY_FEE || console.log("Error: Setting ENTRY_FEE not found");
+      $scope.leagueSafe = settings.LEAGUESAFE_LINK || console.log("Error: Setting LEAGUESAFE_LINK not found");
+      $scope.contactEmail = settings.CONTACT_EMAIL || console.log("Error: Setting CONTACT_EMAIL not found");
+      $scope.trackerLink = settings.TRACKER_LINK || console.log("Error: Setting TRACKER_LINK not found");
+      $scope.oldTrackerLink = settings.OLD_TRACKER_LINK || console.log("Error: Setting OLD_TRACKER_LINK not found");
+      const bracketData = settings.BRACKET ? JSON.parse(settings.BRACKET) : {};
+      const bracket = bracketData?.teams ? bracketData.teams : [];
       if(bracket.length === 68 ){
         $scope.seed.push(loadSeedData(bracket.filter(team => team.seed === '1')));
         $scope.seed.push(loadSeedData(bracket.filter(team => team.seed === '2')));
@@ -189,6 +189,8 @@ angular.module('poolEntry', [
         $scope.seed.push(loadSeedData(bracket.filter(team => team.seed === '9')));
         $scope.seed.push(loadSeedData(bracket.filter(team => parseInt(team.seed) >= 10).sort((a, b) => a.seed - b.seed)));
         $scope.seed.push(loadSeedData(bracket.filter(team => parseInt(team.seed) >= 10).sort((a, b) => a.seed - b.seed)));
+      } else {
+        console.log('The bracket is not the correct size.');
       }
 
       // Filter out any empty rules
