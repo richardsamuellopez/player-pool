@@ -27,7 +27,13 @@ python3 -m http.server 8000
 - LEAGUESAFE_LINK
 - TRACKER_LINK - This should be kept the same (See #1 above) but has the options to change if needed
 - OLD_TRACKER_LINK
-- BRACKET - TODO: The idea is to add the bracket/rosters here so the webiste reads from here and then it won't require an update to the rosters.json file and website deployment 
+- BRACKET - This is the new home for the bracket and rosters. It is formatted like below showing team 1 and 68. The seed # is the region seed 1-16 not 1-68.
+```
+{"teams":[
+{"name": "Alabama","seed": "1","roster": ["Charles Bediako", "Jaden Bradley", "Nimari Burnett", "Noah Clowney", "Davin Cosby Jr.", "Adam Cottrell", "Rylan Griffen", "Noah Gurley", "Delaney Heard", "Brandon Miller", "Nick Pringle", "Jaden Quinerly", "Jahvon Quinerly", "Max Scharnowski", "Mark Sears", "Kai Spears", "Dominick Welch"]},
+{"name": "Howard","seed": "16","roster": ["Reece Brown", "Kobe Dickson", "Marcus Dockery", "Bryce Harris", "Elijah Hawkins", "Talin Lewis", "Shy Odom", "Ose Okojie", "Freedom Rhames", "Aaron Roberson", "Khalil Robinson", "Steve Settle III", "Miles Stewart", "Ayodele Taiwo", "Thomas Weaver", "Jelani Williams", "Jordan Wood"]}
+]}
+```
 
 5. Test the process
 - Insert email and team name on Admin sheet
@@ -42,7 +48,7 @@ python3 -m http.server 8000
 
 7. SELECTION SUNDAY - Bracket and rosters
 - Generate bracket and rosters using the [JAVA Code](https://github.com/richardsamuellopez/player-pool/blob/39ac7688ef0c968b01adabcc63f09890d45092c7/data/README-Roster-Population.md)
-- Update website rosters.json with bracket and rosters
+- Update bracket field on the Settings sheet.
 - Enable form - In google script ADMIN_ONLY.gs select and run FORM_ON
 
 8. Update google sheet Players tab
@@ -60,6 +66,9 @@ python3 -m http.server 8000
 #### Can hide the following sheets:
 - Admin
 - Settings
+
+### Allow user to resubmit
+To allow a user to resubmit you can clear out their roster on the Admin tab starting in column G
 
 ## Publishing
  Do not need to publish any of the pages to the web unless doing some reading of the sheets. i.e. reading the players and getting the stats live
