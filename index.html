@@ -2,6 +2,7 @@
 <html id="top" lang="en" ng-app="poolEntry" ng-controller="PoolCtrl">
     <head>
       <meta charset="utf-8">
+      <link rel="manifest" href="/manifest.json">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Favicon -->
       <link rel="icon" type="image/x-icon" href="/resources/icons/favicon.ico">
@@ -86,6 +87,8 @@
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    autocomplete="email"
                     ng-model="email"
                     ng-disabled="pinVerified || checking"
                     class="form-control"
@@ -148,26 +151,32 @@
                 <input
                   hidden
                   type="email"
+                  name="email-hidden"
+                  autocomplete="email"
                   ng-model="email"
                   required
                 >
                 <input
                   hidden
                   type="text"
+                  name="pin-hidden"
                   ng-model="pin"
                   required
                 >
                 <input
                   hidden
                   type="text"
+                  name="entryName-hidden"
                   ng-model="entryName"
                   required
                 >
                 <div class="col-sm-4" ng-repeat="(index, group) in fieldGroups">
                   <div class="form-group">
-                    <label>{{group.label}}</label>
+                    <label for="{{group.label}}-seed">{{group.label}}</label>
                     <select
                       class="form-control"
+                      name="{{group.label}}-seed"
+                      id="{{group.label}}-seed"
                       ng-model="group.team.value"
                       ng-disabled="submitted"
                       ng-options="team as (index > 8 ? team.seed +' - '+ team.name : team.name ) for team in seed[index].teams | filter:skipTeam(index) track by team.name"
@@ -178,9 +187,11 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>{{group.label}} Player</label>
+                    <label for="{{group.label}}-player">{{group.label}} Player</label>
                     <select
                       class="form-control"
+                      name="{{group.label}}-player"
+                      id="{{group.label}}-player"
                       ng-model="group.player.value"
                       ng-disabled="submitted"
                       ng-options="player as player.name for player in seed[index].players | filter:{team:group.team.value.name}:true track by player.name"
