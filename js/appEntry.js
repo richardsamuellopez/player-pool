@@ -167,7 +167,7 @@ angular.module('poolEntry', [
   .then(json => {
     if(json.data && json.data.settings && json.error === false){
       const settings = json.data.settings;
-      $scope.form_enabled = settings.FORM_ENABLED;
+      $scope.form_enabled = true;//settings.FORM_ENABLED;
       $scope.year = settings.YEAR || console.log("Error: Setting YEAR not found");
       $scope.deadLine = settings.DEADLINE || console.log("Error: Setting DEADLINE not found");
       $scope.fee = settings.ENTRY_FEE || console.log("Error: Setting ENTRY_FEE not found");
