@@ -204,19 +204,22 @@ angular.module('poolEntry', [
           el.push('PAYOUT');
         }
         if (el[0].includes('LeagueSafe')) { //Add Leaguesafe link
-          el[0] = el[0].replace('LeagueSafe', `<a href="${$scope.leagueSafe}" target="_blank">LeagueSafe</a>`);
+          el[0] = el[0].replaceAll('LeagueSafe', `<a href="${$scope.leagueSafe}" target="_blank">LeagueSafe</a>`);
         }
         if (el[0].includes('Old Example Here')) { // Add old tracker link
           el[0] = el[0].replace('Old Example Here', `<a href="${$scope.oldTrackerLink}" target="_blank">Old Example Here</a>`);
         }
+        if (el[0].includes('e-mail me')) { // e-mail me link
+          el[0] = el[0].replaceAll('e-mail me', `<a href="mailto:${$scope.contactEmail}?subject=Player Pool">e-mail me at ${$scope.contactEmail}</a>`);
+        }
         if (el[0].includes('CANNOT')) { // Bold CANNOT
-          el[0] = el[0].replace('CANNOT', `<b>CANNOT</b>`);
+          el[0] = el[0].replaceAll('CANNOT', `<b>CANNOT</b>`);
         }
         if (el[0].includes('DO NOT')) { // Bold DO NOT
-          el[0] = el[0].replace('DO NOT', `<b>DO NOT</b>`);
+          el[0] = el[0].replaceAll('DO NOT', `<b>DO NOT</b>`);
         }
         if (el[0].includes('Important')) { // Bold Important
-          el[0] = el[0].replace('Important', `<b>Important</b>`);
+          el[0] = el[0].replaceAll('Important', `<b>Important</b>`);
         }
       })
     } else {

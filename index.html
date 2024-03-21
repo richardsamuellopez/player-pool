@@ -43,13 +43,16 @@
         <main>
           <div class="container">
             <p>Welcome to the NCAA Player Pool {{year}}. If you've played before, welcome back! If you're new to the pool, thanks for joining. In an effort to streamline the process on my end, this form will be the only way to submit rosters into the pool. Please check back on Selection Sunday!</p>
-            <h4>Rosters are due by {{deadLine}}. Entries entered after noon will not be accepted.</h3>
+            <h4>Rosters are due by {{deadLine}}. Entries entered after noon will not be accepted.</h4>
             <div id="accordion">
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                       View pool rules
+                    </button>
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapsePin" aria-expanded="false" aria-controls="collapsePin">
+                      View PIN FAQ
                     </button>
                   </h5>
                 </div>
@@ -70,6 +73,32 @@
                       </div>
                     </ul>
                   </div>
+                </div>
+                <div id="collapsePin" class="collapse">
+                  <div class="card-body">
+                      <h5>How are you supposed to get a PIN?</h5>
+                      <ul>
+                        <li>You must submit payment in <a href="https://leaguesafe.com/join/4185130" target=_blank>LeagueSafe</a> first and then I will e-mail you the PIN.</li>
+                      </ul>
+                      <h5>What is my PIN?</h5>
+                      <ul>
+                        <li>You must submit payment in <a href="https://leaguesafe.com/join/4185130" target=_blank>LeagueSafe</a> first and then I will e-mail you the PIN.</li>
+                      </ul>
+                      <h5>Where is my PIN?</h5>
+                      <ul>
+                        <li>You must submit payment in <a href="https://leaguesafe.com/join/4185130" target=_blank>LeagueSafe</a> first and then I will e-mail you the PIN.</li>
+                      </ul>
+                      <h5>I submitted payment and don't see a PIN e-mail?</h5>
+                      <ul>
+                        <li>It is a manual process to sync the payment with the PIN so it might take a few minutes.</li>
+                      </ul>
+                      <h5>I feel dumb. Is the PIN something I should know?</h5>
+                      <ul>
+                        <li>Good question Jake! You're not dumb, just excited. You must submit payment in <a href="https://leaguesafe.com/join/4185130" target=_blank>LeagueSafe</a> first and then I will e-mail you the PIN.</li>
+                      </ul>
+                      <h5>I have another question.</h5>
+                      <ul><li>Please e-mail me at <a href="mailto:{{contactEmail}}?subject=Player Pool">{{contactEmail}}</a>.</li></ul>
+                    </div>
                 </div>
               </div>
             </div>
@@ -98,6 +127,9 @@
                 </div>
                 <div class="form-group col-sm-4">
                   <label for="pin">PIN</label>
+                  <div class="pin-tooltip">?
+                    <span class="pin-tooltiptext">Need a PIN? View the PIN FAQ above. </span>
+                  </div>
                   <input
                     type="text"
                     maxlength="7"

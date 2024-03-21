@@ -61,6 +61,46 @@ main, .entry-form{
   padding-right: 5px;
 }
 
+.pin-tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.pin-tooltip .pin-tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+  margin-left: 5px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.pin-tooltip:hover .pin-tooltiptext {
+  visibility: visible;
+}
+
+/* .pin-tooltip .pin-tooltiptext::after {
+  content: " ";
+  position: absolute;
+  /* top: 10%; */
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+} */
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
