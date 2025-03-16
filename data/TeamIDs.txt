@@ -249,6 +249,7 @@ Team ids from ESPN
 2535, Samford
 301, San Diego
 21, San Diego State
+28, UC San Diego
 2539, San Francisco
 23, San Jos� St
 2541, Santa Clara

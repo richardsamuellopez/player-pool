@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.util.*;
 
 public class HTMLRead {
-  public static Boolean readBracket = true; // Set to true to read bracket from wiki, false if already read
+  public static Boolean readBracket = false; // Set to true to read bracket from wiki, false if already read
   public static Boolean readTeamIDs = false; // Set to true to read team IDs, false if not needed
 
   public static String bracketFile = "Bracket.txt";
@@ -15,7 +15,8 @@ public class HTMLRead {
   // public static String BracketURL = "https://en.wikipedia.org/wiki/2017_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
   // public static String BracketURL = "https://en.wikipedia.org/wiki/2018_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
   // public static String BracketURL = "https://en.wikipedia.org/wiki/2022_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
-  public static String BracketURL = "https://en.wikipedia.org/wiki/2023_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
+  //public static String BracketURL = "https://en.wikipedia.org/wiki/2023_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
+  public static String BracketURL = "https://en.wikipedia.org/wiki/2024_NCAA_Division_I_Men%27s_Basketball_Tournament#Tournament_seeds";
 
   static class Team {
     String name;
