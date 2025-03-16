@@ -99,6 +99,9 @@ In the Code.gs file choose the populatePINs in the dropdown
 It is currently set to fill in the Admin sheet and the C column for 500 rows
 Click the Run button, go to the Admin sheet and click Yes on the alert `Are you sure you want to populate new PINs? This will overwrite all existing PINs` then the PIN column populates.
 
+### Dev notes
+- In preparing for 2025 there was a 403 CORS error when loading the page. Needed to redeploy the appscript.
+
 ### Add a trigger if doing some emailing
 1. On google sheet select Tools -> Script Editor
 2. On the script editor select Edit -> Current project's triggers
