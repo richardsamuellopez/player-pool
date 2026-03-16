@@ -169,6 +169,7 @@ angular.module('poolEntry', [
       const settings = json.data.settings;
       $scope.form_enabled = settings.FORM_ENABLED;
       $scope.year = settings.YEAR || console.log("Error: Setting YEAR not found");
+      $scope.pageTitle= "Player Pool " + $scope.year
       $scope.deadLine = settings.DEADLINE || console.log("Error: Setting DEADLINE not found");
       $scope.fee = settings.ENTRY_FEE || console.log("Error: Setting ENTRY_FEE not found");
       $scope.leagueSafe = settings.LEAGUESAFE_LINK || console.log("Error: Setting LEAGUESAFE_LINK not found");

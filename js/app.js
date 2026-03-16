@@ -25,6 +25,7 @@ $scope.prevPlayers="";
   $interval(LoadData,97000);
 $scope.clearSearch = function(){
 $scope.searchText="";
+$scope.pageTitle="Loading..."
 };
 
 $scope.reloadPage = function(){window.location.reload();}
